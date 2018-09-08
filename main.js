@@ -1,30 +1,57 @@
-const {app, BrowserWindow} = require('electron')
-  
-  let win
-  
-  function createWindow () {
+const { app, BrowserWindow,globalShortcut, remote } = require('electron')
 
-    win = new BrowserWindow({width: 1410, height: 820})
-  
-    win.loadFile('vistas/index.html')
+let win;
 
-    win.on('closed', () => {
+function createWindow () {
+    // Create the browser window.
+    win = new BrowserWindow({
+        width: 600,
+        height: 600,
+        backgroundColor: '#ffffff',
+        icon: `file://${__dirname}/dist/assets/logo.png`
+    });
 
-      win = null
+
+    win.loadURL(`file://${__dirname}/dist/index.html`);
+
+    //// uncomment below to open the DevTools.
+    // win.webContents.openDevTools()
+
+
+    // Event when the window is closed.
+    win.on('closed', function () {
+        win = null
+    });
+
+    return win;
+}
+
+// Create window on electron intialization
+app.on('ready', () =>{
+    let win = createWindow();
+    globalShortcut.register('CommandOrControl+T', () => {
+        win.webContents.openDevTools();
+    });
+
+    globalShortcut.register('CommandOrControl+Y', () => {
+        win.webContents.closeDevTools();
     })
-  }
+} );
 
-  app.on('ready', createWindow)
+// Quit when all windows are closed.
+app.on('window-all-closed', function () {
 
-  app.on('window-all-closed', () => {
-
+    // On macOS specific close process
     if (process.platform !== 'darwin') {
-      app.quit()
+        app.quit()
     }
-  })
-  
-  app.on('activate', () => {
+});
+
+app.on('activate', function () {
+    // macOS specific close process
     if (win === null) {
-      createWindow()
+        createWindow()
     }
-  })
+
+
+});
