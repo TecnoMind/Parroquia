@@ -6,7 +6,7 @@ const {app, BrowserWindow} = require('electron')
 
     win = new BrowserWindow({width: 1410, height: 820})
   
-    win.loadFile('index.html')
+    win.loadFile('vistas/index.html')
 
     win.on('closed', () => {
 
