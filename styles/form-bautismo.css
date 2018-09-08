@@ -1,0 +1,98 @@
+body {
+    color: #FFF;
+    font-family: 'Assistant', sans-serif;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0;
+    font-size: 18px;
+}
+
+#nueva-acta {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 140px 87px auto auto;
+}
+
+header {
+    background: rgb(204, 172, 121);
+    grid-column: 1 / -1;
+    grid-row: 1;
+}
+
+header h1{
+    margin: 50px 0;
+    font-size: 30px;
+}
+
+section {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    text-align:center;
+    background: rgb(248,243,235);
+    width: 100%;
+}
+
+section ul{
+    display:inline-table;
+    list-style: none;
+    padding-top: 10px
+}
+
+section li{
+    display:inline;
+    float: left;
+
+}
+
+section li a {
+    font-weight: bold;
+    padding: 8px;
+    text-decoration: none;
+    color: rgb(162, 136, 94);
+    margin-right: 30px;
+}
+
+main {
+    grid-column: 5 / 9;
+    grid-row: 3 / -1;
+    background: white
+}
+
+main  h2{
+    color: rgb(162, 136, 94);
+    font-size: 30px;
+    margin: 50px 0;
+}
+
+main label{
+    display: block;
+    color: black;
+}
+
+main ul.paginacion{
+    padding: 8px 16px;
+    list-style: none;
+
+}
+
+main ul{
+    display: inline-block;
+    border-bottom: 2px solid #A2885E;
+}
+
+main ul.paginacion li {
+    display: inline;
+}
+
+main ul.paginacion li+li:before {
+    padding: 8px;
+    color: #A2885E;
+    content: "|\00a0";
+}
+
+main ul.paginacion li a {
+    color: #A2885E;
+    text-decoration: none;
+}
