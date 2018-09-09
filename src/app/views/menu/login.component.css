@@ -1,0 +1,100 @@
+body {
+    color: #FFF;
+    font-family: 'Assistant', sans-serif;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0;
+    font-size: 18px;
+}
+
+#nueva-acta {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    height: calc(400px);
+}
+
+#nueva-acta {
+
+}
+
+header {
+    background: rgb(204, 172, 121);
+    grid-column: 1 / -1;
+    grid-row: 1;
+}
+
+header h1{
+    margin: 50px 0;
+    font-size: 30px;
+}
+
+section {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    text-align:center;
+    /*    height: 80px;*/
+    background: rgb(248,243,235);
+    width: 100%;
+}
+
+section ul{
+    display:inline-table;
+    list-style: none;
+    padding-top: 10px
+}
+
+section li{
+    display:inline;
+    float: left;
+
+}
+
+section li a {
+    font-weight: bold;
+    padding: 8px;
+    text-decoration: none;
+    color: rgb(162, 136, 94);
+    margin-right: 30px;
+}
+
+main {
+    grid-column: 1 / -1;
+    grid-row: 3 / -1;
+    background: white;
+}
+
+main  h2{
+    color: rgb(162, 136, 94);
+    font-size: 30px;
+    margin: 50px 0;
+}
+
+
+main ul{
+    display:inline-table;
+    list-style: none;
+    padding-top: 10px
+}
+
+main li{
+    display:inline;
+    float: left;
+
+}
+
+main li svg{
+    width: 150px;
+    height: 150px;
+}
+
+main li a {
+    display: block;
+    font-weight: bold;
+    padding: 8px;
+    margin: 0 50px;
+    text-decoration: none;
+    color: rgb(162, 136, 94);
+}

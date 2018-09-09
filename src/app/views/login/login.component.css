@@ -4,8 +4,8 @@ body {
     text-align: center;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-/*    margin: 0 auto;*/
-    
+    /*    margin: 0 auto;*/
+
 }
 
 #login {
@@ -94,7 +94,7 @@ section form .input_password {
 section form .btn_login {
     background: #CCAC79;
     border-radius: 10px;
-    border-style: none;    
+    border-style: none;
     color: white;
     font-size: 20px;
     margin-top: 50px;
@@ -102,7 +102,7 @@ section form .btn_login {
     width: 400px;
     font-size: 17px;
     font-weight: bold;
-        font-family: FontAwesome, 'Assistant';
+    font-family: FontAwesome, 'Assistant';
 }
 
 section form .btn_login:hover {
@@ -110,7 +110,7 @@ section form .btn_login:hover {
 }
 
 input {
-  font-family: FontAwesome;
+    font-family: FontAwesome;
 }
 
 ::placeholder{
