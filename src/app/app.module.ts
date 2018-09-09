@@ -1,9 +1,10 @@
 import {NgModule} from "@angular/core";
-import {LoginComponent} from "./views/login/login.component";
+import {LoginComponent} from "./views/login/component/login.component";
 import {AppComponent} from "./app.component";
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {routing} from "./app.routing.module";
+//import {BautismoComponent} from "./views/baptism/bautismo.component";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {routing} from "./app.routing.module";
     ],
     declarations: [
         AppComponent,
-        LoginComponent
+        LoginComponent,
+        //BautismoComponent
     ],
     bootstrap: [ AppComponent ]
 })
