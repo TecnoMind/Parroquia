@@ -5,7 +5,6 @@ body {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     margin: 0;
-    font-size: 18px;
 }
 
 #nueva-acta {
@@ -57,7 +56,7 @@ section li a {
 main {
     grid-column: 5 / 9;
     grid-row: 3 / -1;
-    background: white
+    background: white;
 }
 
 main  h2{
@@ -95,4 +94,88 @@ main ul.paginacion li+li:before {
 main ul.paginacion li a {
     color: #A2885E;
     text-decoration: none;
+}
+
+main form input{
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    border: 2px solid #DFDFDF;
+    height: 30px;
+}
+
+main form label{
+    text-align: left;
+}
+
+/*
+main form label:nth-child(3),
+main form label:nth-child(4){
+    display: inline-block;
+    text-align: left;
+    width: 50%;
+}
+
+main form input:nth-child(5),
+main form input:nth-child(6){
+    width: 45%;
+    float: left;    
+}*/
+
+main .lugar{
+    display: inline;
+    float: left;
+}
+
+main #lugar{
+    width: 75%;
+    float: left;
+}
+
+main .fecha{
+    display: inline;
+    float: right;
+}
+
+main #fecha{
+    width: 20%;
+}
+
+main form label{
+    color: rgb(162, 136, 94);
+}
+
+main .guardar{
+    background: rgb(204, 172, 121);
+    border: none;
+    border-radius: 10px 0 0 10px;
+    padding: 13px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: white;
+    width: 49.5%;
+    float: left;
+    cursor: pointer;
+}
+
+main .cancelar{
+    background: rgb(204, 172, 121);
+    border: none;
+    border-radius: 0 10px 10px 0;
+    padding: 13px;
+    font-weight: bold;
+    color: white;
+    margin-top: 20px;
+    width: 49.5%;
+    float: right;
+    cursor: pointer;
+}
+
+main .mitad{
+    display: inline;
+    width: 48%;
+}
+
+main .izq{
+    float: left;
+    padding: 5px 0 5px 10px;
 }
