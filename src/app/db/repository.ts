@@ -1,8 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { Database } from 'sqlite3';
-import { Settings } from './settings';
+import {Database} from 'sqlite3';
+import {Settings} from './settings';
+
 
 export interface IDbResult {
     changes: number;
@@ -15,13 +16,22 @@ export interface IDbResult {
  * @export
  * @class TheDb
  */
-export class TheDb {
-    private static readonly version = 1;
-    private static db: Database;
 
-    public static selectOne(sql: string, values: {}): Promise<{}> {
-        return new Promise<{}>((resolve, reject) => {
-            TheDb.db.get(sql, values, (err, row) => {
+export abstract class Repository<T> {
+    private  readonly version = 1;
+    private  db: Database;
+    private table :string;
+
+    constructor(type : new () => T) {
+        this.table = type.name.toLowerCase();
+    }
+
+    public selectOne( id: number): Promise<T> {
+        const sql = 'SELECT * FROM $table WHERE id = $id';
+        const values = { $id: id, $table: this.table };
+
+        return new Promise<T>((resolve, reject) => {
+            this.db.get(sql, values, (err, row) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -31,9 +41,13 @@ export class TheDb {
         });
     }
 
-    public static selectAll(sql: string, values: {}): Promise<Array<{}>> {
+    public selectAll(): Promise<Array<{}>> {
+
+        const sql = `SELECT * FROM $table`;
+        const values = {$table: this.table};
+
         return new Promise<Array<{}>>((resolve, reject) => {
-            TheDb.db.all(sql, values, (err, rows) => {
+            this.db.all(sql, values, (err, rows) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -43,21 +57,34 @@ export class TheDb {
         });
     }
 
-    public static insert(sql: string, values: {}): Promise<IDbResult> {
-        return TheDb.change(sql, values);
+    public insert(object: any, values: {}): Promise<IDbResult> {
+
+        let arrayFields = Object.getOwnPropertyNames(object);
+        let sql = 'INSERT INTO $table (';
+        arrayFields.forEach( field => {
+            sql += field + ','
+        });
+
+        sql = sql.substring(0, sql.length - 2) + ') VALUES()';
+
+       /* for(let field: arrayFields) {
+            const sql
+        }*/
+
+        return this.change(sql, values);
     }
 
-    public static update(sql: string, values: {}): Promise<IDbResult> {
-        return TheDb.change(sql, values);
+    public update(sql: string, values: {}): Promise<IDbResult> {
+        return this.change(sql, values);
     }
 
-    public static delete(sql: string, values: {}): Promise<IDbResult> {
-        return TheDb.change(sql, values);
+    public delete(sql: string, values: {}): Promise<IDbResult> {
+        return this.change(sql, values);
     }
 
-    public static query(sql: string): Promise<void> {
+    public query(sql: string): Promise<void> {
         return new Promise<void>((resolve, reject) => {
-            TheDb.db.run(sql, {}, (err) => {
+            this.db.run(sql, {}, (err) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -67,9 +94,9 @@ export class TheDb {
         });
     }
 
-    public static beginTxn(): Promise<void> {
+    public beginTxn(): Promise<void> {
         return new Promise<void>((resolve, reject) => {
-            TheDb.db.run('BEGIN', (err) => {
+            this.db.run('BEGIN', (err) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -79,9 +106,9 @@ export class TheDb {
         });
     }
 
-    public static commitTxn(): Promise<void> {
+    public commitTxn(): Promise<void> {
         return new Promise<void>((resolve, reject) => {
-            TheDb.db.run('COMMIT', (err) => {
+            this.db.run('COMMIT', (err) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -91,10 +118,10 @@ export class TheDb {
         });
     }
 
-    public static rollbackTxn(reason: Error): Promise<void> {
+    public rollbackTxn(reason: Error): Promise<void> {
         return new Promise<void>((_resolve, reject) => {
             console.log('Rollback transaction');
-            TheDb.db.run('ROLLBACK', (err) => {
+            this.db.run('ROLLBACK', (err) => {
                 if (err) {
                     console.log(err);
                     reject(new Error('Unforeseen error occurred. Please restart the application'));
@@ -105,7 +132,7 @@ export class TheDb {
         });
     }
 
-    public static importJson(filename: string, disableForeignKeys: boolean): Promise<void> {
+    public importJson(filename: string, disableForeignKeys: boolean): Promise<void> {
         const data: { version: number, tables: { [key: string]: Array<{}> } } = JSON.parse(fs.readFileSync(filename, 'utf8'));
         const tableNames = Object.keys(data.tables);
         const deletes: Array<Promise<IDbResult>> = [];
@@ -148,13 +175,13 @@ export class TheDb {
                 }
                 return Promise.all(inserts);
             })
-            .then(TheDb.commitTxn)
-            .catch(TheDb.rollbackTxn)
+            .then(this.commitTxn)
+            .catch(this.rollbackTxn)
             .then(() => {
                 if (foreignKeys === !disableForeignKeys) {
                     return Promise.resolve();
                 } else {
-                    return TheDb.setPragmaForeignKeys(foreignKeys);
+                    return this.setPragmaForeignKeys(foreignKeys);
                 }
             });
     }
@@ -165,12 +192,12 @@ export class TheDb {
             tables: {},
         };
 
-        return TheDb.selectAll(`SELECT name FROM sqlite_master WHERE type = 'table' ORDER BY name`, {})
+        return this.selectAll(`SELECT name FROM sqlite_master WHERE type = 'table' ORDER BY name`, {})
             .then((rows) => {
                 const selects: Array<Promise<Array<{}>>> = [];
                 for (const row of rows) {
                     selects.push(
-                        TheDb.selectAll(`SELECT * FROM ${row['name']}`, {})
+                        this.db.selectAll(`SELECT * FROM ${row['name']}`, {})
                             .then((results) => {
                                 return data.tables[row['name']] = results;
                             }),
@@ -183,13 +210,8 @@ export class TheDb {
             });
     }
 
-    public static resetDbKarma(): Promise<void> {
-        const fromJson = path.join(Settings.dbFolder, `karma-database.init.json`);
 
-        return TheDb.importJson(fromJson, true);
-    }
-
-    public static createDb(dbPath: string): Promise<string> {
+    public createDb(dbPath: string): Promise<string> {
         dbPath += path.extname(dbPath) === '.db' ? '' : '.db';
 
         console.log('Creating  databae: ', dbPath);
@@ -204,7 +226,7 @@ export class TheDb {
         }
 
         return TheDb.getDb(dbPath)
-            .then(() => TheDb.exec(schema))
+            .then(() => this.exec(schema))
             .then(() => TheDb.setPragmaForeignKeys(true))
             .then(() => TheDb.importJson(dataPath, false))
             .then(TheDb.setPragmaVersion)
@@ -214,7 +236,7 @@ export class TheDb {
             });
     }
 
-    public static openDb(dbPath: string): Promise<void> {
+    public openDb(dbPath: string): Promise<void> {
         console.log('Opening database: ', dbPath);
         return TheDb.getDb(dbPath)
             .then(() => TheDb.setPragmaForeignKeys(true))
@@ -225,7 +247,7 @@ export class TheDb {
             });
     }
 
-    public static closeDb(): Promise<void> {
+    public closeDb(): Promise<void> {
         if (!TheDb.db) {
             return Promise.resolve();
         }
@@ -242,7 +264,7 @@ export class TheDb {
         });
     }
 
-    private static getDb(dbPath: string): Promise<void> {
+    private getDb(dbPath: string): Promise<void> {
         return TheDb.closeDb()
             .then(() => {
                 return new Promise<void>((resolve, reject) => {
@@ -258,7 +280,7 @@ export class TheDb {
             });
     }
 
-    private static upgradeDb(): Promise<void> {
+    private upgradeDb(): Promise<void> {
         return TheDb.getPragmaVersion()
             .then((version) => {
                 if (version === TheDb.version) {
@@ -283,9 +305,9 @@ export class TheDb {
 
     }
 
-    private static change(sql: string, values: {}): Promise<IDbResult> {
+    private change(sql: string, values: {}): Promise<IDbResult> {
         return new Promise<IDbResult>((resolve, reject) => {
-            TheDb.db.run(sql, values, function (err) {
+            this.db.run(sql, values, function (err) {
                 if (err) {
                     reject(err);
                 } else {
@@ -295,9 +317,9 @@ export class TheDb {
         });
     }
 
-    private static exec(sql: string): Promise<void> {
+    private exec(sql: string): Promise<void> {
         return new Promise<void>((resolve, reject) => {
-            TheDb.db.exec(sql, (err) => {
+            this.db.exec(sql, (err) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -307,7 +329,7 @@ export class TheDb {
         });
     }
 
-    private static getPragmaForeignKeys(): Promise<boolean> {
+    private getPragmaForeignKeys(): Promise<boolean> {
         return new Promise<boolean>((resolve, reject) => {
             TheDb.db.get('PRAGMA foreign_keys', (err, row) => {
                 if (err) {
@@ -319,7 +341,7 @@ export class TheDb {
         });
     }
 
-    private static setPragmaForeignKeys(value: boolean): Promise<void> {
+    private PragmaForeignKeys(value: boolean): Promise<void> {
         return new Promise<void>((resolve, reject) => {
             TheDb.db.run(`PRAGMA foreign_keys = ${value}`, (err) => {
                 if (err) {
@@ -332,7 +354,7 @@ export class TheDb {
         });
     }
 
-    private static getPragmaVersion(): Promise<number> {
+    private getPragmaVersion(): Promise<number> {
         return new Promise<number>((resolve, reject) => {
             TheDb.db.get('PRAGMA user_version', (err, row) => {
                 if (err) {
@@ -344,7 +366,7 @@ export class TheDb {
         });
     }
 
-    private static setPragmaVersion(): Promise<void> {
+    private setPragmaVersion(): Promise<void> {
         return new Promise<void>((resolve, reject) => {
             TheDb.db.run(`PRAGMA user_version = ${TheDb.version}`, (err) => {
                 if (err) {

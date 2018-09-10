@@ -8,6 +8,7 @@ export class User {
     private _password: string;
 
 
+
     public constructor(id: number, name: string, lastName: string, password: string) {
         this._id = id;
         this._name = name;

@@ -5,7 +5,7 @@ import * as path from 'path';
 import {OpenDialogOptions, remote} from 'electron';
 
 import {Settings} from './db/settings';
-import {TheDb} from './db/thedb';
+import {TheDb} from './db/repository';
 // Importing style.scss allows webpack to bundle stylesheet with application
 import '../assets/sass/style.scss';
 

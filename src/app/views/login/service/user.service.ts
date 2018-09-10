@@ -1,19 +1,19 @@
-import {TheDb} from '../../../db/thedb';
-import {User} from "../model/hero.model";
-
+import {TheDb} from '../../../db/repository';
+import {User} from "../model/user.model";
+import {Injectable} from "@angular/core";
 /**
  * Simple class for selecting, inserting, updating and deleting Heroes in hero table.
  *
  * @export
  * @class Hero
  */
+@Injectable()
 export class UserService {
 
-    public static get(id: number): Promise<User> {
-        const sql = 'SELECT * FROM user WHERE id = $id';
-        const values = { $id: id };
+    private factory: TheDb = new TheDb(User.name.toLowerCase());
 
-        return TheDb.selectOne(sql, values)
+    public get(id: number): Promise<User> {
+        return this.factory.selectOne(id)
             .then((row) => {
                 if (row) {
                     return this.fromRow(row);
@@ -23,25 +23,21 @@ export class UserService {
             });
     }
 
-    public static getAll(): Promise<User[]> {
-        const sql = `SELECT * FROM user ORDER BY name`;
-        const values = {};
+    public getAll(): Promise<User[]> {
 
-        return TheDb.selectAll(sql, values)
+        return this.factory.selectAll()
             .then((rows) => {
-                const heroes: User[] = [];
+                const user: User[] = [];
                 for (const row of rows) {
                     const hero = this.fromRow(row);
-                    heroes.push(hero);
+                    user.push(hero);
                 }
-                return heroes;
+                return user;
             });
     }
 
     public insert(user: User): Promise<void> {
-        const sql = `
-            INSERT INTO user (name, last_name, password)
-            VALUES($name, $lastName, $password)`;
+
 
         const values = {
             $name: user.name,
@@ -95,7 +91,7 @@ export class UserService {
             });
     }
 
-    public static fromRow(row: object): User {
+    public fromRow(row: object): User {
         return new User(row['id'], row['name'], row['lastName'], row['password']);
 
     }
