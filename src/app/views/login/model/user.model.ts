@@ -3,15 +3,13 @@
 
 export class User {
     private _id: number;
-    private _name: string;
     private _lastName: string;
     private _password: string;
 
 
 
-    public constructor(id: number, name: string, lastName: string, password: string) {
+    public constructor(id: number, lastName: string, password: string) {
         this._id = id;
-        this._name = name;
         this._lastName = lastName;
         this._password = password;
     }
@@ -23,14 +21,6 @@ export class User {
 
     set id(value: number) {
         this._id = value;
-    }
-
-    get name(): string {
-        return this._name;
-    }
-
-    set name(value: string) {
-        this._name = value;
     }
 
     get lastName(): string {

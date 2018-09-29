@@ -5,10 +5,12 @@ import {ModuleWithProviders} from "@angular/core";
 
 const appRoutes: Routes = [
 
-    { path: 'app', component: LoginComponent},
+    { path: 'login', component: LoginComponent},
  //   { path: 'bautismo', component: BautismoComponent},
   //  { path: 'menu', component: LoginComponent},
-    { path: '', redirectTo: '/app', pathMatch: 'full'}
+    { path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+
+

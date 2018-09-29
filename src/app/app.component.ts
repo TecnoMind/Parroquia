@@ -1,11 +1,9 @@
 import {Component} from '@angular/core';
 import * as fs from 'fs';
-import * as path from 'path';
 // tslint:disable-next-line:no-implicit-dependencies
-import {OpenDialogOptions, remote} from 'electron';
 
 import {Settings} from './db/settings';
-import {TheDb} from './db/repository';
+import {DataAccessImpl} from './db/repository/impl/data-access.impl';
 // Importing style.scss allows webpack to bundle stylesheet with application
 import '../assets/sass/style.scss';
 
@@ -15,24 +13,26 @@ import '../assets/sass/style.scss';
 })
 export class AppComponent {
 
-    constructor( ) {
-        Settings.initialize();
+    private dataAccess: DataAccessImpl;
 
-        if (fs.existsSync(Settings.dbPath)) {
-            this.openDb(Settings.dbPath);
-        } else if (Settings.hasFixedDbLocation) {
-            this.createDb(Settings.dbPath);
-        } else {
-            this.createDb();
+    constructor(private settings: Settings) {
+        this.settings.initialize();
+        this.dataAccess = new DataAccessImpl(settings);
+
+        if (fs.existsSync(this.settings.dbPath)) {
+            console.log("existe");
+            this.openDb(this.settings.dbPath);
+        } else if (this.settings.hasFixedDbLocation) {
+            this.createDb(this.settings.dbPath);
         }
     }
 
     public openDb(filename: string) {
-        TheDb.openDb(filename)
+        this.dataAccess.openDb(filename)
             .then(() => {
-                if (!Settings.hasFixedDbLocation) {
-                    Settings.dbPath = filename;
-                    Settings.write();
+                if (!this.settings.hasFixedDbLocation) {
+                    this.settings.dbPath = filename;
+                    this.settings.write();
                 }
             })
             .then(() => {
@@ -44,30 +44,13 @@ export class AppComponent {
             });
     }
 
-    public createDb(filename?: string) {
-        if (!filename) {
-            const options: OpenDialogOptions = {
-                title: 'Create file',
-                defaultPath: remote.app.getPath('documents'),
-                filters: [
-                    {
-                        name: 'Database',
-                        extensions: ['db'],
-                    },
-                ],
-            };
-            filename = remote.dialog.showSaveDialog(remote.getCurrentWindow(), options);
-        }
+    public createDb(filename: string) {
 
-        if (!filename) {
-            return;
-        }
-
-        TheDb.createDb(filename)
+        this.dataAccess.createDb(filename)
             .then((dbPath) => {
-                if (!Settings.hasFixedDbLocation) {
-                    Settings.dbPath = dbPath;
-                    Settings.write();
+                if (!this.settings.hasFixedDbLocation) {
+                    this.settings.dbPath = dbPath;
+                    this.settings.write();
                 }
             })
             .then(() => {
@@ -78,11 +61,6 @@ export class AppComponent {
             });
     }
 
-    public onRestoreDb() {
-        TheDb.importJson(path.join(Settings.dbFolder, 'database.init.json'), false)
-            .then(() => {
-              //  this.getHeroes();
-            });
-    }
+
 
 }
