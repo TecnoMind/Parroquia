@@ -16,7 +16,6 @@ export class LoginComponent {
 
 
     public login(model: User): void {
-        console.log(model);
         this.userRepository.openDb(this.userRepository.settings.dbPath)
             .then(() => {
             })

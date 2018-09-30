@@ -36,7 +36,7 @@ let createWindow = () => {
 
 	// Open the DevTools.
 	if (devMode && process.argv.indexOf('--noDevTools') === -1) {
-		mainWindow.webContents.openDevTools();
+		//mainWindow.webContents.openDevTools();
 	}
 
 	// ipcMain.on('rendererIsFinished', (message) => {
