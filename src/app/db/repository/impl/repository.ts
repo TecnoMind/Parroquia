@@ -1,7 +1,7 @@
 import {ICrud} from "../crud";
 import {IDdl} from "../ddl";
 import {DataAccessImpl} from "./data-access.impl";
-import {Settings} from "../../settings";
+import {SettingsImpl} from "./settings.impl";
 
 /**
  * TheDb is a Promise-ified wrapper around bare sqlite3 API.
@@ -13,9 +13,8 @@ import {Settings} from "../../settings";
 export class Repository<T> extends DataAccessImpl implements ICrud<T>, IDdl<T>, JsonToEntity<T> {
 
     private readonly __table: string;
-    public id = -1;
 
-    constructor(table : string , protected settings: Settings) {
+    constructor(table : string , public settings: SettingsImpl) {
         super(settings);
         this.__table = table;
         console.log(table)
@@ -30,9 +29,10 @@ export class Repository<T> extends DataAccessImpl implements ICrud<T>, IDdl<T>, 
     }
 
     findAll(): Promise<Array<T>> {
-        const sql = `SELECT * FROM $table`;
-        const values = {table: this.__table};
-
+        const sql = 'SELECT * FROM ' + this.__table;
+        console.log(sql);
+        const values = { };
+        console.log(this.db);
         return new Promise<Array<T>>((resolve, reject) => {
             this.db.all(sql, values, (err, rows) => {
                 if (err) {
@@ -45,25 +45,38 @@ export class Repository<T> extends DataAccessImpl implements ICrud<T>, IDdl<T>, 
     }
 
     findOne(id: number): Promise<T> {
-        let sql = 'SELECT * FROM $table WHERE id = $id';
-        let values = { $id: id, $table: this.__table };
+        let sql = 'SELECT * FROM ' +  this.__table + ' WHERE id = $id';
+        let values = { $id: id};
 
         return new Promise<T>((resolve, reject) => {
             this.db.get(sql, values, (err, row) => {
                 if (err) {
                     reject(err);
                 } else {
-                    this.oneFromRow(row);
-                    resolve();
+                    resolve( this.oneFromRow(row));
                 }
             });
         });
     }
 
- /*   findOneBy(field: Array<string>, values: Array<string>): T {
-        console.log(field, values);
-        return null;
-    }*/
+    findOneBy(fields: Array<string>, values: any):  Promise<T> {
+        let sql = 'SELECT * FROM ' +  this.__table + ' WHERE ';
+        let where  = '';
+        fields.forEach(field =>{
+            where += field + ' = ' + '$' + field + ' AND ';
+        });
+        sql += where.substring(0, where.length - 4);
+        return new Promise<T>((resolve, reject) => {
+            this.db.get(sql, values, (err, row) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(row);
+                }
+            });
+        });
+
+    }
 
     save(entity: T): Promise<void> {
       let fields = Object.getOwnPropertyNames(entity);
@@ -81,7 +94,7 @@ export class Repository<T> extends DataAccessImpl implements ICrud<T>, IDdl<T>, 
           if (result.changes !== 1) {
               throw new Error('Expected 1' + this.__table+ 'to be inserted. Was ${result.changes}');
           } else {
-              this.id = result.lastID;
+             // this.id = result.lastID;
           }
       });
 

@@ -1,7 +1,7 @@
 import {Repository} from '../../../db/repository/impl/repository';
 import {User} from "../model/user.model";
 import {Injectable} from "@angular/core";
-import {Settings} from "../../../db/settings";
+import {SettingsImpl} from "../../../db/repository/impl/settings.impl";
 
 /**
  * Simple class for selecting, inserting, updating and deleting Heroes in hero table.
@@ -12,7 +12,9 @@ import {Settings} from "../../../db/settings";
 @Injectable()
 export class UserRepository extends Repository<User> {
 
-    constructor(protected settings: Settings) {
+    constructor(public settings: SettingsImpl) {
         super(User.name.toLowerCase(),  settings);
     }
+
+
 }

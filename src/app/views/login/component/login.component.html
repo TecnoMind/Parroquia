@@ -1,4 +1,4 @@
-<body>
+
 <div id="login">
   <header>
     <h1>Control de actas sacramentales</h1>
@@ -6,13 +6,14 @@
   <main>
     <section>
       <h2>Iniciar sesión</h2>
-      <form action="" method="GET">
-        <input class = "input_usuario" type="text" placeholder= "&#xf2c0; &nbsp;&nbsp;&nbsp; Contraseña">
-        <input class = "input_password" type="password" placeholder= "&#xf13e; &nbsp;&nbsp;&nbsp; Contraseña">
-        <input class = "btn_login" type="submit" value="Ingresar">
+      <form >
+        <input class = "input_usuario" type="text" [(ngModel)]="user.name" name="name" placeholder= "&#xf2c0; &nbsp;&nbsp;&nbsp; Contraseña">
+        <input class = "input_password" type="password"   [(ngModel)]="user.password" name="password" placeholder= "&#xf13e; &nbsp;&nbsp;&nbsp; Contraseña">
+        <button class = "btn_login"  value="Ingresar" (click) = "login(user)"></button>
       </form>
       <a href="#">¿Olvidaste tu contraseña?</a>
+      {{user|json}}
     </section>
   </main>
 </div>
-</body>
+

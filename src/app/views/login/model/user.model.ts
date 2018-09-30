@@ -1,18 +1,11 @@
+import {Model} from "../../../db/model/model";
 
 
+export class User extends Model{
 
-export class User {
     private _id: number;
-    private _lastName: string;
+    private _name: string;
     private _password: string;
-
-
-
-    public constructor(id: number, lastName: string, password: string) {
-        this._id = id;
-        this._lastName = lastName;
-        this._password = password;
-    }
 
 
     get id(): number {
@@ -23,12 +16,12 @@ export class User {
         this._id = value;
     }
 
-    get lastName(): string {
-        return this._lastName;
+    get name(): string {
+        return this._name;
     }
 
-    set lastName(value: string) {
-        this._lastName = value;
+    set name(value: string) {
+        this._name = value;
     }
 
     get password(): string {
@@ -38,4 +31,6 @@ export class User {
     set password(value: string) {
         this._password = value;
     }
+
+
 }

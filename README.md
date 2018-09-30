@@ -33,7 +33,7 @@ For installation instructions see [node-gyp](https://github.com/nodejs/node-gyp)
 
 ## Notes
 - Application can switch between a fixed database location or allow the end-user to select a location at first startup.<br />
-  See src/app/model/Settings.hasFixedDbLocation
+  See src/app/model/SettingsImpl.hasFixedDbLocation
 - While developing, `settings.json` (points to database location) is located in `c:/users/yourname/AppData/Roaming/$productName}-dev`<br />
 When running packaged executable, `settings.json` is located in `c:/users/yourname/AppData/Roaming/$productName}`. This way development will not override production data.
 - TheDb provides a Promise-ified wrapper around bare sqlite3 API.

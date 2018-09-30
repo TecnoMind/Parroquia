@@ -4,8 +4,10 @@ import {AppComponent} from "./app.component";
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {routing} from "./app.routing.module";
-import {UserRepository} from "./views/login/service/user.repository";
-import {Settings} from "./db/settings";
+import {UserRepository} from "./views/login/repository/user.repository";
+import {SettingsImpl} from "./db/repository/impl/settings.impl";
+import {LoginService} from "./views/login/service/login.service";
+import {BautismoComponent} from "./views/bautismo/component/bautismo.component";
 //import {BautismoComponent} from "./views/baptism/bautismo.component";
 
 
@@ -18,9 +20,9 @@ import {Settings} from "./db/settings";
     declarations: [
         AppComponent,
         LoginComponent,
-        //BautismoComponent
+        BautismoComponent
     ],
-    providers: [Settings, UserRepository],
+    providers: [SettingsImpl, UserRepository, LoginService],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }

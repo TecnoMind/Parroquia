@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import * as fs from 'fs';
 // tslint:disable-next-line:no-implicit-dependencies
 
-import {Settings} from './db/settings';
+import {SettingsImpl} from './db/repository/impl/settings.impl';
 import {DataAccessImpl} from './db/repository/impl/data-access.impl';
 // Importing style.scss allows webpack to bundle stylesheet with application
 import '../assets/sass/style.scss';
@@ -15,18 +15,16 @@ export class AppComponent {
 
     private dataAccess: DataAccessImpl;
 
-    constructor(private settings: Settings) {
+    constructor(private settings: SettingsImpl) {
         this.settings.initialize();
         this.dataAccess = new DataAccessImpl(settings);
 
-        if (fs.existsSync(this.settings.dbPath)) {
+        if (!fs.existsSync(this.settings.dbPath) && this.settings.hasFixedDbLocation) {
             console.log("existe");
-            this.openDb(this.settings.dbPath);
-        } else if (this.settings.hasFixedDbLocation) {
             this.createDb(this.settings.dbPath);
         }
     }
-
+/*
     public openDb(filename: string) {
         this.dataAccess.openDb(filename)
             .then(() => {
@@ -42,7 +40,7 @@ export class AppComponent {
                 // Handle errors
                 console.log('Error occurred while opening database: ', reason);
             });
-    }
+    }*/
 
     public createDb(filename: string) {
 

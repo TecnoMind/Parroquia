@@ -3,16 +3,17 @@ import * as path from 'path';
 // tslint:disable-next-line:no-implicit-dependencies
 import {remote} from 'electron';
 import {Injectable} from "@angular/core";
+import {SettingsDB} from "../settings";
 
 /**
- * Class Settings holds information required by the application.
- * Settings uses settings.json to persist relevant information across sessions.
+ * Class SettingsImpl holds information required by the application.
+ * SettingsImpl uses settings.json to persist relevant information across sessions.
  *
  * @export
- * @class Settings
+ * @class SettingsImpl
  */
 @Injectable()
-export class Settings implements SettingsDB{
+export class SettingsImpl implements SettingsDB{
     /** Folder where data files are located */
     public  dbFolder: string;
     /** Path to database file used by application*/
@@ -34,10 +35,10 @@ export class Settings implements SettingsDB{
     public  settingsPath: string;
 
     /**
-     * Settings.initialize must be called a startup of application and determines the locations of database
+     * SettingsImpl.initialize must be called a startup of application and determines the locations of database
      *
      * @static
-     * @memberof Settings
+     * @memberof SettingsImpl
      */
     initialize(): void {
         this.getPaths();

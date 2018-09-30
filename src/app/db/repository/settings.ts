@@ -1,4 +1,4 @@
-interface SettingsDB {
+export interface SettingsDB {
     initialize(): void;
     read(): void;
     write(): void;

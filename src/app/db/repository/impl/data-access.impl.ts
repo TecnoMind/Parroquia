@@ -5,13 +5,14 @@ import * as path from 'path';
 import {Database} from 'sqlite3';
 
 import {IDbResult} from "../result";
-import {Settings} from "../../settings";
+import {SettingsImpl} from "./settings.impl";
 
 export class DataAccessImpl implements DataAccess {
     private  readonly version = 1;
     protected  db: Database;
 
-    constructor(protected settings: Settings) {
+    constructor(protected settings: SettingsImpl) {
+   //     db = new Database()
     }
 
     beginTxn(): Promise<void> {
@@ -100,6 +101,8 @@ export class DataAccessImpl implements DataAccess {
             });
         });
     }
+
+
 
     getDb(dbPath: string): Promise<void> {
         return this.closeDb()
