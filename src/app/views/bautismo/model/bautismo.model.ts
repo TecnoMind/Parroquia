@@ -1,4 +1,6 @@
-export class Bautismo {
+import {Model} from "../../../db/model/model";
+
+export class Bautismo extends Model{
 
     private _id: number;
 
