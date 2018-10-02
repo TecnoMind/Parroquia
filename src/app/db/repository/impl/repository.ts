@@ -110,6 +110,7 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
         let values = entity.toValues(fields);
 
         sql += this.getClause(fields, '$','AND');
+        console.log(sql);
         return new Promise<T>((resolve, reject) => {
             this.db.get(sql, values, (err, row) => {
                 if (err) {
@@ -126,7 +127,8 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
         fields.forEach(field =>{
             where += field + ' = ' + firstJoint + field + ' ' + secondJoint + ' ';
         });
-        return where.substring(0, where.length - secondJoint.length + 1);
+        console.log(where);
+        return where.substring(0, where.length - (secondJoint.length + 1));
     }
 
     private getFields(fields: Array<string>, joint: string): string{
@@ -135,7 +137,7 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
             statement += joint + field + ',';
         });
 
-        return statement.substring(0, statement.length-1 );
+        return statement.substring(0, statement.length - 1 );
     }
 
 }
