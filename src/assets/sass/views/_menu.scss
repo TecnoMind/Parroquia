@@ -1,0 +1,65 @@
+#nueva-acta {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    height: calc(400px);
+    header {
+        background: rgb(204, 172, 121);
+        grid-column: 1 / -1;
+        grid-row: 1;
+        h1{
+            margin: 50px 0;
+            font-size: 30px;
+        }
+    }
+    section{
+        ul{
+            display:inline-table;
+            list-style: none;
+            padding-top: 10px;
+            li{
+                display:inline;
+                float: left;
+                a{
+                    font-weight: bold;
+                    padding: 8px;
+                    text-decoration: none;
+                    color: rgb(162, 136, 94);
+                    margin-right: 30px;
+                }            
+            }
+        }
+    }
+    main {
+        grid-column: 1 / -1;
+        grid-row: 3 / -1;
+        background: white;
+        h2{
+            color: rgb(162, 136, 94);
+            font-size: 30px;
+            margin: 50px 0;
+        }
+        ul{
+            display:inline-table;
+            list-style: none;
+            padding-top: 10px;
+            li{
+                display:inline;
+                float: left;
+                svg{
+                    width: 150px;
+                    height: 150px;
+                }
+                a {
+                    display: block;
+                    font-weight: bold;
+                    padding: 8px;
+                    margin: 0 50px;
+                    text-decoration: none;
+                    color: rgb(162, 136, 94);
+                }
+            }
+        }
+    }
+}

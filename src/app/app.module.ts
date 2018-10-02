@@ -8,7 +8,7 @@ import {UserRepository} from "./views/login/repository/user.repository";
 import {SettingsImpl} from "./db/repository/impl/settings.impl";
 import {LoginService} from "./views/login/service/login.service";
 import {BautismoComponent} from "./views/bautismo/component/bautismo.component";
-//import {BautismoComponent} from "./views/baptism/bautismo.component";
+import {MenuComponent} from "./views/menu/component/menu.component";
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import {BautismoComponent} from "./views/bautismo/component/bautismo.component";
     declarations: [
         AppComponent,
         LoginComponent,
-        BautismoComponent
+        BautismoComponent,
+        MenuComponent
     ],
     providers: [SettingsImpl, UserRepository, LoginService],
     bootstrap: [ AppComponent ]
