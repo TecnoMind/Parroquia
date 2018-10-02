@@ -9,7 +9,7 @@
       <form >
         <input class = "input_usuario" type="text" [(ngModel)]="user.name" name="name" placeholder= "&#xf2c0; &nbsp;&nbsp;&nbsp; Contraseña">
         <input class = "input_password" type="password"   [(ngModel)]="user.password" name="password" placeholder= "&#xf13e; &nbsp;&nbsp;&nbsp; Contraseña">
-        <button class = "btn_login"  value="Ingresar" (click) = "login(user)"></button>
+        <button class = "btn_login" value="Ingresar" (click)="login(user)">Iniciar sesión</button>
       </form>
       <a href="#">¿Olvidaste tu contraseña?</a>
     </section>
