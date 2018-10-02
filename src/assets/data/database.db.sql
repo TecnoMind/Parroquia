@@ -8,4 +8,13 @@ CREATE TABLE IF NOT EXISTS `user` (
 );
 
 INSERT INTO user(name, password) values('eduardo', 'laquesea');
+INSERT INTO user(name, password) values('edgar', '');
+
+CREATE TABLE IF NOT EXISTS `bautismo` (
+	`id`	INTEGER NOT NULL,
+	`name`	TEXT NOT NULL,
+	`password`	TEXT NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
 COMMIT;

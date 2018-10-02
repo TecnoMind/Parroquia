@@ -2,6 +2,7 @@ import {ICrud} from "../crud";
 import {IDdl} from "../ddl";
 import {DataAccessImpl} from "./data-access.impl";
 import {SettingsImpl} from "./settings.impl";
+import {Model} from "../../model/model";
 
 /**
  * TheDb is a Promise-ified wrapper around bare sqlite3 API.
@@ -10,7 +11,7 @@ import {SettingsImpl} from "./settings.impl";
  * @class TheDb
  */
 
-export class Repository<T> extends DataAccessImpl implements ICrud<T>, IDdl<T>, JsonToEntity<T> {
+export class Repository<T extends Model> extends DataAccessImpl implements ICrud<T>, IDdl<T>, JsonToEntity<T> {
 
     private readonly __table: string;
 
@@ -59,51 +60,33 @@ export class Repository<T> extends DataAccessImpl implements ICrud<T>, IDdl<T>, 
         });
     }
 
-    findOneBy(fields: Array<string>, values: any):  Promise<T> {
-        let sql = 'SELECT * FROM ' +  this.__table + ' WHERE ';
-        let where  = '';
-        fields.forEach(field =>{
-            where += field + ' = ' + '$' + field + ' AND ';
-        });
-        sql += where.substring(0, where.length - 4);
-        return new Promise<T>((resolve, reject) => {
-            this.db.get(sql, values, (err, row) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(row);
-                }
-            });
+    save(entity: T ): Promise<void> {
+        let fields = entity.toArray();
+        let values = entity.toValues(fields);
+        let sql = 'INSERT INTO ' + this.__table + ' ( ' + this.getFields(fields, '') + ' )'
+          + ' VALUES( ' + this.getFields(fields, '$') + ' )';
+
+        console.log(sql);
+        return this.change(sql, values).then((result) => {
+             if (result.changes !== 1) {
+                  throw new Error('Expected 1' + this.__table+ 'to be inserted. Was ${result.changes}');
+            }
         });
 
     }
 
-    save(entity: T): Promise<void> {
-      let fields = Object.getOwnPropertyNames(entity);
-      let fieldsName = '';
-      let values = '';
-      fields.forEach(field => {
-          fieldsName += field + ',';
-          values += '$' + field + ',';
-      });
+    update(entity: T): Promise<void> {
 
-      fieldsName = fieldsName.substring(0, fieldsName.length -2);
+        let fields = entity.toArray();
+        let values = entity.toValues(fields);
+        let sql = 'UPDATE ' + this.__table + ' SET ' + this.getClause(fields, '$',',');
 
-      const sql = 'INSERT INTO hero (' + fieldsName + ') VALUES('+ values +')';
-      return this.change(sql, values).then((result) => {
-          if (result.changes !== 1) {
-              throw new Error('Expected 1' + this.__table+ 'to be inserted. Was ${result.changes}');
-          } else {
-             // this.id = result.lastID;
-          }
-      });
-
-    }
-
-    update(entity: T): void {
-        console.log(entity);
-
-        return undefined;
+        console.log(sql);
+        return this.change(sql, values).then((result) => {
+            if (result.changes !== 1) {
+                throw new Error('Expected 1' + this.__table+ 'to be inserted. Was ${result.changes}');
+            }
+        });
 
     }
 
@@ -121,6 +104,38 @@ export class Repository<T> extends DataAccessImpl implements ICrud<T>, IDdl<T>, 
         return <T> JSON.parse( JSON.stringify(json));
     }
 
+    findOneBy(entity: T): Promise<T> {
+        let sql = 'SELECT * FROM ' +  this.__table + ' WHERE ';
+        let fields = entity.toArray();
+        let values = entity.toValues(fields);
 
+        sql += this.getClause(fields, '$','AND');
+        return new Promise<T>((resolve, reject) => {
+            this.db.get(sql, values, (err, row) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(row);
+                }
+            });
+        });
+    }
+
+    private getClause(fields: Array<string>, firstJoint: string, secondJoint: string) {
+        let where  = '';
+        fields.forEach(field =>{
+            where += field + ' = ' + firstJoint + field + ' ' + secondJoint + ' ';
+        });
+        return where.substring(0, where.length - secondJoint.length + 1);
+    }
+
+    private getFields(fields: Array<string>, joint: string): string{
+        let statement = '';
+        fields.forEach(field => {
+            statement += joint + field + ',';
+        });
+
+        return statement.substring(0, statement.length-1 );
+    }
 
 }

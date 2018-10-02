@@ -20,8 +20,7 @@ export class LoginComponent {
             .then(() => {
             })
             .then(() => {
-                let fields = model.toArray();
-                this.userRepository.findOneBy(fields, model.toValues(fields)).then(user => {
+                this.userRepository.findOneBy(model).then(user => {
                     if(user) {
                         this.loginService.setToken(user);
                         this.router.navigateByUrl("/bautismo");
