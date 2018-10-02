@@ -1,6 +1,6 @@
 'use strict';
 
-const {app, BrowserWindow, ipcMain } = require('electron');
+const {app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
 
 let waitBeforeClose = true;
@@ -36,8 +36,23 @@ let createWindow = () => {
 
 	// Open the DevTools.
 	if (devMode && process.argv.indexOf('--noDevTools') === -1) {
-		//mainWindow.webContents.openDevTools();
+		mainWindow.webContents.openDevTools();
+
 	}
+    mainWindow.setMenu(null);
+
+    globalShortcut.register('CommandOrControl+T', () => {
+        mainWindow.webContents.openDevTools();
+    });
+
+    globalShortcut.register('f5', function() {
+        console.log('f5 is pressed');
+     //   mainWindow.reload()
+    });
+
+    globalShortcut.register('CommandOrControl+Y', () => {
+        mainWindow.webContents.closeDevTools();
+    });
 
 	// ipcMain.on('rendererIsFinished', (message) => {
 	// 	waitBeforeClose = false;
