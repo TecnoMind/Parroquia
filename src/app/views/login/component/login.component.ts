@@ -11,7 +11,7 @@ export class LoginComponent {
 
     private user: User = new User();
 
-    constructor(private userRepository: UserRepository,private loginService: LoginService, private router:Router) {
+    constructor(private userRepository: UserRepository,private loginService: LoginService, private router: Router) {
     }
 
 
