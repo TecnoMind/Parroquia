@@ -1,7 +1,7 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+let path = require('path');
+let webpack = require('webpack');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+let CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -12,6 +12,11 @@ module.exports = {
 
     resolve: {
         extensions: ['.ts', '.js']
+    },
+
+    devServer: {
+        contentBase: path.join(__dirname, "../dist/"),
+        port: 9000
     },
 
     externals: {
