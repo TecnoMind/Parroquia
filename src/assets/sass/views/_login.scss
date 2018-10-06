@@ -1,97 +1,92 @@
 #login {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
   grid-column: 1 / -1;
-  grid-template-rows: repeat(5, 1fr);
-  margin: 0 auto;
-  width: 600px;
-  height: 700px;
-  /*grid-gap: 1px;*/
-  background: rgb(248,243,235);
-  /*padding: 30px;*/
-  margin-top: 50px;
-  border-radius: 15px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  position: relative;
+
   header {
-    background: rgb(204, 172, 121);
-    grid-column: 1 / -1;
-    grid-row: 1;
-    border-radius: 15px 15px 0 0;
-    h1{
-      margin-top: 50px;
-      font-size: 30px;
-    }
-  }
-  main {
-    grid-column: 1 / -1;
-    grid-row: 2 / 7;
-    section {
+      background: rgb(25, 158, 199);
       grid-column: 1 / -1;
-      grid-row: 3 / 4;
+      grid-row: 1;
+      height: 220px;
+
+      h1 {
+          margin-top: 70px;
+          font-size: 28px;
+      }
+  }
+
+  main {
+      grid-column: 1 / -1;
+      grid-row: 2 / 4;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      position: relative;
+  }
+
+  section {
+      background: white;
+      box-shadow: 0 0 3px #d8d8d8;
+      height: 550px;
+      width: 550px;
+      position: absolute;
+      top: -70px;
+      left: 50%;
+      transform: translateX(-50%);
+
       h2 {
-        color: rgb(162, 136, 94);
-        margin: 65px 0;
-        font-size: 30px;
+          color: rgb(61, 61, 61);
+          margin: 80px 0;
+          font-size: 30px;
       }
-      a {
-        color: #9E9E9E;
-        text-decoration: none;
-        margin-right: 50%;
-        font-size: 14px;
-        font-weight: bold;
-        margin-left: 70px;
+
+      form {
+          input {
+              border: 1px solid #DFDFDF;
+              color: #727272;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+              font-size: 14px;
+              height: 45px;
+              width: 355px;
+              text-indent: 30px;
+          }
+          
+          .btn_login {
+              background: #127391;
+              border-style: none;
+              color: white;
+              font-size: 20px;
+              margin-top: 50px;
+              height: 35px;
+              width: 120px;
+              font-size: 14px;
+              font-weight: bold;
+              display: inline-block;
+          }
+
+          .btn_login:hover {
+              cursor: pointer;
+          }
+
+          a {
+              color: #9E9E9E;
+              display: inline;
+              text-decoration: none;
+              margin-right: 20px;
+              font-size: 12px;
+              font-weight: bold;
+              margin-left: 70px;
+          }
       }
-      form{
-        .input_usuario {
-          border-radius: 10px 10px 0 0;
-          border: 1px solid #DFDFDF;
-          color: #727272;
-          display: block;
-          margin-left:auto;
-          margin-right:auto;
-          font-size: 20px;
-          height: 50px;
-          width: 390px;
-          text-indent: 30px;
-          font-family: FontAwesome, 'Assistant';
-        }
-        .input_password {
-          border-radius: 0 0 10px 10px;
-          border: 1px solid #DFDFDF;
-          color: #727272;
-          display: block;
-          margin-left:auto;
-          margin-right:auto;
-          font-size: 20px;
-          height: 50px;
-          width: 390px;
-          text-indent: 30px;
-          font-family: FontAwesome, 'Assistant';
-        }
-        .btn_login {
-          background: #CCAC79;
-          border-radius: 10px;
-          border-style: none;
-          color: white;
-          font-size: 20px;
-          margin-top: 50px;
-          height: 50px;
-          width: 400px;
-          font-size: 17px;
-          font-weight: bold;
-          font-family: FontAwesome, 'Assistant';
-        }
-        .btn_login:hover {
-          cursor: pointer;
-        }
-      }
-    }
   }
-  input {
-    font-family: FontAwesome;
-  }
-  ::placeholder{
-    font-weight: bold;
-    color: rgb(194, 194, 194);
-    font-size: 18px;
+
+  ::placeholder {
+      font-weight: bold;
+      color: rgb(194, 194, 194);
+      font-size: 14px;
   }
 }
