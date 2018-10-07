@@ -1,27 +1,28 @@
-import {NgModule} from "@angular/core";
 import {LoginComponent} from "./views/login/component/login.component";
 import {AppComponent} from "./app.component";
-import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
+import {NgModule} from "@angular/core";
+import {FormsModule} from "@angular/forms";
 import {routing} from "./app.routing.module";
 import {UserRepository} from "./views/login/repository/user.repository";
 import {SettingsImpl} from "./db/repository/impl/settings.impl";
 import {LoginService} from "./views/login/service/login.service";
 import {BautismoComponent} from "./views/bautismo/component/bautismo.component";
 import {MenuComponent} from "./views/menu/component/menu.component";
-
+import {MaterialModule} from "./material.module";
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        routing
+        routing,
+        MaterialModule
     ],
     declarations: [
         AppComponent,
         LoginComponent,
         BautismoComponent,
-        MenuComponent
+        MenuComponent,
     ],
     providers: [SettingsImpl, UserRepository, LoginService],
     bootstrap: [ AppComponent ]
