@@ -52,6 +52,10 @@
               height: 45px;
               width: 355px;
               text-indent: 30px;
+              &:focus{
+                outline: none !important;
+                border: 2px solid #127391;
+              }
           }
           
           .btn_login {

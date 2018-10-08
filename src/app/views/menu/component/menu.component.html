@@ -6,16 +6,16 @@
         <h3>Usuario:</h3>
         <h2>Ramón Álvarez</h2>
         <ul>
-            <li class="shadow">Crear acta sacramental</li>            
-                    <li><i class="fa fa-file" aria-hidden="true"></i><a href="#">Bautismo</a></li>
-                    <li><i class="fa fa-file" aria-hidden="true"></i><a href="#">Primera comunión</a></li>
-                    <li><i class="fa fa-file" aria-hidden="true"></i><a href="#">Confirmación</a></li>
-                    <li><i class="fa fa-file" aria-hidden="true"></i><a href="#">Matrimonio</a></li>
-            <li class="shadow">Buscar acta sacramental</li>            
-                        <li><i class="fa fa-file" aria-hidden="true"></i><a href="#">Buscar actas</a></li>
-            <li class="shadow">Usuario</li>            
-                        <li><i class="fa fa-file" aria-hidden="true"></i><a href="#">Cambiar contraseña</a></li>
-                        <li><i class="fa fa-file" aria-hidden="true"></i><a href="#">Cerrar sesión</a></li>
+            <li class="shadow"><img src="../../../../assets/images/Agregar-Actas.svg" class="icon-father">Crear acta sacramental</li>
+            <li><img src="../../../../assets/images/Bautismo.svg" class="icon"><a (click)="setType(1)">Bautismo</a></li>
+            <li><img src="../../../../assets/images/Comunion.svg" class="icon"><a (click)="setType(2)">Primera comunión</a></li>
+            <li><img src="../../../../assets/images/Confirmacion.svg" class="icon"><a (click)="setType(3)">Confirmación</a></li>
+            <li><img src="../../../../assets/images/Matrimonio.svg" class="icon"><a (click)="setType(4)">Matrimonio</a></li>
+            <li class="shadow"><img src="../../../../assets/images/Buscar-Actas.svg" class="icon-father">Buscar acta sacramental</li>
+            <li><img src="../../../../assets/images/Buscar.svg" class="icon"><a href="#">Buscar actas</a></li>
+            <li class="shadow"><img src="../../../../assets/images/Usuario.svg" class="icon-father">Usuario</li>
+            <li><img src="../../../../assets/images/Contrasena.svg" class="icon"><a href="#">Cambiar contraseña</a></li>
+            <li><img src="../../../../assets/images/Cerrar-sesion.svg" class="icon"><a href="#">Cerrar sesión</a></li>
         </ul>
     </aside>
 </div>
@@ -27,32 +27,3 @@
                 <a href="#">Cambiar contraseña</a></li>
             <li><i class="fa fa-sign-out" aria-hidden="true"></i>
                 <a href="#">Cerrar sesión</a></li>-->
-
-    <!--<main>
-        <h2>Crear nueva acta</h2>
-        <ul>
-            <li>
-               
-                <a (click)="setType(1)">
-                    <img src="../../../../assets/images/Bautismo.svg">
-                    Bautismo
-                </a>
-                <a href="#">Bautismo</a>-->
-         <!--   </li>
-            <li>
-                <a (click)="setType(1)">
-                    <img src="../../../../assets/images/Comunion.svg" (click)="setType(2)">
-                    Primera comunión
-                </a>
-
-            </li>
-            <li>
-                <img src="../../../../assets/images/Confirmacion.svg" (click)="setType(3)">
-                <a href="#">Confirmación</a>
-            </li>
-            <li>
-                <img src="../../../../assets/images/Matrimonio.svg" (click)="setType(4)">
-                <a href="#">Matrimonio</a>
-            </li>
-        </ul>
-    </main>-->

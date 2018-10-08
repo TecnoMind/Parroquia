@@ -13,6 +13,7 @@
             margin-top: 60px;
             margin-left: 250px;
             font-size: 28px;
+            font-weight: bold;
         }
     }
     aside{
@@ -23,65 +24,51 @@
         h2{
             color: #3D3D3D;
             font-weight: bold;
-            margin-bottom: 59px;
+            font-size: 20px;
+            margin-bottom: 57px;
         }
         h3{
             color: #3D3D3D;
-            margin-top: 59px;
+            margin-top: 57px;
         }
         ul{
-            //display: inline-table;
-            //list-style: none;
             li{
                 font-weight: bold;
                 background: #F5F5F5;
-                        i{ }
-                            a{
-                                display: block;
-                                font-weight: 100;
-                                padding: 13px 0;
-                                text-decoration: none;
-                                color: #3D3D3D;
-                                margin-right: 30px;
-                                :hover{
-                                    background: #E6E6E6;
-                                }
-                            }
+                margin-bottom: 10px;
+                text-align: left;
+                        a{
+                            display: inline-block;
+                            font-weight: 100;
+                            padding: 13px 0;
+                            text-decoration: none;
+                            color: #3D3D3D;    
+                            text-align: left;
+                        }
+                        .icon{
+                            width: 25px;
+                            height: 25px;
+                            position: relative;
+                            top: 5px;
+                            margin-left: 50px;
+                            margin-right: 10px;
+                        }
+                        .icon-father{
+                            width: 25px;
+                            height: 25px;
+                            position: relative;
+                            bottom: 5px;
+                            float: left;
+                            margin-left: 10px;
+                            margin-right: 10px;
+                        }
+            }
+            :hover{
+                background: #E6E6E6;
             }
             .shadow{
                 padding: 15px 0;
                 background:#1588AB;
-            }
-        }
-    }
-    main {
-        grid-column: 1 / -1;
-        grid-row: 3 / -1;
-        background: white;
-        h2{
-            color: rgb(162, 136, 94);
-            font-size: 30px;
-            margin: 50px 0;
-        }
-        ul{
-            display:inline-table;
-            list-style: none;
-            padding-top: 10px;
-            li{
-                display:inline;
-                float: left;
-                svg{
-                    width: 150px;
-                    height: 150px;
-                }
-                a {
-                    display: block;
-                    font-weight: bold;
-                    padding: 8px;
-                    margin: 0 50px;
-                    text-decoration: none;
-                    color: rgb(162, 136, 94);
-                }
             }
         }
     }
