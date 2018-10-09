@@ -12,4 +12,5 @@ export class Bautismo extends Model{
     set id(value: number) {
         this._id = value;
     }
+    
 }

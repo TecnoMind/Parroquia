@@ -5,6 +5,5 @@ import {Component} from '@angular/core';
     templateUrl: './bautismo.component.html'
 })
 export class BautismoComponent {
-
-
+    viewMode = 'tab1';
 }
