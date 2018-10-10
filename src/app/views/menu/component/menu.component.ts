@@ -1,33 +1,44 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-
+import {Event} from  "../model/event.model";
+import {EventRepository} from "../repository/event.repository";
 @Component({
     templateUrl: './menu.component.html'
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit{
 
-    private type: number ;
-    constructor( private router: Router) {
+    // @ts-ignore
+    private events: Array<Event>;
+    // @ts-ignore
+    private  show: boolean = true;
+
+    constructor( private router: Router,private eventRepository: EventRepository) {
+        console.log(this.router);
+    }
+
+    ngOnInit(): void {
+        this.eventRepository.openDb(this.eventRepository.settings.dbPath)
+            .then(() => {
+            })
+            .then(() => {
+                this.eventRepository.findAll().then(events =>{
+                    this.events = events;
+                })
+            })
+            .catch((reason) => {
+                // Handle errors
+                console.log('Error occurred while opening database: ', reason);
+            });
 
     }
 
-    public executeAdd(type: number) {
-        console.log(type);
-        switch (type) {
-            case 1:
-                this.router.navigateByUrl("/bautismo");
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-        }
+    public changeShow(){
+        this.show = !this.show;
     }
 
-    public setType(type: number) {
-        this.type = type;
-    }
+
+
+
+
 
 }

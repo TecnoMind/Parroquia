@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
 
+    // @ts-ignore
     private user: User = new User();
 
     constructor(private userRepository: UserRepository,private loginService: LoginService, private router: Router) {

@@ -2,28 +2,68 @@
     <header>
         <h1>Nuestra señora del Perpetuo Socorro</h1>
     </header>
-    <aside>
+    <aside *ngIf="show" class="complete">
+        <div class="show">
+            <button (click)="changeShow()">
+
+            </button>
+        </div>
         <h3>Usuario:</h3>
         <h2>Ramón Álvarez</h2>
         <ul>
-            <li class="shadow"><img src="../../../../assets/images/Agregar-Actas.svg" class="icon-father">Crear acta sacramental</li>
-            <li><img src="../../../../assets/images/Bautismo.svg" class="icon"><a (click)="setType(1)" (click)="executeAdd(type)">Bautismo</a></li>
-            <li><img src="../../../../assets/images/Comunion.svg" class="icon"><a (click)="setType(2)">Primera comunión</a></li>
-            <li><img src="../../../../assets/images/Confirmacion.svg" class="icon"><a (click)="setType(3)">Confirmación</a></li>
-            <li><img src="../../../../assets/images/Matrimonio.svg" class="icon"><a (click)="setType(4)">Matrimonio</a></li>
-            <li class="shadow"><img src="../../../../assets/images/Buscar-Actas.svg" class="icon-father">Buscar acta sacramental</li>
-            <li><img src="../../../../assets/images/Buscar.svg" class="icon"><a href="#">Buscar actas</a></li>
-            <li class="shadow"><img src="../../../../assets/images/Usuario.svg" class="icon-father">Usuario</li>
-            <li><img src="../../../../assets/images/Contrasena.svg" class="icon"><a href="#">Cambiar contraseña</a></li>
-            <li><img src="../../../../assets/images/Cerrar-sesion.svg" class="icon"><a href="#">Cerrar sesión</a></li>
+            <li class="shadow">
+                <img src="../../../../assets/images/Agregar-Actas.svg" class="icon-father">Crear acta sacramental
+            </li>
+            <li>
+                <ul>
+                    <li *ngFor="let event of events"><img [src]="event.icon" class="icon"><a
+                            routerLink="/bautismo">{{event.name}}</a></li>
+                </ul>
+            </li>
+
+            <li class="shadow">
+                <img src="../../../../assets/images/Buscar-Actas.svg" class="icon-father">Buscar acta sacramental
+            </li>
+            <li>
+                <img src="../../../../assets/images/Buscar.svg" class="icon">
+                <a href="#">Buscar actas</a>
+            </li>
+            <li class="shadow">
+                <img src="../../../../assets/images/Usuario.svg" class="icon-father">Usuario
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        <img src="../../../../assets/images/Contrasena.svg" class="icon">
+                        <a href="#">Cambiar contraseña</a>
+                    </li>
+                    <li>
+                        <img src="../../../../assets/images/Cerrar-sesion.svg" class="icon">
+                        <a href="#">Cambiar contraseña</a>
+                    </li>
+                </ul>
+            </li>
+
         </ul>
     </aside>
+    <aside *ngIf="!show" class="partial">
+        <div class="show">
+          <button (click)="changeShow()">
+
+          </button>
+        </div>
+        <ul>
+            <li *ngFor="let event of events"><img [src]="event.icon" class="icon"></li>
+            <li>
+                <img src="../../../../assets/images/Buscar.svg" class="icon">
+            </li>
+            <li>
+                <img src="../../../../assets/images/Contrasena.svg" class="icon">
+            </li>
+            <li>
+                <img src="../../../../assets/images/Cerrar-sesion.svg" class="icon">
+            </li>
+        </ul>
+    </aside>
+
 </div>
-            <!--<li><i class="fa fa-file" aria-hidden="true"></i>
-                <a (click)="executeAdd(type)" >Agregar acta</a></li>
-            <li><i class="fa fa-search" aria-hidden="true"></i>
-                <a >Buscar acta</a></li>
-            <li><i class="fa fa-key" aria-hidden="true"></i>
-                <a href="#">Cambiar contraseña</a></li>
-            <li><i class="fa fa-sign-out" aria-hidden="true"></i>
-                <a href="#">Cerrar sesión</a></li>-->

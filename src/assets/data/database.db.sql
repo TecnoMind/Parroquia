@@ -8,7 +8,20 @@ CREATE TABLE IF NOT EXISTS `user` (
 );
 
 INSERT INTO user(name, password) values('eduardo', 'laquesea');
-INSERT INTO user(name, password) values('edgar', '');
+INSERT INTO user(name, password) values('edgar', 'test');
+
+CREATE TABLE IF NOT EXISTS `event` (
+	`id`	INTEGER NOT NULL,
+	`name`	CHAR(50) NOT NULL,
+	`icon`	CHAR(100) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+INSERT INTO `event`(name, icon) values('Bautismo', 'test');
+INSERT INTO `event`(name, icon) values('Confirmación', 'test');
+INSERT INTO `event`(name, icon) values('Matrimonio', 'test');
+INSERT INTO `event`(name, icon) values('Primera comunion', 'test');
+
 
 CREATE TABLE IF NOT EXISTS `bautismo` (
 	`id`	INTEGER NOT NULL,

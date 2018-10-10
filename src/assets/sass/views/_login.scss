@@ -4,17 +4,8 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(3, 1fr);
   position: relative;
-
   header {
-      background: rgb(25, 158, 199);
-      grid-column: 1 / -1;
-      grid-row: 1;
       height: 220px;
-
-      h1 {
-          margin-top: 70px;
-          font-size: 28px;
-      }
   }
 
   main {
@@ -59,10 +50,9 @@
           }
           
           .btn_login {
-              background: #127391;
+              background: $second-color;
               border-style: none;
               color: white;
-              font-size: 20px;
               margin-top: 50px;
               height: 35px;
               width: 120px;
