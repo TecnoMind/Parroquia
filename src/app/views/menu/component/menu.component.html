@@ -14,7 +14,7 @@
             <li class="shadow">
                 <img src="../../../../assets/images/Agregar-Actas.svg" class="icon-father">Crear acta sacramental
             </li>
-            <li>
+            <li class="pointer">
                 <ul>
                     <li *ngFor="let event of events"><img [src]="event.icon" class="icon"><a
                             routerLink="/bautismo">{{event.name}}</a></li>
@@ -33,11 +33,11 @@
             </li>
             <li>
                 <ul>
-                    <li>
+                    <li class="pointer">
                         <img src="../../../../assets/images/Contrasena.svg" class="icon">
                         <a href="#">Cambiar contraseña</a>
                     </li>
-                    <li>
+                    <li class="pointer">
                         <img src="../../../../assets/images/Cerrar-sesion.svg" class="icon">
                         <a href="#">Cambiar contraseña</a>
                     </li>

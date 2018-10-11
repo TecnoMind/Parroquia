@@ -10,6 +10,7 @@ import {LoginService} from "./views/login/service/login.service";
 import {BautismoComponent} from "./views/bautismo/component/bautismo.component";
 import {MenuComponent} from "./views/menu/component/menu.component";
 import {EventRepository} from "./views/menu/repository/event.repository";
+import {BautismoRepository} from "./views/bautismo/repository/bautismo.repository";
 
 @NgModule({
     imports: [
@@ -23,7 +24,7 @@ import {EventRepository} from "./views/menu/repository/event.repository";
         BautismoComponent,
         MenuComponent,
     ],
-    providers: [SettingsImpl, UserRepository, LoginService, EventRepository],
+    providers: [SettingsImpl, UserRepository, LoginService, EventRepository, BautismoRepository],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }

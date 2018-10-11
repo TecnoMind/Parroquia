@@ -1,14 +1,14 @@
 #nueva-acta {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 1 1fr;
+  grid-template-rows: 1fr;
 
   main {
       background: white;
       grid-column: 4 / 10;
       grid-row: 1 / 2;
       box-shadow: 1px 1px 5px #b5b5b5;
-      margin: 25px 0;
+      margin: 125px 0;
 
       h2 {
           color: #3D3D3D;
@@ -97,9 +97,7 @@
               //padding: 5px 0 5px 10px;
           }
           
-          /*.plus{
-              margin-right: 40px;
-          }*/
+
       }
       input[type="submit"] {
         background: #127391;

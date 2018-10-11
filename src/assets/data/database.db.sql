@@ -17,10 +17,10 @@ CREATE TABLE IF NOT EXISTS `event` (
 	PRIMARY KEY(`id`)
 );
 
-INSERT INTO `event`(name, icon) values('Bautismo', 'test');
-INSERT INTO `event`(name, icon) values('Confirmación', 'test');
-INSERT INTO `event`(name, icon) values('Matrimonio', 'test');
-INSERT INTO `event`(name, icon) values('Primera comunion', 'test');
+INSERT INTO `event`(name, icon) values('Bautismo', '/assets/images/Bautismo.svg');
+INSERT INTO `event`(name, icon) values('Confirmación', '/assets/images/Confirmacion.svg');
+INSERT INTO `event`(name, icon) values('Matrimonio', '/assets/images/Matrimonio.svg');
+INSERT INTO `event`(name, icon) values('Primera comunion', '/assets/images/Comunion.svg');
 
 
 CREATE TABLE IF NOT EXISTS `bautismo` (
@@ -36,8 +36,6 @@ CREATE TABLE IF NOT EXISTS `bautismo` (
 	`paternalGrandFatherName`	CHAR(50) NOT NULL,
 	`maternalGrandMotherName`	CHAR(50) NOT NULL,
     `maternalGrandFatherName`	CHAR(50) NOT NULL,
-	`grandMotherName`	CHAR(50) NOT NULL,
-    `grandFatherName`	CHAR(50) NOT NULL,
     `priest`	CHAR(50) NOT NULL,
 	PRIMARY KEY(`id`)
 );

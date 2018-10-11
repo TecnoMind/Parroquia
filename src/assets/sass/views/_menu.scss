@@ -35,6 +35,13 @@
         }
         ul{
             li{
+
+                &.pointer {
+                    cursor: pointer;
+                    :hover{
+                        background: #E6E6E6;
+                    }
+                }
                 font-weight: bold;
                 background: #F5F5F5;
                 margin-bottom: 10px;
@@ -65,9 +72,7 @@
                             margin-right: 10px;
                         }
             }
-            :hover{
-                background: #E6E6E6;
-            }
+
             .shadow{
                 padding: 15px 0;
                 background:#1588AB;
