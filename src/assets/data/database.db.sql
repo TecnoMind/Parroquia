@@ -17,10 +17,10 @@ CREATE TABLE IF NOT EXISTS `event` (
 	PRIMARY KEY(`id`)
 );
 
-INSERT INTO `event`(name, icon) values('Bautismo', '/assets/images/Bautismo.svg');
-INSERT INTO `event`(name, icon) values('Confirmación', '/assets/images/Confirmacion.svg');
-INSERT INTO `event`(name, icon) values('Matrimonio', '/assets/images/Matrimonio.svg');
-INSERT INTO `event`(name, icon) values('Primera comunion', '/assets/images/Comunion.svg');
+INSERT INTO `event`(name, icon) values('Bautismo', 'assets/images/Bautismo.svg');
+INSERT INTO `event`(name, icon) values('Confirmación', 'assets/images/Confirmacion.svg');
+INSERT INTO `event`(name, icon) values('Matrimonio', 'assets/images/Matrimonio.svg');
+INSERT INTO `event`(name, icon) values('Primera comunion', 'assets/images/Comunion.svg');
 
 
 CREATE TABLE IF NOT EXISTS `bautismo` (
