@@ -25,18 +25,48 @@ INSERT INTO `event`(name, icon) values('Primera comunion', 'assets/images/Comuni
 
 CREATE TABLE IF NOT EXISTS `bautismo` (
 	`id`	INTEGER NOT NULL,
-	`name`	CHAR(15) NOT NULL,
-    `place`	CHAR(250) NOT NULL,
+	`name`	CHAR(35) NOT NULL,
+    `place`	CHAR(50) NOT NULL,
     `date`	DATE NOT NULL,
-    `fatherName`	CHAR(50) NOT NULL,
-    `motherName`	CHAR(50) NOT NULL,
-	`goodFatherName`	CHAR(50) NOT NULL,
-	`goodMotherName`	CHAR(50) NOT NULL,
-	`paternalGrandMotherName`	CHAR(50) NOT NULL,
-	`paternalGrandFatherName`	CHAR(50) NOT NULL,
-	`maternalGrandMotherName`	CHAR(50) NOT NULL,
-    `maternalGrandFatherName`	CHAR(50) NOT NULL,
-    `priest`	CHAR(50) NOT NULL,
+    `fatherName`	CHAR(35) NOT NULL,
+    `motherName`	CHAR(35) NOT NULL,
+	`goodFatherName`	CHAR(35) NOT NULL,
+	`goodMotherName`	CHAR(35) NOT NULL,
+	`paternalGrandMotherName`	CHAR(35) NOT NULL,
+	`paternalGrandFatherName`	CHAR(35) NOT NULL,
+	`maternalGrandMotherName`	CHAR(35) NOT NULL,
+    `maternalGrandFatherName`	CHAR(35) NOT NULL,
+    `priest`	CHAR(35) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `comunion` (
+	`id`	INTEGER NOT NULL,
+	`name`	CHAR(35) NOT NULL,
+    `church_bautismo` CHAR(50)
+	`place_bautismo`	CHAR(50) NOT NULL,
+    `date_bautismo`	DATE NOT NULL,
+	`date`	DATE NOT NULL,
+    `fatherName`	CHAR(35) NOT NULL,
+    `motherName`	CHAR(35) NOT NULL,
+	`goodFatherName`	CHAR(35) NULL,
+	`goodMotherName`	CHAR(35) NULL,
+    `priest`	CHAR(35) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `confirmacion` (
+	`id`	INTEGER NOT NULL,
+	`name`	CHAR(35) NOT NULL,
+    `church_bautismo` CHAR(50)
+	`place_bautismo`	CHAR(50) NOT NULL,
+    `date_bautismo`	DATE NOT NULL,
+	`date`	DATE NOT NULL,
+    `fatherName`	CHAR(35) NOT NULL,
+    `motherName`	CHAR(35) NOT NULL,
+	`goodFatherName`	CHAR(35) NULL,
+	`goodMotherName`	CHAR(35) NULL,
+    `priest`	CHAR(35) NOT NULL,
 	PRIMARY KEY(`id`)
 );
 
