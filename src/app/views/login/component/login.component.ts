@@ -24,7 +24,7 @@ export class LoginComponent {
                 this.userRepository.findOneBy(model).then(user => {
                     if(user) {
                         this.loginService.setToken(user);
-                        this.router.navigateByUrl("/menu");
+                        this.router.navigateByUrl("/bautismo");
                     }
                 })
 

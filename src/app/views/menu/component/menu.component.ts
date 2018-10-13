@@ -3,7 +3,8 @@ import {Router} from "@angular/router";
 import {Event} from  "../model/event.model";
 import {EventRepository} from "../repository/event.repository";
 @Component({
-    templateUrl: './menu.component.html'
+    templateUrl: './menu.component.html',
+    selector: 'menu'
 })
 export class MenuComponent implements OnInit{
 

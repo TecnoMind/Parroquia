@@ -96,8 +96,9 @@
               width: 48%;
               //padding: 5px 0 5px 10px;
           }
-          
-
+          input[type="date"] {
+            width: 129px !important;
+        }
       }
       input[type="submit"] {
         background: #127391;

@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS `bautismo` (
     `date`	DATE NOT NULL,
     `fatherName`	CHAR(35) NOT NULL,
     `motherName`	CHAR(35) NOT NULL,
-	`goodFatherName`	CHAR(35) NOT NULL,
-	`goodMotherName`	CHAR(35) NOT NULL,
+	`godFatherName`	CHAR(35) NOT NULL,
+	`godMotherName`	CHAR(35) NOT NULL,
 	`paternalGrandMotherName`	CHAR(35) NOT NULL,
 	`paternalGrandFatherName`	CHAR(35) NOT NULL,
 	`maternalGrandMotherName`	CHAR(35) NOT NULL,
@@ -49,8 +49,8 @@ CREATE TABLE IF NOT EXISTS `comunion` (
 	`date`	DATE NOT NULL,
     `fatherName`	CHAR(35) NOT NULL,
     `motherName`	CHAR(35) NOT NULL,
-	`goodFatherName`	CHAR(35) NULL,
-	`goodMotherName`	CHAR(35) NULL,
+	`godFatherName`	CHAR(35) NULL,
+	`godMotherName`	CHAR(35) NULL,
     `priest`	CHAR(35) NOT NULL,
 	PRIMARY KEY(`id`)
 );
@@ -64,8 +64,8 @@ CREATE TABLE IF NOT EXISTS `confirmacion` (
 	`date`	DATE NOT NULL,
     `fatherName`	CHAR(35) NOT NULL,
     `motherName`	CHAR(35) NOT NULL,
-	`goodFatherName`	CHAR(35) NULL,
-	`goodMotherName`	CHAR(35) NULL,
+	`godFatherName`	CHAR(35) NULL,
+	`godMotherName`	CHAR(35) NULL,
     `priest`	CHAR(35) NOT NULL,
 	PRIMARY KEY(`id`)
 );
