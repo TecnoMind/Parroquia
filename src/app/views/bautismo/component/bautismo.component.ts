@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {Bautismo} from "../model/bautismo.model";
-import {BautismoRepository} from "../repository/bautismo.repository";
+import {SacramentInfo} from "../../commons/model/bautismo.model";
+import {BautismoRepository} from "../../commons/repository/bautismo.repository";
 
 
 @Component({
@@ -8,14 +8,13 @@ import {BautismoRepository} from "../repository/bautismo.repository";
 })
 export class BautismoComponent {
     // @ts-ignore
-    private bautismo: Bautismo = new Bautismo();
-    // @ts-ignore
-    private viewMode:string = "tab1";
+    private sacrament: SacramentInfo = new SacramentInfo();
 
     constructor(private bautismoRepository: BautismoRepository){}
 
 
-    private save(model: Bautismo) {
+    // @ts-ignore
+    private save(model: SacramentInfo) {
         this.bautismoRepository.openDb(this.bautismoRepository.settings.dbPath)
             .then(() => {
             })

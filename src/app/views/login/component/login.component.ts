@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {UserRepository} from "../repository/user.repository";
-import {User} from "../model/user.model";
+import {UserRepository} from "../../commons/repository/user.repository";
+import {User} from "../../commons/model/user.model";
 import {LoginService} from "../service/login.service";
 import {Router} from "@angular/router";
 

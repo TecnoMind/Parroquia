@@ -1,6 +1,6 @@
 import {Model} from "../../../db/model/model";
 
-export class Event extends Model{
+export class Sacrament extends Model{
 
     private _id: number;
     private _name:string;

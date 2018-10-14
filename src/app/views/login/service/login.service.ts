@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {User} from "../model/user.model";
+import {User} from "../../commons/model/user.model";
 // @ts-ignore
 import * as jwt from 'jsonwebtoken';
 
@@ -13,7 +13,9 @@ export class LoginService {
         localStorage.setItem(this.tokenItem, token);
     }
 
-    public getToken() : string | null{
-        return localStorage.getItem(this.tokenItem);
+    public getUser() : string  {
+        let user = jwt.decode(  localStorage.getItem(this.tokenItem),{complete: true}).payload.anyObject;
+        delete user.password;
+        return user;
     }
 }

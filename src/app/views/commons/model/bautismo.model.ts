@@ -1,21 +1,20 @@
 import {Model} from "../../../db/model/model";
 
-export class Bautismo extends Model{
+export class SacramentInfo extends Model{
 
     private _id: number;
+    private _sacrament: number;
     private _name: string;
-    private _place: string;
+    private _bornPlace: string;
     private _date: Date;
     private _fatherName: string;
     private _motherName: string;
-    private _goodFatherName:string;
-    private _goodMotherName: string;
+    private _godFatherName:string;
+    private _godMotherName: string;
     private _paternalGrandMotherName: string;
     private _paternalGrandFatherName: string;
     private _maternalGrandMotherName: string;
     private _maternalGrandFatherName: string;
-    private _grandMotherName: string;
-    private _grandFatherName: string;
     private _priest: string;
 
 
@@ -27,6 +26,14 @@ export class Bautismo extends Model{
         this._id = value;
     }
 
+    get sacrament(): number {
+        return this._sacrament;
+    }
+
+    set sacrament(value: number) {
+        this._sacrament = value;
+    }
+
     get name(): string {
         return this._name;
     }
@@ -35,12 +42,12 @@ export class Bautismo extends Model{
         this._name = value;
     }
 
-    get place(): string {
-        return this._place;
+    get bornPlace(): string {
+        return this._bornPlace;
     }
 
-    set place(value: string) {
-        this._place = value;
+    set bornPlace(value: string) {
+        this._bornPlace = value;
     }
 
     get date(): Date {
@@ -67,20 +74,20 @@ export class Bautismo extends Model{
         this._motherName = value;
     }
 
-    get goodFatherName(): string {
-        return this._goodFatherName;
+    get godFatherName(): string {
+        return this._godFatherName;
     }
 
-    set goodFatherName(value: string) {
-        this._goodFatherName = value;
+    set godFatherName(value: string) {
+        this._godFatherName = value;
     }
 
-    get goodMotherName(): string {
-        return this._goodMotherName;
+    get godMotherName(): string {
+        return this._godMotherName;
     }
 
-    set goodMotherName(value: string) {
-        this._goodMotherName = value;
+    set godMotherName(value: string) {
+        this._godMotherName = value;
     }
 
     get paternalGrandMotherName(): string {
@@ -113,22 +120,6 @@ export class Bautismo extends Model{
 
     set maternalGrandFatherName(value: string) {
         this._maternalGrandFatherName = value;
-    }
-
-    get grandMotherName(): string {
-        return this._grandMotherName;
-    }
-
-    set grandMotherName(value: string) {
-        this._grandMotherName = value;
-    }
-
-    get grandFatherName(): string {
-        return this._grandFatherName;
-    }
-
-    set grandFatherName(value: string) {
-        this._grandFatherName = value;
     }
 
     get priest(): string {

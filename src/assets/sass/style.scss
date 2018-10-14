@@ -1,28 +1,39 @@
 $primary-color: rgb(25, 158, 199);
 $second-color: #127391;
-
+$header-height: 150px;
 @import "reset";
 @import "views/login";
 @import "views/bautismo";
 @import "views/menu";
 @import "views/buscador";
 
+html{
+    width: 100%;
+    height: 100%;
+}
+
 body {
     color: #fff;
     font-family: 'Assistant', sans-serif;
     text-align: center;
-    margin: 0 auto;
+    margin: 0 0;
     width: 100%;
-    position: relative;
+    height: 100%;
   }
 
 header {
     background: $primary-color;
     grid-column: 1 / -1;
     grid-row: 1;
-    height: 150px;
+    height: $header-height;
     h1 {
-        margin: 60px auto 5px auto;
+        vertical-align:middle;
+        margin: calc((#{$header-height} - 28px)/2) 0 calc((#{$header-height} - 28px)/2) calc((100%/12)*2);
         font-size: 28px;
     }
+}
+
+menu{
+    grid-column: 1 / 3;
+    grid-row: 1/13;
 }

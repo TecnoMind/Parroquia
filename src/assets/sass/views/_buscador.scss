@@ -1,12 +1,14 @@
 #buscador {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 2fr;
-    position: relative;
+    grid-template-rows: repeat(12, 1fr);
+    height: 100%;
+
     main {
         background: white;
         color: #3D3D3D;
-        grid-column: 5 / 11;
+        grid-column: 4/ 12;
+        grid-row: 2/12;
         box-shadow: 1px 1px 5px #b5b5b5;
         margin: 25px 0;
         h2 {

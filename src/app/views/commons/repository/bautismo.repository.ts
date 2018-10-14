@@ -1,7 +1,7 @@
+import {Repository} from '../../../db/repository/impl/repository';
 import {Injectable} from "@angular/core";
-import {Repository} from "../../../db/repository/impl/repository";
-import {Event} from "../model/event.model";
 import {SettingsImpl} from "../../../db/repository/impl/settings.impl";
+import {SacramentInfo} from "../model/bautismo.model";
 
 /**
  * Simple class for selecting, inserting, updating and deleting Heroes in hero table.
@@ -10,10 +10,11 @@ import {SettingsImpl} from "../../../db/repository/impl/settings.impl";
  * @class Hero
  */
 @Injectable()
-export class EventRepository extends Repository<Event> {
+export class BautismoRepository extends Repository<SacramentInfo> {
 
     constructor(public settings: SettingsImpl) {
-        super(Event.name.toLowerCase(), settings);
+        super(SacramentInfo.name.toLowerCase(),  settings);
     }
+
 
 }
