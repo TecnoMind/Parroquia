@@ -1,8 +1,8 @@
 #nueva-acta {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 2fr;
-  position: relative;
+  grid-template-rows: repeat(12, 1fr);
+  height: 100%;
   main {
       background: white;
       grid-column: 5 / 11;

@@ -3,12 +3,11 @@
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
     height: 100%;
-
     main {
         background: white;
         color: #3D3D3D;
         grid-column: 4/ 12;
-        grid-row: 2/12;
+        grid-row: 2 / 12;
         box-shadow: 1px 1px 5px #b5b5b5;
         margin: 25px 0;
         h2 {
@@ -18,16 +17,58 @@
             font-weight: bold;
         }
         ul{
+            margin-bottom: 50px;
             li{
                 input[type="checkbox"]{
                     border: 2px solid $second-color;
                 }
             }
         }
-        ol{
-            li{
-                display: inline;
-                list-style-type: decimal;
+        div{
+            ol{
+                display: inline-block;
+                li{
+                    border-bottom: 2px solid $primary-color;
+                    list-style-type: decimal;
+                    padding: 9px 12px;
+                    text-align: left;
+                }
+            }
+            div{
+                &.dentro_izquierdo{
+                    float: left;
+                    width: 60%;
+                    ol{
+                        li{
+
+                        }
+                    }
+                }
+                &.dentro_derecho{
+                    float: right;
+                    width: 40%;
+                    ul{
+                        li{
+                            text-align: left;
+                            .icon{
+                                cursor: pointer;
+                                width: 20px;
+                                height: 20px;
+                                margin-left: 15px;
+                                margin-top: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+            &.lado_izquierdo{
+                float: left;
+                width: 40%;
+                margin-left: 80px;
+            }
+            &.lado_derecho{
+                float: right;
+                width: 50%;
             }
         }
     }

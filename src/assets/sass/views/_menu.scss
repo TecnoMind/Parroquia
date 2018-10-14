@@ -2,7 +2,6 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(12, 1fr);
     height: 100%;
-
     aside {
         .header{
             height: $header-height;
@@ -50,7 +49,7 @@
                     margin: 0 10px;
                 }
                 &.shadow{
-                    padding: 15px 10px 15px 0;
+                    padding: 15px 0;
                     background:#1588AB;
                 }
             }
