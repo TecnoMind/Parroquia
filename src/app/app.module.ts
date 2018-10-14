@@ -11,6 +11,8 @@ import {BautismoComponent} from "./views/bautismo/component/bautismo.component";
 import {MenuComponent} from "./views/menu/component/menu.component";
 import {EventRepository} from "./views/menu/repository/event.repository";
 import {BautismoRepository} from "./views/bautismo/repository/bautismo.repository";
+import {BuscadorComponent} from "./views/buscador/component/buscador.component";
+import { from } from 'rxjs';
 
 @NgModule({
     imports: [
@@ -23,6 +25,7 @@ import {BautismoRepository} from "./views/bautismo/repository/bautismo.repositor
         LoginComponent,
         BautismoComponent,
         MenuComponent,
+        BuscadorComponent
     ],
     providers: [SettingsImpl, UserRepository, LoginService, EventRepository, BautismoRepository],
     bootstrap: [ AppComponent ]

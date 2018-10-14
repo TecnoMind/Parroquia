@@ -9,7 +9,6 @@
         <li (click)="viewMode = 'tab1'"><a >Catecumeno</a></li>
         <li (click)="viewMode = 'tab2'"><a >Testigos</a></li>        
         <li (click)="viewMode = 'tab3'"><a >Celebrante</a></li>
-        <!-- [class.active]="viewMode == tab2" rel="tab2" -->
     </ul>
     <div [ngSwitch]="viewMode">
         <form action="#" id="tab1" *ngSwitchCase="'tab1'">

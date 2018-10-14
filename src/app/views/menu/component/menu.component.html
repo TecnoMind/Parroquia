@@ -1,67 +1,59 @@
 <div id="menu">
-    <header>
-        <h1>Nuestra señora del Perpetuo Socorro</h1>
-    </header>
     <aside *ngIf="show" class="complete">
-        <div class="show">
-            <button (click)="changeShow()">
-
-            </button>
-        </div>
         <h3>Usuario:</h3>
         <h2>Ramón Álvarez</h2>
+        <button (click)="changeShow()">
+            <img src="../../../../assets/images/Menu.svg" class="show">
+        </button>
         <ul>
-            <li class="shadow">
+            <div class="shadow">
                 <img src="../../../../assets/images/Agregar-Actas.svg" class="icon-father">Crear acta sacramental
-            </li>
-            <li class="pointer">
-                <ul>
-                    <li *ngFor="let event of events"><img [src]="event.icon" class="icon"><a
-                            routerLink="/bautismo">{{event.name}}</a></li>
-                </ul>
-            </li>
-
-            <li class="shadow">
+            </div>            
+            <ul>
+                <li *ngFor="let event of events">
+                    <img [src]="event.icon" class="icon">
+                    <a routerLink="/bautismo">{{event.name}} </a>
+                </li>
+            </ul>                
+            <div class="shadow">
                 <img src="../../../../assets/images/Buscar-Actas.svg" class="icon-father">Buscar acta sacramental
-            </li>
-            <li>
-                <img src="../../../../assets/images/Buscar.svg" class="icon">
-                <a href="#">Buscar actas</a>
-            </li>
-            <li class="shadow">
+            </div>
+            <ul>
+                <li>
+                    <img src="../../../../assets/images/Buscar.svg" class="icon">
+                    <a routerLink="/buscador">Buscar actas</a>
+                </li>    
+            </ul>
+            <div class="shadow">
                 <img src="../../../../assets/images/Usuario.svg" class="icon-father">Usuario
-            </li>
-            <li>
-                <ul>
-                    <li class="pointer">
-                        <img src="../../../../assets/images/Contrasena.svg" class="icon">
-                        <a href="#">Cambiar contraseña</a>
-                    </li>
-                    <li class="pointer">
-                        <img src="../../../../assets/images/Cerrar-sesion.svg" class="icon">
-                        <a href="#">Cambiar contraseña</a>
-                    </li>
-                </ul>
-            </li>
-
+            </div>
+            <ul>
+                <li>
+                    <img src="../../../../assets/images/Contrasena.svg" class="icon">
+                    <a href="#">Cambiar contraseña</a>
+                </li>
+                <li>
+                    <img src="../../../../assets/images/Cerrar-sesion.svg" class="icon">
+                    <a href="#">Cambiar contraseña</a>
+                </li>
+            </ul>
         </ul>
     </aside>
-    <aside *ngIf="!show" class="partial">
-        <div class="show">
-          <button (click)="changeShow()">
 
-          </button>
-        </div>
+    <aside *ngIf="!show" class="partial">
+        <button (click)="changeShow()">
+            <img src="../../../../assets/images/Menu.svg" class="show">
+        </button>
         <ul>
             <li *ngFor="let event of events"><img [src]="event.icon" class="icon"></li>
             <li>
-                <img src="../../../../assets/images/Buscar.svg" class="icon">
+                <a routerLink="/buscador"><img src="../../../../assets/images/Buscar.svg" class="icon"></a>                
             </li>
             <li>
                 <img src="../../../../assets/images/Contrasena.svg" class="icon">
             </li>
             <li>
-                <img src="../../../../assets/images/Cerrar-sesion.svg" class="icon">
+                <img src="../../../../assets/images/Cerrar-sesion.svg" class="icon">
             </li>
         </ul>
     </aside>

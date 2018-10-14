@@ -1,13 +1,11 @@
 $primary-color: rgb(25, 158, 199);
 $second-color: #127391;
 
-
 @import "reset";
 @import "views/login";
 @import "views/bautismo";
 @import "views/menu";
-
-
+@import "views/buscador";
 
 body {
     color: #fff;
@@ -15,6 +13,7 @@ body {
     text-align: center;
     margin: 0 auto;
     width: 100%;
+    position: relative;
   }
 
 header {

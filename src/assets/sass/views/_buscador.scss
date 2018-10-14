@@ -1,0 +1,32 @@
+#buscador {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 2fr;
+    position: relative;
+    main {
+        background: white;
+        color: #3D3D3D;
+        grid-column: 5 / 11;
+        box-shadow: 1px 1px 5px #b5b5b5;
+        margin: 25px 0;
+        h2 {
+            color: #3D3D3D;
+            font-size: 30px;
+            margin: 50px 0;
+            font-weight: bold;
+        }
+        ul{
+            li{
+                input[type="checkbox"]{
+                    border: 2px solid $second-color;
+                }
+            }
+        }
+        ol{
+            li{
+                display: inline;
+                list-style-type: decimal;
+            }
+        }
+    }
+}
