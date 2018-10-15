@@ -29,4 +29,5 @@ export class BautismoComponent {
                 console.log('Error occurred while opening database: ', reason);
             });
     }
+
 }

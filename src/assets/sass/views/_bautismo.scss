@@ -16,20 +16,26 @@
       }
       ul {
           display: inline-block;
-          border-bottom: 2px solid #BFBFBF;
           width: 300px;
           text-align: center;
           .paginacion {
               list-style: none;
           }
           li {
+              cursor: pointer;
               display: inline;
+              padding:5px;
               a {
                   color: #3D3D3D;
                   text-decoration: none;
                   padding: 0 10px;
               }
+
           }
+        li:hover{
+          border-bottom: 2px solid #BFBFBF;
+          background-color: $li-color-hover;
+        }
       }
 
       form {
