@@ -1,0 +1,60 @@
+<div id="nueva-acta">
+    <header>
+        <h1>Nuestra señora del Perpetuo Socorro</h1>
+    </header>
+    <menu></menu>
+    <main>
+        <h2>Crear nueva acta de bautismo</h2>
+        <ul class="paginacion">
+            <li (click)="viewMode = 'tab1'"><a >Catecumeno</a></li>
+            <li (click)="viewMode = 'tab2'"><a >Testigos</a></li>        
+            <li (click)="viewMode = 'tab3'"><a >Celebrante</a></li>
+        </ul>
+        <div [ngSwitch]="viewMode">
+            <form action="#" id="tab1" *ngSwitchCase="'tab1'">
+                <label for="bautizado">Nombre del bautizado</label>
+                <input type="text" id="bautizado" [(ngModel)]="bautismo.name" name="name">
+
+                <label for="lugar" class="lugar">Lugar de nacimiento</label>
+                <label for="fecha" class="fecha">Fecha del bautizo</label>
+
+                <input type="text" id="lugar" [(ngModel)]="bautismo.place" name="place">
+                <input type="date" id="fecha" [(ngModel)]="bautismo.date" name="date">
+                <br><br><br><br><br><br>
+                <label for="papa">Padre del bautizado</label>
+                <input type="text" id="papa" [(ngModel)]="bautismo.fatherName" name="fatherName">
+
+                <label for="mama">Madre del bautizado</label>
+                <input type="text" id="mama" [(ngModel)]="bautismo.motherName" name="motherName">
+            </form>
+            <form action="#" id="tab2" *ngSwitchCase="'tab2'">
+            <label for="padrino" class="mitad_izq">Nombre del padrino</label>
+            <label for="madrina" class="mitad_der">Nombre de la madrina</label>
+            
+            <input type="text" id="padrino" class="mitad_izq plus" [(ngModel)]="bautismo.goodFatherName" name="goodFatherName">
+            <input type="text" id="madrina" class="mitad_der" [(ngModel)]="bautismo.goodMotherName" name="goodMotherName">
+            
+            <label for="abuelo_P" class="mitad_izq">Nombre del abuelo paterno</label>
+            <label for="abuela_P" class="mitad_der">Nombre de la abuela paterna</label>
+            
+            <input type="text" id="abuelo_P" class="mitad_izq plus" [(ngModel)]="bautismo.paternalGrandFatherName"
+                name="paternalGrandFatherName">
+            <input type="text" id="abuela_P" class="mitad_der" [(ngModel)]="bautismo.paternalGrandMotherName"
+                name="paternalGrandMotherName">
+            <label for="abuelo_M" class="mitad_izq">Nombre del abuelo materno</label>
+            <label for="abuela_P" class="mitad_der">Nombre de la abuela materna</label>
+            
+            <input type="text" id="abuelo_M" class="mitad_izq plus" [(ngModel)]="bautismo.maternalGrandFatherName"
+                    name="maternalGrandFatherName">
+            <input type="text" id="abuela_M" class="mitad_der" [(ngModel)]="bautismo.maternalGrandMotherName"
+                    name="paternalGrandMotherName">
+        </form>
+        <form action="#" id="tab3" *ngSwitchCase="'tab3'">
+            <label for="sacerdote">Nombre del sacerdote</label>
+            <input type="text" id="sacerdote" [(ngModel)]="bautismo.priest" name="priest">
+        </form>
+        </div>
+        <input type="submit" value="Guardar acta" style="margin-right: 175px;" (click)="save(bautismo)">
+        <input type="submit" value="Cancelar" routerLink="/menu" style="margin-right: 30px;">
+    </main>
+</div>

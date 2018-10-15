@@ -12,6 +12,9 @@ import {MenuComponent} from "./views/commons/component/menu.component";
 import {EventRepository} from "./views/commons/repository/event.repository";
 import {BautismoRepository} from "./views/commons/repository/bautismo.repository";
 import {BuscadorComponent} from "./views/buscador/component/buscador.component";
+import {ConfirmacionComponent} from "./views/confirmacion/component/confirmacion.component";
+import {MatrimonioComponent} from "./views/matrimonio/component/matrimonio.component";
+import {ComunionComponent} from "./views/comunion/component/comunion.component";
 
 @NgModule({
     imports: [
@@ -24,7 +27,10 @@ import {BuscadorComponent} from "./views/buscador/component/buscador.component";
         LoginComponent,
         BautismoComponent,
         MenuComponent,
-        BuscadorComponent
+        BuscadorComponent,
+        ConfirmacionComponent,
+        MatrimonioComponent,
+        ComunionComponent
     ],
     providers: [SettingsImpl, UserRepository, LoginService, EventRepository, BautismoRepository],
     bootstrap: [ AppComponent ]

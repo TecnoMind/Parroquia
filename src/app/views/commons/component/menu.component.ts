@@ -63,6 +63,10 @@ export class MenuComponent implements OnInit{
 
     }
 
+    public getLink(link: string):void {
+        this.router.navigateByUrl("/" + link.toLowerCase().replace('ó','o'));
+    }
+
 
 
 

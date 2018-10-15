@@ -12,16 +12,16 @@
                 <img src="../../../../assets/images/Agregar-Actas.svg" class="icon-father">Crear acta sacramental
             </div>
             <ul>
-                <li *ngFor="let sacrament of sacraments">
+                <li *ngFor="let sacrament of sacraments" (click)="getLink(sacrament.name)" class="pointer">
                     <img [src]="sacrament.icon" class="icon">
-                    <a routerLink="/bautismo">{{sacrament.name}} </a>
+                    <a >{{sacrament.name}} </a>
                 </li>
             </ul>
             <div class="shadow">
                 <img src="../../../../assets/images/Buscar-Actas.svg" class="icon-father">Buscar acta sacramental
             </div>
             <ul>
-                <li>
+                <li class="pointer">
                     <img src="../../../../assets/images/Buscar.svg" class="icon">
                     <a routerLink="/buscador">Buscar actas</a>
                 </li>
@@ -30,11 +30,11 @@
                 <img src="../../../../assets/images/Usuario.svg" class="icon-father">Usuario
             </div>
             <ul>
-                <li>
+                <li class="pointer">
                     <img src="../../../../assets/images/Contrasena.svg" class="icon">
                     <a href="#">Cambiar contraseña</a>
                 </li>
-                <li>
+                <li class="pointer">
                     <img src="../../../../assets/images/Cerrar-sesion.svg" class="icon">
                     <a href="#">Cerrar sesión</a>
                 </li>
