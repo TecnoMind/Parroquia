@@ -13,7 +13,7 @@ import {SacramentInfo} from "../model/bautismo.model";
 export class BautismoRepository extends Repository<SacramentInfo> {
 
     constructor(public settings: SettingsImpl) {
-        super(SacramentInfo.name.toLowerCase(),  settings);
+        super(SacramentInfo.name,  settings);
     }
 
 

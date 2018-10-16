@@ -17,10 +17,7 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
 
     constructor(table : string , public settings: SettingsImpl) {
         super(settings);
-        this.__table = table;
-        console.log(table)
-       // console.log(this.__table);
-
+        this.__table = table.split(/(?=[A-Z])/).join('_').toLowerCase();
     }
 
     deleteOne(entity: T): void {
@@ -66,7 +63,6 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
         let sql = 'INSERT INTO ' + this.__table + ' ( ' + this.getFields(fields, '') + ' )'
           + ' VALUES( ' + this.getFields(fields, '$') + ' )';
 
-        console.log(sql);
         return this.change(sql, values).then((result) => {
              if (result.changes !== 1) {
                   throw new Error('Expected 1' + this.__table+ 'to be inserted. Was ${result.changes}');
@@ -81,7 +77,6 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
         let values = entity.toValues(fields);
         let sql = 'UPDATE ' + this.__table + ' SET ' + this.getClause(fields, '$',',');
 
-        console.log(sql);
         return this.change(sql, values).then((result) => {
             if (result.changes !== 1) {
                 throw new Error('Expected 1' + this.__table+ 'to be inserted. Was ${result.changes}');
@@ -127,7 +122,6 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
         fields.forEach(field =>{
             where += field + ' = ' + firstJoint + field + ' ' + secondJoint + ' ';
         });
-        console.log(where);
         return where.substring(0, where.length - (secondJoint.length + 1));
     }
 

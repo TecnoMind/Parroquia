@@ -41,8 +41,7 @@ CREATE TABLE IF NOT EXISTS `sacrament_info` (
    	`maternalGrandMotherName`	CHAR(35),
     `maternalGrandFatherName`	CHAR(35),
     `priest`	CHAR(35) NOT NULL,
-	PRIMARY KEY(`id`),
-	FOREIGN KEY(`sacrament`) REFERENCES sacramento(`id`)
-);
+	PRIMARY KEY(`id`)
+	);
 
 COMMIT;

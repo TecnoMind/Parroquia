@@ -3,7 +3,7 @@ import {Model} from "../../../db/model/model";
 export class SacramentInfo extends Model{
 
     private _id: number;
-    private _sacrament: number;
+    private _sacrament: number = 1;
     private _name: string;
     private _bornPlace: string;
     private _date: Date;
@@ -24,14 +24,6 @@ export class SacramentInfo extends Model{
 
     set id(value: number) {
         this._id = value;
-    }
-
-    get sacrament(): number {
-        return this._sacrament;
-    }
-
-    set sacrament(value: number) {
-        this._sacrament = value;
     }
 
     get name(): string {
@@ -128,5 +120,13 @@ export class SacramentInfo extends Model{
 
     set priest(value: string) {
         this._priest = value;
+    }
+
+    get sacrament(): number {
+        return this._sacrament;
+    }
+
+    set sacrament(value: number) {
+        this._sacrament = value;
     }
 }

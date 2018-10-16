@@ -43,10 +43,13 @@
     "@angular/platform-browser": "^6.0.6",
     "@angular/platform-browser-dynamic": "^6.0.6",
     "@angular/router": "^6.1.7",
+    "@toverux/ngx-sweetalert2": "^4.0.0",
     "core-js": "^2.5.7",
     "jsonwebtoken": "^8.3.0",
+    "remove": "^0.1.5",
     "rxjs": "^6.2.1",
     "sqlite3": "^4.0.0",
+    "sweetalert2": "^7.28.5",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

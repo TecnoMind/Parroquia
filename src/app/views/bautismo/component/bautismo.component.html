@@ -11,7 +11,7 @@
             <li (click)="viewMode = 'tab3'"><a >Celebrante</a></li>
         </ul>
         <div [ngSwitch]="viewMode">
-            <form action="#" id="tab1" >
+            <form action="#" id="tab1"  *ngIf="show">
                 <div *ngSwitchDefault>
                     <label for="bautizado">Nombre del bautizado</label>
                     <input type="text" id="bautizado" [(ngModel)]="sacrament.name" name="name">
@@ -61,3 +61,4 @@
         <input type="submit" value="Cancelar" routerLink="/buscador" style="margin-right: 30px;">
     </main>
 </div>
+

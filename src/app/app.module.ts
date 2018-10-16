@@ -15,12 +15,14 @@ import {BuscadorComponent} from "./views/buscador/component/buscador.component";
 import {ConfirmacionComponent} from "./views/confirmacion/component/confirmacion.component";
 import {MatrimonioComponent} from "./views/matrimonio/component/matrimonio.component";
 import {ComunionComponent} from "./views/comunion/component/comunion.component";
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        routing
+        routing,
+        SweetAlert2Module.forRoot()
     ],
     declarations: [
         AppComponent,

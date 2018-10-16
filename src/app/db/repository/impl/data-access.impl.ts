@@ -29,8 +29,11 @@ export class DataAccessImpl implements DataAccess {
 
     change(sql: string, values: {}): Promise<IDbResult> {
         return new Promise<IDbResult>((resolve, reject) => {
+            console.log(sql);
             this.db.run(sql, values, function (err) {
                 if (err) {
+                    console.log(sql);
+
                     reject(err);
                 } else {
                     resolve({ changes: this.changes, lastID: this.lastID });
