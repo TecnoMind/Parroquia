@@ -16,6 +16,7 @@ import {ConfirmacionComponent} from "./views/confirmacion/component/confirmacion
 import {MatrimonioComponent} from "./views/matrimonio/component/matrimonio.component";
 import {ComunionComponent} from "./views/comunion/component/comunion.component";
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import {InputValidateComponent} from "./views/commons/component/input.validate.component";
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
         BuscadorComponent,
         ConfirmacionComponent,
         MatrimonioComponent,
-        ComunionComponent
+        ComunionComponent,
+        InputValidateComponent
     ],
     providers: [SettingsImpl, UserRepository, LoginService, EventRepository, BautismoRepository],
     bootstrap: [ AppComponent ]

@@ -3,7 +3,7 @@
         <h1>Nuestra señora del Perpetuo Socorro</h1>
     </header>
     <menu></menu>
-    <main>
+    <main *ngIf="showForm">
         <h2>Crear nueva acta de bautismo</h2>
         <ul class="paginacion">
             <li (click)="viewMode = 'tab1'"><a >Catecumeno</a></li>
@@ -11,22 +11,12 @@
             <li (click)="viewMode = 'tab3'"><a >Celebrante</a></li>
         </ul>
         <div [ngSwitch]="viewMode">
-            <form action="#" id="tab1"  *ngIf="show">
+            <form  id="tab1">
                 <div *ngSwitchDefault>
-                    <label for="bautizado">Nombre del bautizado</label>
-                    <input type="text" id="bautizado" [(ngModel)]="sacrament.name" name="name">
 
-                    <label for="lugar" class="lugar">Lugar de nacimiento</label>
-                    <label for="fecha" class="fecha">Fecha del bautizo</label>
+                   <input-validate [model]="sacrament.name" [data]="name" [isRequired]="true"></input-validate>
 
-                    <input type="text" id="lugar" [(ngModel)]="sacrament.bornPlace" name="place">
-                    <input type="date" id="fecha" [(ngModel)]="sacrament.date" name="date">
-                    <br><br><br><br><br><br>
-                    <label for="papa">Padre del bautizado</label>
-                    <input type="text" id="papa" [(ngModel)]="sacrament.fatherName" name="fatherName">
 
-                    <label for="mama">Madre del bautizado</label>
-                    <input type="text" id="mama" [(ngModel)]="sacrament.motherName" name="motherName">
                 </div>
                 <div *ngSwitchCase="'tab2'">
                     <label for="padrino" class="mitad_izq">Nombre del padrino</label>

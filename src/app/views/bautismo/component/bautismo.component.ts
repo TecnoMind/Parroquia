@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {SacramentInfo} from "../../commons/model/bautismo.model";
 import {BautismoRepository} from "../../commons/repository/bautismo.repository";
 import swall from 'sweetalert2'
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -12,31 +13,29 @@ export class BautismoComponent {
     private sacrament: SacramentInfo = new SacramentInfo();
 
     // @ts-ignore
-    private show: boolean = true;
+    private showForm : boolean = true;
 
-    constructor(private bautismoRepository: BautismoRepository){
+
+    constructor(private bautismoRepository: BautismoRepository, private router: Router){
         this.sacrament.sacrament = 1;
     }
 
-
     // @ts-ignore
     private save(model: SacramentInfo) {
-        this.show = false;
+        this.showForm = false;
         swall({
-            title: 'Exito!',
-            text: 'Do you want to continue',
-            type: 'success',
+            text: '¿Desea continuar?',
             showCancelButton: true,
-            confirmButtonText: 'Cool',
+            confirmButtonText: 'Aceptar',
             cancelButtonColor: '#d33',
             cancelButtonText:'Cancelar'
         }).then((result) =>{
             if (result.dismiss !== swall.DismissReason.cancel) {
                this.saveBautismo(model);
-            }else {
-                console.log(result);
             }
-            this.show = true;
+            setTimeout(() => {
+                this.showForm = true;
+            }, 100);
 
         });
     }
@@ -47,12 +46,19 @@ export class BautismoComponent {
             })
             .then(() => {
                 this.bautismoRepository.save(model).then(() => {
-                    console.log("test");
                     swall({
-                        title: 'Exito!',
-                        text: 'Do you want to continue',
+                        title: 'Guardado Correctamente',
                         type: 'success',
-                    })
+                    });
+                    setTimeout(() => {
+                        this.router.navigateByUrl("buscador");
+                    }, 100);
+                },reason => {
+                    swall({
+                        title: 'Error',
+                        type: 'error',
+                    });
+                    console.log(reason);
                 });
             })
             .catch((reason) => {
