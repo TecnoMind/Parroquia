@@ -6,9 +6,27 @@ import {Component, Input} from "@angular/core";
 })
 export class InputValidateComponent {
 
-    @Input() model: string;
-    @Input() data: any;
+    @Input() model: any;
+    @Input() data: string;
     @Input() isRequired: boolean;
     @Input() label: string;
+    @Input() length: number;
+    @Input() capitalise: boolean;
+
+    constructor() {
+        console.log(this.model);
+    }
+
+    // @ts-ignore
+    public capitalize():string {
+        let val = this.model[this.data];
+        if(val && this.capitalise) {
+            this.model[this.data] =  val.toLowerCase()
+                .split(' ')
+                .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                .join(' ');
+        }
+
+    }
 
 }

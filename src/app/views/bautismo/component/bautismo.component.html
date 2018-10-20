@@ -14,8 +14,10 @@
             <form  id="tab1">
                 <div *ngSwitchDefault>
 
-                   <input-validate [model]="sacrament.name" [data]="name" [isRequired]="true"></input-validate>
-
+                   <input-validate [model]="sacrament" [length]="35" [data]="'name'" [isRequired]="true"
+                                   [label]="'Nombre del bautizado'" [capitalise]="true"></input-validate>
+                   <input-validate [model]="sacrament" [data]="'godFatherName'" [isRequired]="true" [label]="'godMotherName'"></input-validate>
+                   <input-validate [model]="sacrament" [data]="'godMotherName'" [isRequired]="true" [label]="'goodFatherName'"></input-validate>
 
                 </div>
                 <div *ngSwitchCase="'tab2'">
