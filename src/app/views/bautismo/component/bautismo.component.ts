@@ -15,6 +15,12 @@ export class BautismoComponent {
     // @ts-ignore
     private showForm : boolean = true;
 
+    // @ts-ignore
+    private tabs = ['Catecumeno', 'Testigos', 'Celebrante'];
+
+    // @ts-ignore
+    private viewMode: string =  this.tabs[0];
+
 
     constructor(private bautismoRepository: BautismoRepository, private router: Router){
         this.sacrament.sacrament = 1;

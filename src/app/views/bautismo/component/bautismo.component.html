@@ -4,23 +4,37 @@
     </header>
     <menu></menu>
     <main *ngIf="showForm">
-        <h2>Crear nueva acta de bautismo</h2>
-        <ul class="paginacion">
-            <li (click)="viewMode = 'tab1'"><a >Catecumeno</a></li>
-            <li (click)="viewMode = 'tab2'"><a >Testigos</a></li>        
-            <li (click)="viewMode = 'tab3'"><a >Celebrante</a></li>
-        </ul>
-        <div [ngSwitch]="viewMode">
-            <form  id="tab1">
-                <div *ngSwitchDefault>
+        <div class="content">
+            <h2>Crear nueva acta de bautismo</h2>
 
-                   <input-validate [model]="sacrament" [length]="35" [data]="'name'" [isRequired]="true"
-                                   [label]="'Nombre del bautizado'" [capitalise]="true"></input-validate>
-                   <input-validate [model]="sacrament" [data]="'godFatherName'" [isRequired]="true" [label]="'godMotherName'"></input-validate>
-                   <input-validate [model]="sacrament" [data]="'godMotherName'" [isRequired]="true" [label]="'goodFatherName'"></input-validate>
-
+            <div class="tabs">
+                <div class="tab" *ngFor="let tab of tabs" (click)="viewMode = tab" [ngClass]="{'select': viewMode === tab}">
+                    <a>{{tab}}</a>
                 </div>
-                <div *ngSwitchCase="'tab2'">
+            </div>
+
+            <div [ngSwitch]="viewMode" class="select-tab">
+
+                <div *ngSwitchDefault>
+                    <div class="row">
+                        <input-validate [model]="sacrament" [length]="35" [data]="'name'" [isRequired]="true" [inputType]="'text'"
+                                        [label]="'Nombre del bautizado'" [capitalise]="true">
+                        </input-validate>
+                        <input-validate [model]="sacrament" [length]="" [data]="'bornPlace'" [isRequired]="true" [inputType]="'text'"
+                                        [label]="'Lugar de nacimiento'" [capitalise]="true">
+                        </input-validate>
+                    </div>
+
+                    <div class="row">
+                        <input-validate [model]="sacrament" [length]="" [data]="'fatherName'" [isRequired]="true"
+                                        [label]="'Padre del bautizado'" [capitalise]="true" [inputType]="'text'">
+                        </input-validate>
+                        <input-validate [model]="sacrament" [length]="" [data]="'motherName'" [isRequired]="true"
+                                        [label]="'Madre del bautizado'" [capitalise]="true" [inputType]="'text'">
+                        </input-validate>
+                    </div>
+                </div>
+                <div *ngSwitchCase="'Testigos'" class="select-tab">
                     <label for="padrino" class="mitad_izq">Nombre del padrino</label>
                     <label for="madrina" class="mitad_der">Nombre de la madrina</label>
 
@@ -42,15 +56,17 @@
                     <input type="text" id="abuela_M" class="mitad_der" [(ngModel)]="sacrament.maternalGrandMotherName"
                            name="paternalGrandMotherName">
                 </div>
-                <div *ngSwitchCase="'tab3'">
+                <div *ngSwitchCase="'Celebrante'" class="select-tab">
                     <label for="sacerdote">Nombre del sacerdote</label>
                     <input type="text" id="sacerdote" [(ngModel)]="sacrament.priest" name="priest">
                 </div>
 
-            </form>
+
+            </div>
+            <input type="submit" value="Guardar acta" style="margin-right: 175px;" (click)="save(sacrament)">
+            <input type="submit" value="Cancelar" routerLink="/buscador" style="margin-right: 30px;">
         </div>
-        <input type="submit" value="Guardar acta" style="margin-right: 175px;" (click)="save(sacrament)">
-        <input type="submit" value="Cancelar" routerLink="/buscador" style="margin-right: 30px;">
+
     </main>
 </div>
 

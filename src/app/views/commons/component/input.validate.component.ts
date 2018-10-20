@@ -12,6 +12,7 @@ export class InputValidateComponent {
     @Input() label: string;
     @Input() length: number;
     @Input() capitalise: boolean;
+    @Input() inputType: string;
 
     constructor() {
         console.log(this.model);
@@ -20,7 +21,7 @@ export class InputValidateComponent {
     // @ts-ignore
     public capitalize():string {
         let val = this.model[this.data];
-        if(val && this.capitalise) {
+        if(val && this.capitalise && typeof (val) === 'string') {
             this.model[this.data] =  val.toLowerCase()
                 .split(' ')
                 .map((s) => s.charAt(0).toUpperCase() + s.substring(1))

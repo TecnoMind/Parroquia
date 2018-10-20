@@ -4,105 +4,75 @@
   grid-template-rows: repeat(12, 1fr);
   height: 100%;
   main {
-      background: white;
-      grid-column: 5 / 11;
-      box-shadow: 1px 1px 5px #b5b5b5;
-      margin: 25px 0;
+    background: white;
+    grid-column: 5 / 11;
+    box-shadow: 1px 1px 5px #b5b5b5;
+    margin: 25px 0;
+    .content {
+      margin: 10% 10%;
       h2 {
-          color: #3D3D3D;
-          font-size: 30px;
-          margin: 50px 0;
-          font-weight: bold;
+        color: #3D3D3D;
+        font-size: 30px;
+        margin: 50px 0;
+        font-weight: bold;
       }
-      ul {
-          display: inline-block;
-          width: 300px;
-          text-align: center;
-          .paginacion {
-              list-style: none;
+      .tabs {
+        width: 100%;
+        height: 30px;
+        margin-bottom: 20px;
+        .tab {
+          cursor: pointer;
+          width: calc(100%/3);
+          display: inline-flex;
+          height: 100%;
+          border-bottom: 1px solid gray;
+          a {
+            width: 100%;
+            text-align: center;
+            color: #3D3D3D;
+            text-decoration: none;
+            padding: 3px;;
           }
-          li {
-              cursor: pointer;
-              display: inline;
-              padding:5px;
-              a {
-                  color: #3D3D3D;
-                  text-decoration: none;
-                  padding: 0 10px;
-              }
-
+          &.select {
+            border-bottom: 2px solid $primary-color;
+            background-color: $li-color-hover;
           }
-        li:hover{
-          border-bottom: 2px solid #BFBFBF;
+        }
+        div.tab:hover{
+          border-bottom: 2px solid $primary-color;
           background-color: $li-color-hover;
         }
-      }
 
-      form {
-          width: 50%;
-          transform: translateX(50%);
-          label {
-              display: block;
+      }
+      .select-tab {
+        margin-top: 10px;
+        margin-bottom: 50px;
+        .row {
+          margin-bottom: 15px;
+          display: inline-flex;
+          width: 100%;
+          input-validate {
+            width: 50%;
+            label {
+              width: 80%;
+              font-size: 15px;
               color: #3D3D3D;
-              text-align: left;
-              margin-top: 40px;
-              font-size: 13px;
-              white-space: normal;
-          }
-          .lugar {
-              display: inline-block;
-              float: left;
-          }
-          .fecha {
-              display: inline-block;
-              float: right;
-              margin-right: 20px;
-          }
-          input {
-              width: 100%;
+            }
+            input {
+              width: 80%;
               border: none;
               border-bottom: 2px solid #BFBFBF;
               height: 30px;
+              text-align: center;
               &:focus {
-                  outline: none;
-                  border-bottom: 2px solid #127391;
+                outline: none;
+                border-bottom: 2px solid #127391;
               }
+            }
           }
-          #lugar {
-              width: 50%;
-              float: left;
-          }
-          #fecha {
-              width: 35%;
-              float: right;
-          }
-          .mitad_izq {
-              display: inline-block;
-              width: 45%;
-              text-align: left;         
-              margin-right: 20px;
-          }
-          .mitad_der {
-              display: inline-block;
-              width: 48%;
-          }
-          input[type="date"] {
-            width: 129px !important;
         }
       }
-      input[type="submit"] {
-        background: #127391;
-        border-style: none;
-        color: white;
-        font-size: 20px;
-        float: right;
-        margin: 50px 0;
-        height: 35px;
-        width: 120px;
-        font-size: 14px;
-        font-weight: bold;
-        display: inline-block;
-        cursor: pointer;
     }
+
   }
 }
