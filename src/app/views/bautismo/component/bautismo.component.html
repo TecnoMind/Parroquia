@@ -33,6 +33,11 @@
                                         [label]="'Madre del bautizado'" [capitalise]="true" [inputType]="'text'">
                         </input-validate>
                     </div>
+                    <div class="row">
+                        <input-validate [model]="sacrament" [length]="" [data]="'date'" [isRequired]="true"
+                                        [label]="'Fecha del bautizo'" [capitalise]="true" [inputType]="'date'">
+                        </input-validate>
+                    </div>
                 </div>
                 <div *ngSwitchCase="'Testigos'" class="select-tab">
                     <label for="padrino" class="mitad_izq">Nombre del padrino</label>
