@@ -10,13 +10,13 @@ import {LoginService} from "./views/login/service/login.service";
 import {BautismoComponent} from "./views/bautismo/component/bautismo.component";
 import {MenuComponent} from "./views/commons/component/menu.component";
 import {EventRepository} from "./views/commons/repository/event.repository";
-import {BautismoRepository} from "./views/commons/repository/bautismo.repository";
 import {ConfirmacionComponent} from "./views/confirmacion/component/confirmacion.component";
 import {MatrimonioComponent} from "./views/matrimonio/component/matrimonio.component";
 import {ComunionComponent} from "./views/comunion/component/comunion.component";
 import {SweetAlert2Module} from '@toverux/ngx-sweetalert2';
 import {InputValidateComponent} from "./views/commons/component/input.validate.component";
 import {SearchComponent} from "./views/buscador/component/search.component";
+import {SacramentRepository} from "./views/commons/repository/sacrament.repository";
 
 @NgModule({
     imports: [
@@ -36,7 +36,7 @@ import {SearchComponent} from "./views/buscador/component/search.component";
         ComunionComponent,
         InputValidateComponent
     ],
-    providers: [SettingsImpl, UserRepository, LoginService, EventRepository, BautismoRepository],
+    providers: [SettingsImpl, UserRepository, LoginService, EventRepository, SacramentRepository],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -15,9 +15,8 @@ export class SaveComponent {
 
     // @ts-ignore
     private viewMode: string =  this.tabs[0];
-        
-    constructor(protected sacramentRepository: SacramentRepository, protected router: Router){
-        //this.sacrament.sacrament = 1;
+
+    constructor(protected sacramentRepository: SacramentRepository, protected router: Router) {
     }
 
       // @ts-ignore

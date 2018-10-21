@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {SacramentInfo} from "../../commons/model/bautismo.model";
-import {BautismoRepository} from "../../commons/repository/bautismo.repository";
+import {SacramentRepository} from "../../commons/repository/sacrament.repository";
 
 
 @Component({
@@ -10,7 +10,7 @@ export class ConfirmacionComponent {
     // @ts-ignore
     private sacrament: SacramentInfo = new SacramentInfo();
 
-    constructor(private bautismoRepository: BautismoRepository){}
+    constructor(private bautismoRepository: SacramentRepository){}
 
 
     // @ts-ignore
