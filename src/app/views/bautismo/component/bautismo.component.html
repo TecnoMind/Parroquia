@@ -13,63 +13,76 @@
                 </div>
             </div>
 
-            <div [ngSwitch]="viewMode" class="select-tab">
+            <form id="form" name="form" #myForm="ngForm">
+                <div [ngSwitch]="viewMode" class="select-tab">
 
-                <div *ngSwitchDefault>
-                    <div class="row">
-                        <input-validate [model]="sacrament" [length]="35" [data]="'name'" [isRequired]="true" [inputType]="'text'"
-                                        [label]="'Nombre del bautizado'" [capitalise]="true">
-                        </input-validate>
-                        <input-validate [model]="sacrament" [length]="" [data]="'bornPlace'" [isRequired]="true" [inputType]="'text'"
-                                        [label]="'Lugar de nacimiento'" [capitalise]="true">
-                        </input-validate>
-                    </div>
+                    <div *ngSwitchDefault>
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="35" [data]="'name'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Nombre del bautizado'" [capitalise]="true">
+                            </input-validate>
 
-                    <div class="row">
-                        <input-validate [model]="sacrament" [length]="" [data]="'fatherName'" [isRequired]="true"
-                                        [label]="'Padre del bautizado'" [capitalise]="true" [inputType]="'text'">
-                        </input-validate>
-                        <input-validate [model]="sacrament" [length]="" [data]="'motherName'" [isRequired]="true"
-                                        [label]="'Madre del bautizado'" [capitalise]="true" [inputType]="'text'">
-                        </input-validate>
+                            <input-validate [model]="sacrament" [length]="35" [data]="'bornPlace'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Lugar de nacimiento'" [capitalise]="true">
+                            </input-validate>
+                        </div>
+
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="35" [data]="'fatherName'" [isRequired]="true"
+                                            [label]="'Padre del bautizado'" [capitalise]="true" [inputType]="'text'">
+                            </input-validate>
+                            <input-validate [model]="sacrament" [length]="35" [data]="'motherName'" [isRequired]="true"
+                                            [label]="'Madre del bautizado'" [capitalise]="true" [inputType]="'text'">
+                            </input-validate>
+                        </div>
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="35" [data]="'date'" [isRequired]="true"
+                                            [label]="'Fecha del bautizo'" [capitalise]="false" [inputType]="'date'">
+                            </input-validate>
+                        </div>
                     </div>
-                    <div class="row">
-                        <input-validate [model]="sacrament" [length]="" [data]="'date'" [isRequired]="true"
-                                        [label]="'Fecha del bautizo'" [capitalise]="true" [inputType]="'date'">
-                        </input-validate>
+                    <div *ngSwitchCase="'Testigos'" class="select-tab">
+
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="35" [data]="'godFatherName'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Nombre del padrino'" [capitalise]="true">
+                            </input-validate>
+                            <input-validate [model]="sacrament" [length]="35" [data]="'godMotherName'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Nombre de la madrina'" [capitalise]="true">
+                            </input-validate>
+                        </div>
+
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="35" [data]="'paternalGrandFatherName'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Nombre del abuelo paterno'" [capitalise]="true">
+                            </input-validate>
+                            <input-validate [model]="sacrament" [length]="35" [data]="'paternalGrandMotherName'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Nombre de la abuela paterna'" [capitalise]="true">
+                            </input-validate>
+                        </div>
+
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="35" [data]="'maternalGrandFatherName'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Nombre del abuelo materno'" [capitalise]="true">
+                            </input-validate>
+                            <input-validate [model]="sacrament" [length]="35" [data]="'maternalGrandMotherName'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Nombre de la abuela materna'" [capitalise]="true">
+                            </input-validate>
+                        </div>
+
+                    </div>
+                    <div *ngSwitchCase="'Celebrante'" class="select-tab">
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="35" [data]="'priest'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Nombre del sacerdote'" [capitalise]="true">
+                            </input-validate>
+                        </div>
                     </div>
                 </div>
-                <div *ngSwitchCase="'Testigos'" class="select-tab">
-                    <label for="padrino" class="mitad_izq">Nombre del padrino</label>
-                    <label for="madrina" class="mitad_der">Nombre de la madrina</label>
+            </form>
 
-                    <input type="text" id="padrino" class="mitad_izq plus" [(ngModel)]="sacrament.godFatherName" name="goodFatherName">
-                    <input type="text" id="madrina" class="mitad_der" [(ngModel)]="sacrament.godMotherName" name="goodMotherName">
-
-                    <label for="abuelo_P" class="mitad_izq">Nombre del abuelo paterno</label>
-                    <label for="abuela_P" class="mitad_der">Nombre de la abuela paterna</label>
-
-                    <input type="text" id="abuelo_P" class="mitad_izq plus" [(ngModel)]="sacrament.paternalGrandFatherName"
-                           name="paternalGrandFatherName">
-                    <input type="text" id="abuela_P" class="mitad_der" [(ngModel)]="sacrament.paternalGrandMotherName"
-                           name="paternalGrandMotherName">
-                    <label for="abuelo_M" class="mitad_izq">Nombre del abuelo materno</label>
-                    <label for="abuela_P" class="mitad_der">Nombre de la abuela materna</label>
-
-                    <input type="text" id="abuelo_M" class="mitad_izq plus" [(ngModel)]="sacrament.maternalGrandFatherName"
-                           name="maternalGrandFatherName">
-                    <input type="text" id="abuela_M" class="mitad_der" [(ngModel)]="sacrament.maternalGrandMotherName"
-                           name="paternalGrandMotherName">
-                </div>
-                <div *ngSwitchCase="'Celebrante'" class="select-tab">
-                    <label for="sacerdote">Nombre del sacerdote</label>
-                    <input type="text" id="sacerdote" [(ngModel)]="sacrament.priest" name="priest">
-                </div>
-
-
-            </div>
-            <input type="submit" value="Guardar acta" style="margin-right: 175px;" (click)="save(sacrament)">
-            <input type="submit" value="Cancelar" routerLink="/buscador" style="margin-right: 30px;">
+            <button type="submit" style="margin-right: 175px;" (click)="save(sacrament)">Guardar Sacramento</button>
+            <button type="submit" value="Cancelar" routerLink="/buscador">Cancelar</button>
         </div>
 
     </main>

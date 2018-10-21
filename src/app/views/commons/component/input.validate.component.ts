@@ -13,6 +13,7 @@ export class InputValidateComponent {
     @Input() length: number;
     @Input() capitalise: boolean;
     @Input() inputType: string;
+    @Input() formValid: boolean;
 
     constructor() {
         console.log(this.model);
@@ -27,7 +28,6 @@ export class InputValidateComponent {
                 .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
                 .join(' ');
         }
-
     }
 
 }
