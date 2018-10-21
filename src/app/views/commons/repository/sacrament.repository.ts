@@ -10,7 +10,7 @@ import {SacramentInfo} from "../model/bautismo.model";
  * @class Hero
  */
 @Injectable()
-export class BautismoRepository extends Repository<SacramentInfo> {
+export class SacramentRepository extends Repository<SacramentInfo> {
 
     constructor(public settings: SettingsImpl) {
         super(SacramentInfo.name,  settings);

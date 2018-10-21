@@ -7,81 +7,21 @@
         <h2>Buscar actas</h2>
         <ul>
             <li>
-                <input type="checkbox" name="bautismo" value="bautismo"> Bautismo
-                <input type="checkbox" name="comunion" value="bautismo"> Comunión
-                <input type="checkbox" name="confirmacion" value="bautismo"> Confirmación
-                <input type="checkbox" name="matrimonio" value="bautismo"> Matrimonio
+                <input type="checkbox" name="bautismo" value="bautismo" [ngModel]="eventModel.bautizm"> Bautismo
+                <input type="checkbox" name="comunion" value="bautismo" [ngModel]="eventModel.confirm"> Comunión
+                <input type="checkbox" name="confirmacion" value="bautismo" [ngModel]="eventModel.marriage"> Confirmación
+                <input type="checkbox" name="matrimonio" value="bautismo" [ngModel]="eventModel.communion"> Matrimonio
             </li>
         </ul>
         <div class="lado_izquierdo">
             <div class="dentro_izquierdo">
                 <ol>
-                    <li>Mónica Cruz Sandoval</li>
-                    <li> Raúl Jimenez Ochoa </li>
-                    <li> Stephanie Amaya Cortéz </li>
-                    <li> Valeria Jauregui Valencia </li>
-                    <li> Miguel Álvarez Nuñez </li>
-                    <li> David Quiñonez Ugalde </li>
-                    <li> Joel Flores Flores </li>
-                    <li> Michelle Hernández Pérez </li>
-                    <li> Ángel Díaz Ortíz </li>
-                    <li> Román Sánchez Velázquez </li>
+                    <li *ngFor="let sacrament of sacraments">{{sacrament.name}}
+                        <img src="../../../../assets/images/Editar-acta.svg" class="icon">
+                        <img src="../../../../assets/images/Imprimir-acta.svg" class="icon">
+                        <img src="../../../../assets/images/Borrar-acta.svg" class="icon">
+                    </li>
                 </ol>
-            </div>
-            <div class="dentro_derecho">
-                <ul>
-                    <li>
-                        <img src="../../../../assets/images/Editar-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Imprimir-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Borrar-acta.svg" class="icon">
-                    </li>
-                    <li>
-                        <img src="../../../../assets/images/Editar-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Imprimir-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Borrar-acta.svg" class="icon">
-                    </li>
-                    <li>
-                        <img src="../../../../assets/images/Editar-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Imprimir-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Borrar-acta.svg" class="icon">
-                    </li>
-                    <li>
-                        <img src="../../../../assets/images/Editar-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Imprimir-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Borrar-acta.svg" class="icon">
-                    </li>
-                    <li>
-                        <img src="../../../../assets/images/Editar-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Imprimir-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Borrar-acta.svg" class="icon">
-                    </li>
-
-                    <li>
-                        <img src="../../../../assets/images/Editar-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Imprimir-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Borrar-acta.svg" class="icon">
-                    </li>
-                    <li>
-                        <img src="../../../../assets/images/Editar-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Imprimir-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Borrar-acta.svg" class="icon">
-                    </li>
-                    <li>
-                        <img src="../../../../assets/images/Editar-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Imprimir-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Borrar-acta.svg" class="icon">
-                    </li>
-                    <li>
-                        <img src="../../../../assets/images/Editar-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Imprimir-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Borrar-acta.svg" class="icon">
-                    </li>
-                    <li>
-                        <img src="../../../../assets/images/Editar-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Imprimir-acta.svg" class="icon">
-                        <img src="../../../../assets/images/Borrar-acta.svg" class="icon">
-                    </li>
-                </ul>
             </div>
         </div>
         <div class="lado_derecho">

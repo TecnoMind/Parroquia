@@ -3,7 +3,6 @@
 <div [ngSwitch]="inputType" >
     <div *ngSwitchCase ="'text'">
         <input type="text" [(ngModel)] = "model[data]"
-
                [maxlength]="length"
                [required]="isRequired"
                [name]="data"
