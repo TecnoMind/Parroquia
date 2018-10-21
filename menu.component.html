@@ -1,0 +1,67 @@
+<div id="menu">
+    <aside *ngIf="show" class="complete">
+        <div class="header">
+            <button (click)="changeShow()">
+                <img src="../../../../assets/images/Menu.svg" class="show">
+            </button>
+            <h3>Usuario:</h3>
+            <h2>{{user?.name}}</h2>
+        </div>
+        <ul>
+            <div class="shadow">
+                <img src="../../../../assets/images/Agregar-Actas.svg" class="icon-father">Crear acta sacramental
+            </div>
+            <ul>
+                <li *ngFor="let sacrament of sacraments" (click)="getLink(sacrament.name)" class="pointer">
+                    <img [src]="sacrament.icon" class="icon">                    
+                    <a >{{sacrament.name}} </a>
+                </li>
+            </ul>
+            <div class="shadow">
+                <img src="../../../../assets/images/Buscar-Actas.svg" class="icon-father">Buscar acta sacramental
+            </div>
+            <ul>
+                <li class="pointer">
+                    <img src="../../../../assets/images/Buscar.svg" class="icon">
+                    <a routerLink="/buscador">Buscar actas</a>
+                </li>
+            </ul>
+            <div class="shadow">
+                <img src="../../../../assets/images/Usuario.svg" class="icon-father">Usuario
+            </div>
+            <ul>
+                <li class="pointer">
+                    <img src="../../../../assets/images/Contrasena.svg" class="icon">
+                    <a href="#">Cambiar contraseña</a>
+                </li>
+                <li class="pointer">
+                    <img src="../../../../assets/images/Cerrar-sesion.svg" class="icon">
+                    <a href="#">Cerrar sesión</a>
+                </li>
+            </ul>
+        </ul>
+    </aside>
+
+    <aside *ngIf="!show" class="partial">
+
+        <div class="header">
+            <button (click)="changeShow()">
+                <img src="../../../../assets/images/Menu.svg" class="show">
+            </button>
+        </div>
+
+        <ul>
+            <li *ngFor="let sacrament of sacraments"><img [src]="sacrament.icon" class="icon"></li>
+            <li>
+                <a routerLink="/buscador"><img src="../../../../assets/images/Buscar.svg" class="icon"></a>
+            </li>
+            <li>
+                <img src="../../../../assets/images/Contrasena.svg" class="icon">
+            </li>
+            <li>
+                <img src="../../../../assets/images/Cerrar-sesion.svg" class="icon">
+            </li>
+        </ul>
+    </aside>
+
+</div>
