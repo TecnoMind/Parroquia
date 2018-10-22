@@ -15,8 +15,11 @@ const appRoutes: Routes = [
     { path: 'bautismo', component: BautismoComponent},
     { path: 'bautismo/:id', component: BautismoComponent},
     { path: 'confirmacion', component: ConfirmacionComponent},
+    { path: 'confirmacion/:id', component: ConfirmacionComponent},
     { path: 'matrimonio', component: MatrimonioComponent},
+    { path: 'matrimonio/:id', component: MatrimonioComponent},
     { path: 'comunion', component: ComunionComponent},
+    { path: 'comunion/:id', component: ComunionComponent},
     { path: 'buscador', component: SearchComponent},
     { path: '', redirectTo: '/login', pathMatch: 'full'}
 ];

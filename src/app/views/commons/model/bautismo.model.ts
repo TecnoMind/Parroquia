@@ -18,6 +18,27 @@ export class SacramentInfo extends Model{
     private _priest: string;
 
 
+
+    constructor(model?: SacramentInfo) {
+        super();
+        if(model){
+            this._id = model.id;
+            this._sacrament = model.sacrament;
+            this._name = model.name;
+            this._bornPlace = model.bornPlace;
+            this._date = model.date;
+            this._fatherName = model.fatherName;
+            this._motherName = model.motherName;
+            this._godFatherName = model.godFatherName;
+            this._godMotherName = model.godMotherName;
+            this._paternalGrandMotherName = model.paternalGrandMotherName;
+            this._paternalGrandFatherName = model.paternalGrandFatherName;
+            this._maternalGrandMotherName = model.maternalGrandMotherName;
+            this._maternalGrandFatherName = model.maternalGrandFatherName;
+            this._priest = model.priest;
+        }
+    }
+
     get id(): number {
         return this._id;
     }

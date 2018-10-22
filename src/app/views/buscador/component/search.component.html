@@ -46,7 +46,8 @@
                             {{sacrament.name}}
                         </div>
                         <div class="img">
-                            <img src="../../../../assets/images/Editar-acta.svg" class="icon">
+                            <img src="../../../../assets/images/Editar-acta.svg" class="icon"
+                                 (click)="getLink(sacrament.sacrament, sacrament.id)">
                             <img src="../../../../assets/images/Imprimir-acta.svg" class="icon">
                             <img src="../../../../assets/images/Borrar-acta.svg" class="icon">
                         </div>

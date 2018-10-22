@@ -70,10 +70,11 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
     }
 
     update(entity: T): Promise<void> {
-
+     //   console.log(entity);
         let fields = entity.toArray();
         let values = entity.toValues(fields);
-        let sql = 'UPDATE ' + this.__table + ' SET ' + this.getClause(fields, '$',',');
+        let sql = 'UPDATE ' + this.__table + ' SET ' + this.getClause(fields, '$',',')
+            + 'WHERE id = $id';
 
         return this.change(sql, values).then((result) => {
             if (result.changes !== 1) {
@@ -118,7 +119,10 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
     private getClause(fields: Array<string>, firstJoint: string, secondJoint: string) {
         let where  = '';
         fields.forEach(field =>{
-            where += field + ' = ' + firstJoint + field + ' ' + secondJoint + ' ';
+            if(field !== 'id') {
+                where += field + ' = ' + firstJoint + field + ' ' + secondJoint + ' ';
+            }
+
         });
         return where.substring(0, where.length - (secondJoint.length + 1));
     }
