@@ -24,23 +24,6 @@ export class AppComponent {
             this.createDb(this.settings.dbPath);
         }
     }
-/*
-    public openDb(filename: string) {
-        this.dataAccess.openDb(filename)
-            .then(() => {
-                if (!this.settings.hasFixedDbLocation) {
-                    this.settings.dbPath = filename;
-                    this.settings.write();
-                }
-            })
-            .then(() => {
-                //this.getHeroes();
-            })
-            .catch((reason) => {
-                // Handle errors
-                console.log('Error occurred while opening database: ', reason);
-            });
-    }*/
 
     public createDb(filename: string) {
 

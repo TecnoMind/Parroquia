@@ -2,10 +2,10 @@ import {Model} from "../../../db/model/model";
 
 export class EventModel extends Model {
 
-    private _bautizm: boolean = false;
-    private _confirm: boolean = false;
-    private _marriage: boolean = false;
-    private _communion: boolean = false;
+    private _bautizm: boolean = true;
+    private _confirm: boolean = true;
+    private _marriage: boolean = true;
+    private _communion: boolean = true;
 
 
     get bautizm(): boolean {

@@ -8,6 +8,7 @@
                [name]="data"
                [id]="data"
                (input)="capitalize()"
+               (change)="validate(inp.invalid && (inp.dirty || inp.touched))"
                #inp="ngModel"/>
         <div *ngIf="inp.invalid && (inp.dirty || inp.touched)"
              class="alert alert-danger">
@@ -21,6 +22,7 @@
                [required]="isRequired"
                [name]="data"
                [id]="data"
+               (change)="validate(inp.invalid && (inp.dirty || inp.touched))"
                #inp="ngModel"/>
         <div *ngIf="inp.invalid && (inp.dirty || inp.touched)"
              class="alert alert-danger">

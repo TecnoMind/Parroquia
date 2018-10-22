@@ -8,7 +8,8 @@
             <h2>Crear nueva acta de bautismo</h2>
 
             <div class="tabs">
-                <div class="tab" *ngFor="let tab of tabs" (click)="viewMode = tab" [ngClass]="{'select': viewMode === tab}">
+                <div class="tab" *ngFor="let tab of tabs" (click)="viewMode = tab"
+                     [ngClass]="{'select': viewMode === tab}">
                     <a>{{tab}}</a>
                 </div>
             </div>
@@ -19,7 +20,7 @@
                     <div *ngSwitchDefault>
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'name'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Nombre del bautizado'" [capitalise]="true">
+                                            [label]="'Nombre del bautizado'" [capitalise]="true" [isValid]="isValid">
                             </input-validate>
 
                             <input-validate [model]="sacrament" [length]="35" [data]="'bornPlace'" [isRequired]="true" [inputType]="'text'"
@@ -81,7 +82,9 @@
                 </div>
             </form>
 
-            <button type="submit" style="margin-right: 175px;" (click)="save(sacrament, sacrament.id)">Guardar Sacramento</button>
+            <button type="submit"  (click)="save(sacrament, sacrament.id)" [disabled]="isValid">
+                Guardar
+            </button>
             <button type="submit" value="Cancelar" routerLink="/buscador">Cancelar</button>
         </div>
 

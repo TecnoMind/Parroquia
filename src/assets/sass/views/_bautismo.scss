@@ -73,6 +73,18 @@
           }
         }
       }
+      button {
+        background-color: $primary-color;
+        border-style: none;
+        color: white;
+        margin: 50px calc(100%/4 - 120px);
+        height: 35px;
+        width: 120px;
+        font-size: 12px;
+        font-weight: bold;
+        display: inline-block;
+        cursor: pointer;
+      }
     }
 
   }

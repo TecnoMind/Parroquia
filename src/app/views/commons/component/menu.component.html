@@ -12,7 +12,8 @@
                 <img src="../../../../assets/images/Agregar-Actas.svg" class="icon-father">Crear acta sacramental
             </div>
             <ul>
-                <li *ngFor="let sacrament of sacraments" (click)="getLink(sacrament.name)" class="pointer">
+                <li *ngFor="let sacrament of sacraments" (click)="getLink(sacrament.name)" class="pointer"
+                    [ngClass]="{'select': isCurrentLink(sacrament.name)}">
                     <img [src]="sacrament.icon" class="icon">
                     <a >{{sacrament.name}} </a>
                 </li>
@@ -21,9 +22,9 @@
                 <img src="../../../../assets/images/Buscar-Actas.svg" class="icon-father">Buscar acta sacramental
             </div>
             <ul>
-                <li class="pointer">
+                <li class="pointer"  [ngClass]="{'select': isCurrentLink('buscador')}"  routerLink="/buscador">
                     <img src="../../../../assets/images/Buscar.svg" class="icon">
-                    <a routerLink="/buscador">Buscar actas</a>
+                    <a>Buscar actas</a>
                 </li>
             </ul>
             <div class="shadow">
@@ -51,9 +52,13 @@
         </div>
 
         <ul>
-            <li *ngFor="let sacrament of sacraments"><img [src]="sacrament.icon" class="icon"></li>
-            <li>
-                <a routerLink="/buscador"><img src="../../../../assets/images/Buscar.svg" class="icon"></a>
+            <li *ngFor="let sacrament of sacraments"   [ngClass]="{'select': isCurrentLink(sacrament.name)}"
+                (click)="getLink(sacrament.name)">
+                <img [src]="sacrament.icon" class="icon">
+            </li>
+            <li routerLink="/buscador" [ngClass]="{'select': isCurrentLink('buscador')}" >
+                <a><img src="../../../../assets/images/Buscar.svg" class="icon" routerLink="/buscador"
+                ></a>
             </li>
             <li>
                 <img src="../../../../assets/images/Contrasena.svg" class="icon">

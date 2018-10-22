@@ -59,9 +59,13 @@
                         cursor: pointer;
                     }
                     font-weight: bold;
+                    &.select {
+                        background: #acc0f6;
+                    }
                     background: $li-color;
                     text-align: left;
                     padding: 2px 0;
+
                     a{
                         display: inline-block;
                         font-weight: 100;
@@ -100,6 +104,9 @@
                 font-weight: bold;
                 background: $li-color;
                 padding: 15px 0;
+                &.select {
+                    background: #acc0f6;
+                }
                 .icon{
                     width: 25px;
                     height: 25px;

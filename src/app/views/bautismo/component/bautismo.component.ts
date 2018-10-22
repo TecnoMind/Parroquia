@@ -8,7 +8,10 @@ import {SacramentRepository} from "../../commons/repository/sacrament.repository
 @Component({
     templateUrl: './bautismo.component.html'
 })
-export class BautismoComponent extends SaveComponent implements OnInit{
+export class BautismoComponent extends SaveComponent implements OnInit {
+
+    // @ts-ignore
+    private isValid: boolean = false;
 
     constructor(protected sacramentRepository: SacramentRepository, protected router: Router,protected route :ActivatedRoute) {
         super(sacramentRepository, router, route);

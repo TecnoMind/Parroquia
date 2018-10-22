@@ -67,7 +67,9 @@ export class MenuComponent implements OnInit{
         this.router.navigateByUrl("/" + link.toLowerCase().replace('ó','o'));
     }
 
-
+    public isCurrentLink(sacrament: string): boolean{
+        return this.router.url ===  "/" + sacrament.toLowerCase().replace('ó','o');
+    }
 
 
 

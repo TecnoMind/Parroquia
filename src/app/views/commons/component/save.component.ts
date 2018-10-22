@@ -42,8 +42,6 @@ export class SaveComponent implements OnInit{
     }
 
     protected updateSacrament(model: SacramentInfo) {
-        let x = new SacramentInfo(model);
-        console.log(x.toArray());
         this.sacramentRepository.openDb(this.sacramentRepository.settings.dbPath)
             .then(() => {
             })

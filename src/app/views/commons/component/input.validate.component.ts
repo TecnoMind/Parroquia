@@ -14,6 +14,7 @@ export class InputValidateComponent {
     @Input() capitalise: boolean;
     @Input() inputType: string;
     @Input() formValid: boolean;
+    @Input() isValid: boolean;
 
     constructor() {
 
@@ -28,6 +29,12 @@ export class InputValidateComponent {
                 .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
                 .join(' ');
         }
+    }
+
+    // @ts-ignore
+    private validate(valid: boolean) {
+        this.isValid = valid;
+        console.log(this.isValid);
     }
 
 }
