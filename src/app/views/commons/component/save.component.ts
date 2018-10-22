@@ -1,11 +1,12 @@
 import {SacramentInfo} from "../model/sacramentInfo.model";
 import {SacramentRepository} from "../repository/sacrament.repository";
 import swall from 'sweetalert2'
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import { OnInit } from '@angular/core';
 
-export class SaveComponent {
+export class SaveComponent implements OnInit{
     // @ts-ignore
-    //private sacrament: SacramentInfo = new SacramentInfo();
+    protected sacrament: SacramentInfo = new SacramentInfo();
 
     // @ts-ignore
     private showForm : boolean = true;
@@ -16,7 +17,7 @@ export class SaveComponent {
     // @ts-ignore
     private viewMode: string =  this.tabs[0];
 
-    constructor(protected sacramentRepository: SacramentRepository, protected router: Router) {
+    constructor(protected sacramentRepository: SacramentRepository, protected router: Router,protected route :ActivatedRoute) {
     }
 
       // @ts-ignore
@@ -96,4 +97,23 @@ export class SaveComponent {
             });
     }
 
+    
+    ngOnInit(): void {
+        this.route.params.subscribe(params => {
+            if(params.id) {
+                this.sacramentRepository.openDb(this.sacramentRepository.settings.dbPath)
+                    .then(() => {
+                    })
+                    .then(() => {
+                        this.sacramentRepository.findOne(params.id).then(sacrament => {
+                           this.sacrament = sacrament;
+                        })
+                    })
+                    .catch((reason) => {
+                        // Handle errors
+                        console.log('Error occurred while opening database: ', reason);
+                    });
+            }
+      });
+      }
 }

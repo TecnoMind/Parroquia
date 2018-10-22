@@ -47,13 +47,13 @@ export class SearchComponent implements OnInit{
     private filterSacraments() {
         this.sacramentsLeftList = this.sacraments.slice(0, this.sacraments.length/2);
         this.sacramentsLeftList = this.sacramentsLeftList.filter(sacrament => ((sacrament.sacrament == 1 && this.eventModel.bautizm )
-        || (sacrament.sacrament == 2 && this.eventModel.confirm ) || (sacrament.sacrament == 3 && this.eventModel.marriage ) ||
-            (sacrament.sacrament == 4 && this.eventModel.communion )));
+        || (sacrament.sacrament == 3 && this.eventModel.confirm ) || (sacrament.sacrament == 4 && this.eventModel.marriage ) ||
+            (sacrament.sacrament == 2 && this.eventModel.communion )));
 
         this.sacramentsRightList = this.sacraments.slice( this.sacraments.length/2 , this.sacraments.length );
         this.sacramentsRightList = this.sacramentsRightList.filter(sacrament => ((sacrament.sacrament == 1 && this.eventModel.bautizm )
-            || (sacrament.sacrament == 2 && this.eventModel.confirm ) || (sacrament.sacrament == 3 && this.eventModel.marriage ) ||
-            (sacrament.sacrament == 4 && this.eventModel.communion )));
+            || (sacrament.sacrament == 3 && this.eventModel.confirm ) || (sacrament.sacrament == 4 && this.eventModel.marriage ) ||
+            (sacrament.sacrament == 2 && this.eventModel.communion )));
     }
 
     // @ts-ignore
@@ -66,9 +66,9 @@ export class SearchComponent implements OnInit{
         let link = '';
         switch (sacrament) {
             case 1: link = 'bautismo';  break;
-            case 2: link = 'confirmacion';  break;
-            case 3: link = 'matrimonio';  break;
-            case 4: link = 'comunion';  break;
+            case 2: link = 'comunion';  break;
+            case 3: link = 'confirmacion';  break;
+            case 4: link = 'matrimonio';  break;
         }
         this.router.navigate(["/" + link, id]);
     }
