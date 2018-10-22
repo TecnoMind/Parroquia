@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS `sacrament` (
 );
 
 INSERT INTO `sacrament`(name, icon) values('Bautismo', 'assets/images/Bautismo.svg');
+INSERT INTO `sacrament`(name, icon) values('Comunión', 'assets/images/Comunion.svg');
 INSERT INTO `sacrament`(name, icon) values('Confirmación', 'assets/images/Confirmacion.svg');
 INSERT INTO `sacrament`(name, icon) values('Matrimonio', 'assets/images/Matrimonio.svg');
-INSERT INTO `sacrament`(name, icon) values('Comunión', 'assets/images/Comunion.svg');
 
 
 CREATE TABLE IF NOT EXISTS `sacrament_info` (

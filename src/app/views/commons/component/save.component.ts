@@ -1,4 +1,4 @@
-import {SacramentInfo} from "../model/bautismo.model";
+import {SacramentInfo} from "../model/sacramentInfo.model";
 import {SacramentRepository} from "../repository/sacrament.repository";
 import swall from 'sweetalert2'
 import {Router} from "@angular/router";

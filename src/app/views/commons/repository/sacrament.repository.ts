@@ -1,7 +1,7 @@
 import {Repository} from '../../../db/repository/impl/repository';
 import {Injectable} from "@angular/core";
 import {SettingsImpl} from "../../../db/repository/impl/settings.impl";
-import {SacramentInfo} from "../model/bautismo.model";
+import {SacramentInfo} from "../model/sacramentInfo.model";
 
 /**
  * Simple class for selecting, inserting, updating and deleting Heroes in hero table.

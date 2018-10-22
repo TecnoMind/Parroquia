@@ -7,18 +7,18 @@
         <h2>Buscar actas</h2>
         <ul>
             <li>
-                    <input type="checkbox" name="bautizm"
-                           [checked]="eventModel.bautizm"
-                           (change)="changeStatus('bautizm',!eventModel.bautizm)"> Bautismo
-                    <input type="checkbox" name="comunion"
-                           [checked]="eventModel.communion"
-                           (change)="changeStatus('communion',!eventModel.communion)"> Comunión
-                    <input type="checkbox" name="confirm"
-                           [checked]="eventModel.confirm"
-                           (change)="changeStatus('confirm',!eventModel.confirm)"> Confirmación
-                    <input type="checkbox" name="matrimonio"
-                           [checked]="eventModel.marriage"
-                           (change)="changeStatus('marriage',!eventModel.marriage)"> Matrimonio
+            <input type="checkbox" name="bautizm"
+                    [checked]="eventModel.bautizm"
+                    (change)="changeStatus('bautizm',!eventModel.bautizm)"> Bautismo
+            <input type="checkbox" name="comunion"
+                    [checked]="eventModel.communion"
+                    (change)="changeStatus('communion',!eventModel.communion)"> Comunión
+            <input type="checkbox" name="confirm"
+                    [checked]="eventModel.confirm"
+                    (change)="changeStatus('confirm',!eventModel.confirm)"> Confirmación
+            <input type="checkbox" name="matrimonio"
+                    [checked]="eventModel.marriage"
+                    (change)="changeStatus('marriage',!eventModel.marriage)"> Matrimonio
             </li>
         </ul>
         <div class="content">
@@ -41,7 +41,6 @@
             <div class="row">
                 <ol>
                     <li *ngFor="let sacrament of sacramentsRightList">
-
                         <div class="text">
                             {{sacrament.name}}
                         </div>

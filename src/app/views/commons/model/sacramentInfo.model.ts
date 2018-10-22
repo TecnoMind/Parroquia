@@ -11,12 +11,14 @@ export class SacramentInfo extends Model{
     private _motherName: string;
     private _godFatherName:string;
     private _godMotherName: string;
+    private _baptismChurch: string;
+	private _baptismPlace: string;
+    private _baptismDate: Date;
     private _paternalGrandMotherName: string;
     private _paternalGrandFatherName: string;
     private _maternalGrandMotherName: string;
     private _maternalGrandFatherName: string;
     private _priest: string;
-
 
     get id(): number {
         return this._id;
@@ -80,6 +82,30 @@ export class SacramentInfo extends Model{
 
     set godMotherName(value: string) {
         this._godMotherName = value;
+    }
+
+    get baptismChurch(): string {
+        return this._baptismChurch;
+    }
+
+    set baptismChurch(value: string) {
+        this._baptismChurch = value;
+    }
+
+    get baptismPlace(): string {
+        return this._baptismPlace;
+    }
+
+    set baptismPlace(value: string) {
+        this._baptismPlace = value;
+    }
+
+    get baptismDate(): Date {
+        return this._baptismDate;
+    }
+
+    set baptismDate(value: Date) {
+        this._baptismDate = value;
     }
 
     get paternalGrandMotherName(): string {

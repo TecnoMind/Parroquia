@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {SacramentInfo} from "../../commons/model/bautismo.model";
+import {SacramentInfo} from "../../commons/model/sacramentInfo.model";
 import {SacramentRepository} from "../../commons/repository/sacrament.repository";
 
 

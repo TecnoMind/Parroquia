@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {EventModel} from "../../commons/model/event.model";
-import {SacramentInfo} from "../../commons/model/bautismo.model";
+import {SacramentInfo} from "../../commons/model/sacramentInfo.model";
 import {SacramentRepository} from "../../commons/repository/sacrament.repository";
 
 @Component({
