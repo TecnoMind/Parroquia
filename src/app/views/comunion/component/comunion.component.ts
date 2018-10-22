@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-//import {SacramentInfo} from "../../commons/model/sacramentInfo.model";
 import {SacramentRepository} from "../../commons/repository/sacrament.repository";
 import { SaveComponent } from '../../commons/component/save.component';
 import {ActivatedRoute, Router} from "@angular/router";

@@ -1,11 +1,11 @@
-<div id="nueva-acta-comunion">
+<div id="nueva-acta">
     <header>
         <h1>Nuestra señora del Perpetuo Socorro</h1>
     </header>
     <menu></menu>
     <main *ngIf="showForm">
         <div class="content">
-            <h2>Crear nueva acta de bautismo</h2>
+            <h2>Crear nueva acta de comunión</h2>
 
             <div class="tabs">
                 <div class="tab" *ngFor="let tab of tabs" (click)="viewMode = tab" [ngClass]="{'select': viewMode === tab}">
@@ -24,12 +24,16 @@
                             <input-validate [model]="sacrament" [length]="50" [data]="'baptismChurch'" [isRequired]="true" [inputType]="'text'"
                                             [label]="'Parroquia de bautismo'" [capitalise]="true">
                             </input-validate>
+                        </div>
+                        <div class="row">
                             <input-validate [model]="sacrament" [length]="50" [data]="'baptismPlace'" [isRequired]="true" [inputType]="'text'"
                                             [label]="'Ciudad de bautismo'" [capitalise]="true">
                             </input-validate>
                             <input-validate [model]="sacrament" [length]="35" [data]="'baptismDate'" [isRequired]="true" [inputType]="'date'"
                                             [label]="'Fecha del bautismo'" [capitalise]="true">
-                            </input-validate>
+                            </input-validate>                            
+                        </div>
+                        <div class="row">                            
                             <input-validate [model]="sacrament" [length]="35" [data]="'date'" [isRequired]="true"
                                             [label]="'Fecha de la comunión'" [capitalise]="false" [inputType]="'date'">
                             </input-validate>

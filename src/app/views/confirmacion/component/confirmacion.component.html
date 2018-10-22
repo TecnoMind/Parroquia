@@ -3,58 +3,74 @@
         <h1>Nuestra señora del Perpetuo Socorro</h1>
     </header>
     <menu></menu>
-    <main>
-        <h2>Crear nueva acta de bautismo</h2>
-        <ul class="paginacion">
-            <li (click)="viewMode = 'tab1'"><a >Catecumeno</a></li>
-            <li (click)="viewMode = 'tab2'"><a >Testigos</a></li>        
-            <li (click)="viewMode = 'tab3'"><a >Celebrante</a></li>
-        </ul>
-        <div [ngSwitch]="viewMode">
-            <form action="#" id="tab1" *ngSwitchCase="'tab1'">
-                <label for="bautizado">Nombre del bautizado</label>
-                <input type="text" id="bautizado" [(ngModel)]="bautismo.name" name="name">
+    <main *ngIf="showForm">
+        <div class="content">
+            <h2>Crear nueva acta de confirmación</h2>
 
-                <label for="lugar" class="lugar">Lugar de nacimiento</label>
-                <label for="fecha" class="fecha">Fecha del bautizo</label>
+            <div class="tabs">
+                <div class="tab" *ngFor="let tab of tabs" (click)="viewMode = tab" [ngClass]="{'select': viewMode === tab}">
+                    <a>{{tab}}</a>
+                </div>
+            </div>
 
-                <input type="text" id="lugar" [(ngModel)]="bautismo.place" name="place">
-                <input type="date" id="fecha" [(ngModel)]="bautismo.date" name="date">
-                <br><br><br><br><br><br>
-                <label for="papa">Padre del bautizado</label>
-                <input type="text" id="papa" [(ngModel)]="bautismo.fatherName" name="fatherName">
+            <form id="form" name="form" #myForm="ngForm">
+                <div [ngSwitch]="viewMode" class="select-tab">
 
-                <label for="mama">Madre del bautizado</label>
-                <input type="text" id="mama" [(ngModel)]="bautismo.motherName" name="motherName">
+                    <div *ngSwitchDefault>
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="35" [data]="'name'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Nombre del catecumeno'" [capitalise]="true">
+                            </input-validate>
+                            <input-validate [model]="sacrament" [length]="50" [data]="'baptismChurch'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Parroquia de bautismo'" [capitalise]="true">
+                            </input-validate>
+                        </div>
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="50" [data]="'baptismPlace'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Ciudad de bautismo'" [capitalise]="true">
+                            </input-validate>
+                            <input-validate [model]="sacrament" [length]="35" [data]="'baptismDate'" [isRequired]="true" [inputType]="'date'"
+                                            [label]="'Fecha del bautismo'" [capitalise]="true">
+                            </input-validate>
+                        </div>
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="35" [data]="'date'" [isRequired]="true"
+                                            [label]="'Fecha de la confirmación'" [capitalise]="false" [inputType]="'date'">
+                            </input-validate>
+                        </div>
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="35" [data]="'fatherName'" [isRequired]="true"
+                                            [label]="'Padre del catecumeno'" [capitalise]="true" [inputType]="'text'">
+                            </input-validate>
+                            <input-validate [model]="sacrament" [length]="35" [data]="'motherName'" [isRequired]="true"
+                                            [label]="'Madre del catecumeno'" [capitalise]="true" [inputType]="'text'">
+                            </input-validate>
+                        </div>
+                    </div>
+
+                    <div *ngSwitchCase="'Testigos'" class="select-tab">
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="35" [data]="'godFatherName'" [isRequired]="false" [inputType]="'text'"
+                                            [label]="'Nombre del padrino'" [capitalise]="true">
+                            </input-validate>
+                            <input-validate [model]="sacrament" [length]="35" [data]="'godMotherName'" [isRequired]="false" [inputType]="'text'"
+                                            [label]="'Nombre de la madrina'" [capitalise]="true">
+                            </input-validate>
+                        </div>
+                    </div>
+
+                    <div *ngSwitchCase="'Celebrante'" class="select-tab">
+                        <div class="row">
+                            <input-validate [model]="sacrament" [length]="35" [data]="'priest'" [isRequired]="true" [inputType]="'text'"
+                                            [label]="'Nombre del sacerdote'" [capitalise]="true">
+                            </input-validate>
+                        </div>
+                    </div>
+                </div>
             </form>
-            <form action="#" id="tab2" *ngSwitchCase="'tab2'">
-            <label for="padrino" class="mitad_izq">Nombre del padrino</label>
-            <label for="madrina" class="mitad_der">Nombre de la madrina</label>
-            
-            <input type="text" id="padrino" class="mitad_izq plus" [(ngModel)]="bautismo.goodFatherName" name="goodFatherName">
-            <input type="text" id="madrina" class="mitad_der" [(ngModel)]="bautismo.goodMotherName" name="goodMotherName">
-            
-            <label for="abuelo_P" class="mitad_izq">Nombre del abuelo paterno</label>
-            <label for="abuela_P" class="mitad_der">Nombre de la abuela paterna</label>
-            
-            <input type="text" id="abuelo_P" class="mitad_izq plus" [(ngModel)]="bautismo.paternalGrandFatherName"
-                name="paternalGrandFatherName">
-            <input type="text" id="abuela_P" class="mitad_der" [(ngModel)]="bautismo.paternalGrandMotherName"
-                name="paternalGrandMotherName">
-            <label for="abuelo_M" class="mitad_izq">Nombre del abuelo materno</label>
-            <label for="abuela_P" class="mitad_der">Nombre de la abuela materna</label>
-            
-            <input type="text" id="abuelo_M" class="mitad_izq plus" [(ngModel)]="bautismo.maternalGrandFatherName"
-                    name="maternalGrandFatherName">
-            <input type="text" id="abuela_M" class="mitad_der" [(ngModel)]="bautismo.maternalGrandMotherName"
-                    name="paternalGrandMotherName">
-        </form>
-        <form action="#" id="tab3" *ngSwitchCase="'tab3'">
-            <label for="sacerdote">Nombre del sacerdote</label>
-            <input type="text" id="sacerdote" [(ngModel)]="bautismo.priest" name="priest">
-        </form>
+
+            <button type="submit" style="margin-right: 175px;" (click)="save(sacrament)">Guardar Sacramento</button>
+            <button type="submit" value="Cancelar" routerLink="/buscador">Cancelar</button>
         </div>
-        <input type="submit" value="Guardar acta" style="margin-right: 175px;" (click)="save(bautismo)">
-        <input type="submit" value="Cancelar" routerLink="/menu" style="margin-right: 30px;">
     </main>
 </div>
