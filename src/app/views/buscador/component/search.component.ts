@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {EventModel} from "../../commons/model/event.model";
 import {SacramentInfo} from "../../commons/model/sacramentInfo.model";
 import {SacramentRepository} from "../../commons/repository/sacrament.repository";
+import {Router} from "@angular/router";
 
 @Component({
     templateUrl: './search.component.html'
@@ -18,7 +19,7 @@ export class SearchComponent implements OnInit{
     private sacramentsLeftList : Array<SacramentInfo> = [];
     private sacramentsRightList : Array<SacramentInfo> = [];
 
-    constructor(private sacramentInfoRepository: SacramentRepository) {
+    constructor(private sacramentInfoRepository: SacramentRepository, private router : Router) {
     }
 
     private getSacraments() {
@@ -60,4 +61,16 @@ export class SearchComponent implements OnInit{
         this.eventModel[type] = status;
         this.filterSacraments()
     }
+
+    public getLink(sacrament:  number, id:number):void {
+        let link = '';
+        switch (sacrament) {
+            case 1: link = 'bautismo';  break;
+            case 2: link = 'confirmacion';  break;
+            case 3: link = 'matrimonio';  break;
+            case 4: link = 'comunion';  break;
+        }
+        this.router.navigate(["/" + link, id]);
+    }
+
 }

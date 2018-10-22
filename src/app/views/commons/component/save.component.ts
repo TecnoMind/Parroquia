@@ -20,7 +20,7 @@ export class SaveComponent {
     }
 
       // @ts-ignore
-      private save(model: SacramentInfo) {
+    protected save(model: SacramentInfo, id:number) {
         this.showForm = false;
         swall({
             text: '¿Desea generar el acta?',
@@ -28,15 +28,45 @@ export class SaveComponent {
             confirmButtonText: 'Aceptar',
             cancelButtonColor: '#d33',
             cancelButtonText:'Cancelar'
-        }).then((result) =>{
+        }).then((result) => {
             if (result.dismiss !== swall.DismissReason.cancel) {
-            this.saveSacrament(model);
+                (id)?this.updateSacrament(model):this.saveSacrament(model);
             }
+
             setTimeout(() => {
                 this.showForm = true;
             }, 100);
 
         });
+    }
+
+    protected updateSacrament(model: SacramentInfo) {
+        let x = new SacramentInfo(model);
+        console.log(x.toArray());
+        this.sacramentRepository.openDb(this.sacramentRepository.settings.dbPath)
+            .then(() => {
+            })
+            .then(() => {
+                this.sacramentRepository.update(new SacramentInfo(model)).then(() => {
+                    swall({
+                        title: 'Guardado Correctamente',
+                        type: 'success',
+                    });
+                    setTimeout(() => {
+                        this.router.navigateByUrl("buscador");
+                    }, 100);
+                },reason => {
+                    swall({
+                        title: 'Error',
+                        type: 'error',
+                    });
+                    console.log(reason);
+                });
+            })
+            .catch((reason) => {
+                // Handle errors
+                console.log('Error occurred while opening database: ', reason);
+            });
     }
 
     private saveSacrament(model: SacramentInfo) {
