@@ -29,7 +29,7 @@ export class DataAccessImpl implements DataAccess {
 
     change(sql: string, values: {}): Promise<IDbResult> {
         return new Promise<IDbResult>((resolve, reject) => {
-            console.log(sql);
+
             this.db.run(sql, values, function (err) {
                 if (err) {
                     console.log(sql);
@@ -136,7 +136,7 @@ export class DataAccessImpl implements DataAccess {
     }
 
     getPragmaVersion(): Promise<number> {
-        console.log(this.db);
+
         return new Promise<number>((resolve, reject) => {
             this.db.get('PRAGMA user_version', (err, row) => {
                 if (err) {
@@ -149,12 +149,10 @@ export class DataAccessImpl implements DataAccess {
     }
 
     openDb(dbPath: string): Promise<void> {
-        console.log('Opening database: ', dbPath);
         return this.getDb(dbPath)
             .then(() => this.setPragmaForeignKeys(true))
 
             .then(() => {
-                console.log('Database opened');
                 return Promise.resolve();
             });
     }
@@ -191,7 +189,6 @@ export class DataAccessImpl implements DataAccess {
                 if (err) {
                     reject(err);
                 } else {
-                    console.log(`PRAGMA foreign_keys = ${value}`);
                     resolve();
                 }
             });

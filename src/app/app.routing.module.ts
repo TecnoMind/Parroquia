@@ -13,7 +13,7 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent},
 
     { path: 'bautismo', component: BautismoComponent},
-    { path: 'bautismo/{id}', component: BautismoComponent},
+    { path: 'bautismo/:id', component: BautismoComponent},
     { path: 'confirmacion', component: ConfirmacionComponent},
     { path: 'matrimonio', component: MatrimonioComponent},
     { path: 'comunion', component: ComunionComponent},

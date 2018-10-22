@@ -1,0 +1,76 @@
+#search {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    height: 100%;
+    main {
+        background: white;
+        color: #3D3D3D;
+        grid-column: 4/ 12;
+        grid-row: 2 / 12;
+        box-shadow: 1px 1px 5px #b5b5b5;
+        margin: 25px 0;
+        h2 {
+            color: #3D3D3D;
+            font-size: 30px;
+            margin: 10px 0;
+            font-weight: bold;
+            display: inline-block;
+            height: 10%;
+            width: 100%;
+        }
+        ul{
+            height: 10%;
+            width: 100%;
+            li {
+                input[type="checkbox"]{
+                    border: 2px solid $second-color;
+                }
+            }
+        }
+        .content{
+            width: 100%;
+            height: 80%;
+            margin-top: 2%;
+            display: inline;
+
+            .row{
+                display: inline-block;
+                width: calc(50% - 30px);
+                height: calc(80% - 2%);
+                vertical-align: top;
+                margin: 5px;
+                ol {
+                    padding-right: 12px;
+                    margin-left: 10px;
+                    li {
+                        width: 100%;
+                        list-style-type: square;
+                        text-align: left;
+                        margin: 10px 0px;
+                        .text {
+                            display: inline-block;
+                            border-bottom: 2px solid $primary-color;
+                            width: 60%;
+                            font-size: 15px;
+                        }
+                        .img {
+                            margin-left: 4px;
+                            display: inline-block;
+                            width: calc(40% - 4px);
+                            img {
+                                cursor: pointer;
+                                margin: 0 calc(30% / 3);
+                                width: 20px;
+                                height: 15px;
+                            }
+                        }
+
+
+                    }
+                }
+            }
+        }
+
+    }
+}

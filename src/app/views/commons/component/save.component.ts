@@ -65,4 +65,5 @@ export class SaveComponent {
                 console.log('Error occurred while opening database: ', reason);
             });
     }
+
 }

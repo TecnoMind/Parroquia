@@ -20,17 +20,15 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
         this.__table = table.split(/(?=[A-Z])/).join('_').toLowerCase();
     }
 
+    // @ts-ignore
     deleteOne(entity: T): void {
-        console.log(entity);
         return undefined;
 
     }
 
     findAll(): Promise<Array<T>> {
         const sql = 'SELECT * FROM ' + this.__table;
-        console.log(sql);
         const values = { };
-        console.log(this.db);
         return new Promise<Array<T>>((resolve, reject) => {
             this.db.all(sql, values, (err, rows) => {
                 if (err) {

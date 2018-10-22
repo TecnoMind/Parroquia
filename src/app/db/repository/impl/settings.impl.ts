@@ -76,10 +76,8 @@ export class SettingsImpl implements SettingsDB{
             this.settingsPath = path.join(remote.app.getPath('userData'), 'settings.json');
         }
 
-        console.log(this.dbPath, this.settingsPath);
 
         const isDevMode = /electron/.test(path.basename(remote.app.getPath('exe'), '.exe'));
-        console.log(isDevMode);
         if (isDevMode) {
             this.dbFolder = path.join(appPath, this.dataSubFolder);
         } else {

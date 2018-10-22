@@ -16,7 +16,7 @@ export class InputValidateComponent {
     @Input() formValid: boolean;
 
     constructor() {
-        console.log(this.model);
+
     }
 
     // @ts-ignore

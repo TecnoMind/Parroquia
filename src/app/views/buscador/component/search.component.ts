@@ -14,6 +14,9 @@ export class SearchComponent implements OnInit{
 
     // @ts-ignore
     private sacraments : Array<SacramentInfo> = [];
+    // @ts-ignore
+    private sacramentsLeftList : Array<SacramentInfo> = [];
+    private sacramentsRightList : Array<SacramentInfo> = [];
 
     constructor(private sacramentInfoRepository: SacramentRepository) {
     }
@@ -25,6 +28,8 @@ export class SearchComponent implements OnInit{
             .then(() => {
                 this.sacramentInfoRepository.findAll().then(sacraments => {
                     this.sacraments = sacraments;
+                    this.sacramentsLeftList = this.sacraments.slice(0, this.sacraments.length/2);
+                    this.sacramentsRightList = this.sacraments.slice( this.sacraments.length/2 , this.sacraments.length );
                 })
             })
             .catch((reason) => {
@@ -35,5 +40,24 @@ export class SearchComponent implements OnInit{
 
     ngOnInit(): void {
         this.getSacraments();
+    }
+
+    // @ts-ignore
+    private filterSacraments() {
+        this.sacramentsLeftList = this.sacraments.slice(0, this.sacraments.length/2);
+        this.sacramentsLeftList = this.sacramentsLeftList.filter(sacrament => ((sacrament.sacrament == 1 && this.eventModel.bautizm )
+        || (sacrament.sacrament == 2 && this.eventModel.confirm ) || (sacrament.sacrament == 3 && this.eventModel.marriage ) ||
+            (sacrament.sacrament == 4 && this.eventModel.communion )));
+
+        this.sacramentsRightList = this.sacraments.slice( this.sacraments.length/2 , this.sacraments.length );
+        this.sacramentsRightList = this.sacramentsRightList.filter(sacrament => ((sacrament.sacrament == 1 && this.eventModel.bautizm )
+            || (sacrament.sacrament == 2 && this.eventModel.confirm ) || (sacrament.sacrament == 3 && this.eventModel.marriage ) ||
+            (sacrament.sacrament == 4 && this.eventModel.communion )));
+    }
+
+    // @ts-ignore
+    private changeStatus(type: string, status: boolean) {
+        this.eventModel[type] = status;
+        this.filterSacraments()
     }
 }
