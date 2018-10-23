@@ -22,6 +22,7 @@ export class SaveComponent implements OnInit{
 
       // @ts-ignore
     protected save(model: SacramentInfo, id:number) {
+
         this.showForm = false;
         swall({
             text: '¿Desea generar el acta?',

@@ -17,13 +17,15 @@ import {SweetAlert2Module} from '@toverux/ngx-sweetalert2';
 import {InputValidateComponent} from "./views/commons/component/input.validate.component";
 import {SearchComponent} from "./views/buscador/component/search.component";
 import {SacramentRepository} from "./views/commons/repository/sacrament.repository";
+import { TooltipModule } from 'ng2-tooltip-directive';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         routing,
-        SweetAlert2Module.forRoot()
+        SweetAlert2Module.forRoot(),
+        TooltipModule
     ],
     declarations: [
         AppComponent,

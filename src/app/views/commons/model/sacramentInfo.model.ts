@@ -1,9 +1,11 @@
 import {Model} from "../../../db/model/model";
+import {Sacrament} from "./sacrament.model";
 
 export class SacramentInfo extends Model{
 
+
     private _id: number;
-    private _sacrament: number = 1;
+    private _sacrament: number;
     private _name: string;
     private _bornPlace: string;
     private _date: Date;
@@ -19,6 +21,8 @@ export class SacramentInfo extends Model{
     private _maternalGrandMotherName: string;
     private _maternalGrandFatherName: string;
     private _priest: string;
+    private _event :Sacrament;
+    private _deleted: number = 0;
     
     constructor(model?: SacramentInfo) {
         super();
@@ -37,6 +41,7 @@ export class SacramentInfo extends Model{
             this._maternalGrandMotherName = model.maternalGrandMotherName;
             this._maternalGrandFatherName = model.maternalGrandFatherName;
             this._priest = model.priest;
+            this._deleted = model.deleted;
         }
     }
 
@@ -174,5 +179,20 @@ export class SacramentInfo extends Model{
 
     set sacrament(value: number) {
         this._sacrament = value;
+    }
+
+    get deleted(): number {
+        return this._deleted;
+    }
+
+    set deleted(value: number) {
+        this._deleted = value;
+    }
+    get event(): Sacrament {
+        return this._event;
+    }
+
+    set event(value: Sacrament) {
+        this._event = value;
     }
 }

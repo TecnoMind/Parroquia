@@ -47,7 +47,8 @@
                         width: 100%;
                         list-style-type: square;
                         text-align: left;
-                        margin: 10px 0px;
+                        margin: 10px 0;
+                        cursor: context-menu;
                         .text {
                             display: inline-block;
                             border-bottom: 2px solid $primary-color;

@@ -3,6 +3,7 @@ import {EventModel} from "../../commons/model/event.model";
 import {SacramentInfo} from "../../commons/model/sacramentInfo.model";
 import {SacramentRepository} from "../../commons/repository/sacrament.repository";
 import {Router} from "@angular/router";
+import {EventRepository} from "../../commons/repository/event.repository";
 
 @Component({
     templateUrl: './search.component.html'
@@ -19,7 +20,7 @@ export class SearchComponent implements OnInit{
     private sacramentsLeftList : Array<SacramentInfo> = [];
     private sacramentsRightList : Array<SacramentInfo> = [];
 
-    constructor(private sacramentInfoRepository: SacramentRepository, private router : Router) {
+    constructor(private sacramentInfoRepository: SacramentRepository, private router : Router,private sacramentRepository: EventRepository) {
     }
 
     private getSacraments() {
@@ -29,9 +30,28 @@ export class SearchComponent implements OnInit{
             .then(() => {
                 this.sacramentInfoRepository.findAll().then(sacraments => {
                     this.sacraments = sacraments;
-                    this.sacramentsLeftList = this.sacraments.slice(0, this.sacraments.length/2);
-                    this.sacramentsRightList = this.sacraments.slice( this.sacraments.length/2 , this.sacraments.length );
+                    this.getSpecificSacrament(this.sacraments);
+                    this.sacramentsLeftList =  this.leftSide(this.sacraments);
+                    this.sacramentsRightList = this.rightSide(this.sacraments);
                 })
+            })
+            .catch((reason) => {
+                // Handle errors
+                console.log('Error occurred while opening database: ', reason);
+            });
+    }
+
+    getSpecificSacrament(sacraments: Array<SacramentInfo>) {
+        this.sacramentRepository.openDb(this.sacramentRepository.settings.dbPath)
+            .then(() => {
+            })
+            .then(() => {
+                sacraments.forEach(sacrament  => {
+                    this.sacramentRepository.findOne(sacrament.sacrament).then(event => {
+                        sacrament.event = event;
+                    })
+                });
+
             })
             .catch((reason) => {
                 // Handle errors
@@ -45,15 +65,15 @@ export class SearchComponent implements OnInit{
 
     // @ts-ignore
     private filterSacraments() {
-        this.sacramentsLeftList = this.sacraments.slice(0, this.sacraments.length/2);
+        this.sacramentsLeftList = this.leftSide(this.sacraments);
         this.sacramentsLeftList = this.sacramentsLeftList.filter(sacrament => ((sacrament.sacrament == 1 && this.eventModel.bautizm )
-        || (sacrament.sacrament == 3 && this.eventModel.confirm ) || (sacrament.sacrament == 4 && this.eventModel.marriage ) ||
-            (sacrament.sacrament == 2 && this.eventModel.communion )));
+        || (sacrament.sacrament == this.eventModel.confirmId && this.eventModel.confirm ) || (sacrament.sacrament == this.eventModel.marriageId && this.eventModel.marriage ) ||
+            (sacrament.sacrament == this.eventModel.communionId && this.eventModel.communion )));
 
-        this.sacramentsRightList = this.sacraments.slice( this.sacraments.length/2 , this.sacraments.length );
+        this.sacramentsRightList = this.rightSide(this.sacraments);
         this.sacramentsRightList = this.sacramentsRightList.filter(sacrament => ((sacrament.sacrament == 1 && this.eventModel.bautizm )
-            || (sacrament.sacrament == 3 && this.eventModel.confirm ) || (sacrament.sacrament == 4 && this.eventModel.marriage ) ||
-            (sacrament.sacrament == 2 && this.eventModel.communion )));
+            || (sacrament.sacrament == this.eventModel.confirmId && this.eventModel.confirm ) || (sacrament.sacrament == this.eventModel.marriageId && this.eventModel.marriage ) ||
+            (sacrament.sacrament == this.eventModel.communionId && this.eventModel.communion )));
     }
 
     // @ts-ignore
@@ -62,15 +82,30 @@ export class SearchComponent implements OnInit{
         this.filterSacraments()
     }
 
-    public getLink(sacrament:  number, id:number):void {
-        let link = '';
-        switch (sacrament) {
-            case 1: link = 'bautismo';  break;
-            case 2: link = 'comunion';  break;
-            case 3: link = 'confirmacion';  break;
-            case 4: link = 'matrimonio';  break;
-        }
-        this.router.navigate(["/" + link, id]);
+    public getLink(sacrament:  string, id:number): void {
+        this.router.navigate(["/" + sacrament.toLowerCase().replace('ó','o'), id]);
+    }
+
+    public rightSide(sacramentInfo: Array<SacramentInfo>): Array<SacramentInfo> {
+        return sacramentInfo.slice(0, this.sacraments.length/2);
+    }
+
+    public leftSide(sacramentInfo: Array<SacramentInfo>): Array<SacramentInfo> {
+        return sacramentInfo.slice( this.sacraments.length/2 , this.sacraments.length );
+    }
+
+    public delete(id: number) {
+        this.sacramentInfoRepository.openDb(this.sacramentInfoRepository.settings.dbPath)
+            .then(() => {
+            })
+            .then(() => {
+                this.sacramentInfoRepository.deleteOne(id);
+                this.getSacraments();
+            })
+            .catch((reason) => {
+                // Handle errors
+                console.log('Error occurred while opening database: ', reason);
+            });
     }
 
 }

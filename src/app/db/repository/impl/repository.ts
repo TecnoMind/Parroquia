@@ -20,18 +20,31 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
         this.__table = table.split(/(?=[A-Z])/).join('_').toLowerCase();
     }
 
-    // @ts-ignore
-    deleteOne(entity: T): void {
-        return undefined;
 
+    deleteOne(id: number): void {
+
+        // @ts-ignore
+        this.findOne(id).then( entity  => {
+            let sql = 'UPDATE ' + this.__table + ' SET deleted = $delete WHERE  id = $id';
+            const values = {$id : id, $delete: 1 };
+             this.change(sql, values).then((result) => {
+                if (result.changes !== 1) {
+                    throw new Error('Expected 1' + this.__table+ 'to be inserted. Was ${result.changes}');
+                }
+            });
+        }).catch(error  => {
+            console.log(error);
+        });
     }
 
     findAll(): Promise<Array<T>> {
-        const sql = 'SELECT * FROM ' + this.__table;
-        const values = { };
+        const sql = 'SELECT * FROM ' + this.__table + ' WHERE deleted = $deleted';
+        const values = { $deleted: 0 };
+        console.log(sql);
         return new Promise<Array<T>>((resolve, reject) => {
             this.db.all(sql, values, (err, rows) => {
                 if (err) {
+                    console.log(err);
                     reject(err);
                 } else {
                     resolve(rows);
@@ -41,8 +54,8 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
     }
 
     findOne(id: number): Promise<T> {
-        let sql = 'SELECT * FROM ' +  this.__table + ' WHERE id = $id';
-        let values = { $id: id};
+        let sql = 'SELECT * FROM ' +  this.__table + ' WHERE id = $id AND deleted = $deleted';
+        let values = { $id: id, $deleted: 0};
 
         return new Promise<T>((resolve, reject) => {
             this.db.get(sql, values, (err, row) => {

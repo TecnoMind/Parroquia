@@ -31,13 +31,13 @@
                 <img src="../../../../assets/images/Usuario.svg" class="icon-father">Usuario
             </div>
             <ul>
-                <li class="pointer">
+                <li class="pointer" >
                     <img src="../../../../assets/images/Contrasena.svg" class="icon">
-                    <a href="#">Cambiar contraseña</a>
+                    <a >Cambiar contraseña</a>
                 </li>
-                <li class="pointer">
+                <li class="pointer" routerLink="/login">
                     <img src="../../../../assets/images/Cerrar-sesion.svg" class="icon">
-                    <a href="#">Cerrar sesión</a>
+                    <a routerLink="/login">Cerrar sesión</a>
                 </li>
             </ul>
         </ul>
@@ -57,13 +57,12 @@
                 <img [src]="sacrament.icon" class="icon">
             </li>
             <li routerLink="/buscador" [ngClass]="{'select': isCurrentLink('buscador')}" >
-                <a><img src="../../../../assets/images/Buscar.svg" class="icon" routerLink="/buscador"
-                ></a>
+                <a><img src="../../../../assets/images/Buscar.svg" class="icon" routerLink="/buscador"></a>
             </li>
             <li>
                 <img src="../../../../assets/images/Contrasena.svg" class="icon">
             </li>
-            <li>
+            <li routerLink="/login">
                 <img src="../../../../assets/images/Cerrar-sesion.svg" class="icon">
             </li>
         </ul>

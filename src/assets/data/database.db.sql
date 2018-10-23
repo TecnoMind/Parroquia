@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS `sacrament` (
 	`id`	INTEGER NOT NULL,
 	`name`	CHAR(50) NOT NULL,
 	`icon`	CHAR(100) NOT NULL,
+	`deleted` SMALLINT  NOT NULL DEFAULT 0,
 	PRIMARY KEY(`id`)
 );
 
@@ -41,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `sacrament_info` (
    	`maternalGrandMotherName`	CHAR(35),
     `maternalGrandFatherName`	CHAR(35),
     `priest`	CHAR(35) NOT NULL,
+    `deleted` SMALLINT  NOT NULL DEFAULT 0,
 	PRIMARY KEY(`id`)
 	);
 
