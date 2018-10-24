@@ -1,0 +1,17 @@
+body{
+    .izquierda{
+        width: 30%;
+        text-align: left;
+        display: inline-block;
+        img{
+        position: absolute;
+        top: 30px;
+        }
+    }
+
+    .derecha{
+        width: 69%;
+        text-align: center;
+        display: inline-block;
+    }
+}
