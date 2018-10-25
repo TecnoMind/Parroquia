@@ -5,11 +5,12 @@ import {SacramentRepository} from "../../commons/repository/sacrament.repository
 import {Router} from "@angular/router";
 import {EventRepository} from "../../commons/repository/event.repository";
 
+
 @Component({
     templateUrl: './search.component.html'
 })
 
-export class SearchComponent implements OnInit{
+export class SearchComponent implements OnInit {
 
     // @ts-ignore
     private eventModel: EventModel = new EventModel();
@@ -21,6 +22,7 @@ export class SearchComponent implements OnInit{
     private sacramentsRightList : Array<SacramentInfo> = [];
 
     constructor(private sacramentInfoRepository: SacramentRepository, private router : Router,private sacramentRepository: EventRepository) {
+
     }
 
     private getSacraments() {
@@ -99,13 +101,17 @@ export class SearchComponent implements OnInit{
             .then(() => {
             })
             .then(() => {
-                this.sacramentInfoRepository.deleteOne(id);
-                this.getSacraments();
+                setTimeout(() => {
+                    //  this.getSacraments();
+                    this.sacramentInfoRepository.deleteOne(id);
+                    this.getSacraments();
+                }, 400);
             })
             .catch((reason) => {
                 // Handle errors
                 console.log('Error occurred while opening database: ', reason);
             });
     }
+
 
 }

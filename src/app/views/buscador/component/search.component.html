@@ -7,32 +7,36 @@
         <h2>Buscar actas</h2>
         <ul>
             <li>
-            <input type="checkbox" name="bautizm"
-                    [checked]="eventModel.bautizm"
-                    (change)="changeStatus('bautizm',!eventModel.bautizm)"> Bautismo
-            <input type="checkbox" name="comunion"
-                    [checked]="eventModel.communion"
-                    (change)="changeStatus('communion',!eventModel.communion)"> Comunión
-            <input type="checkbox" name="confirm"
-                    [checked]="eventModel.confirm"
-                    (change)="changeStatus('confirm',!eventModel.confirm)"> Confirmación
-            <input type="checkbox" name="matrimonio"
-                    [checked]="eventModel.marriage"
-                    (change)="changeStatus('marriage',!eventModel.marriage)"> Matrimonio
+                <input type="checkbox" name="bautizm"
+                        [checked]="eventModel.bautizm"
+                        (change)="changeStatus('bautizm',!eventModel.bautizm)"> Bautismo
+                <input type="checkbox" name="comunion"
+                        [checked]="eventModel.communion"
+                        (change)="changeStatus('communion',!eventModel.communion)"> Comunión
+                <input type="checkbox" name="confirm"
+                        [checked]="eventModel.confirm"
+                        (change)="changeStatus('confirm',!eventModel.confirm)"> Confirmación
+                <input type="checkbox" name="matrimonio"
+                        [checked]="eventModel.marriage"
+                        (change)="changeStatus('marriage',!eventModel.marriage)"> Matrimonio
             </li>
         </ul>
         <div class="content">
+        <button (click)="captureScreen()"> </button>
             <div class="row">
                 <ol>
                     <li *ngFor="let sacrament of sacramentsRightList">
                         <div class="text">
-                            <span [tooltip]="sacrament.event?.name" placement="top" show-delay="200" > {{sacrament.name}}</span>
+                            <span [tooltip]="sacrament.event?.name" placement="top" show-delay="200"> {{sacrament.name}}
+                            </span>
                         </div>
                         <div class="img">
                             <img src="../../../../assets/images/Editar-acta.svg" class="icon" tooltip="Editar" placement="top" show-delay="200"
-                                 [routerLink]="['/bautismo', sacrament.id]" >
-                            <img src="../../../../assets/images/Imprimir-acta.svg" class="icon"  tooltip="Imprimir" placement="top" show-delay="200">
-                            <img src="../../../../assets/images/Borrar-acta.svg" class="icon"  tooltip="Borrar" placement="top" show-delay="200" (click)="delete(sacrament.id)">
+                                 [routerLink]="['/bautismo', sacrament.id]" hide-delay="50">
+                            <img src="../../../../assets/images/Imprimir-acta.svg" class="icon"  tooltip="Imprimir" placement="top" show-delay="200"
+                                 hide-delay="50">
+                            <img src="../../../../assets/images/Borrar-acta.svg" class="icon"  tooltip="Borrar"
+                                 placement="top" show-delay="200" (click)="delete(sacrament.id)" hide-delay="50">
                         </div>
                     </li>
                 </ol>
@@ -41,13 +45,18 @@
                 <ol>
                     <li *ngFor="let sacrament of sacramentsLeftList">
                         <div class="text">
-                           <span [tooltip]="sacrament.event?.name" placement="top" show-delay="200" >  {{sacrament.name}}</span>
+                           <span [tooltip]="sacrament.event?.name" placement="top" show-delay="200" hide-delay="50">
+                               {{sacrament.name}}
+                           </span>
                         </div>
                         <div class="img">
                             <img src="../../../../assets/images/Editar-acta.svg" class="icon"
-                                 (click)="getLink(sacrament.event?.name, sacrament.id)" tooltip="Editar" placement="top" show-delay="200">
-                            <img src="../../../../assets/images/Imprimir-acta.svg" class="icon" tooltip="Imprimir" placement="top" show-delay="200">
-                            <img src="../../../../assets/images/Borrar-acta.svg" class="icon" tooltip="Borrar" placement="top" show-delay="200" (click)="delete(sacrament.id)">
+                                 (click)="getLink(sacrament.event?.name, sacrament.id)" tooltip="Editar" placement="top"
+                                 show-delay="200" hide-delay="50">
+                            <img src="../../../../assets/images/Imprimir-acta.svg" class="icon" tooltip="Imprimir"
+                                 placement="top" show-delay="200" hide-delay="50">
+                            <img src="../../../../assets/images/Borrar-acta.svg" class="icon" tooltip="Borrar"
+                                 placement="top" show-delay="200" (click)="delete(sacrament.id)" hide-delay="50">
                         </div>
                     </li>
                 </ol>
