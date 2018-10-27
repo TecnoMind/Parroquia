@@ -15,7 +15,7 @@
                 <li *ngFor="let sacrament of sacraments" (click)="getLink(sacrament.name)" class="pointer"
                     [ngClass]="{'select': isCurrentLink(sacrament.name)}">
                     <img [src]="sacrament.icon" class="icon">
-                    <a >{{sacrament.name}} </a>
+                    <a>{{sacrament.name}} </a>
                 </li>
             </ul>
             <div class="shadow">

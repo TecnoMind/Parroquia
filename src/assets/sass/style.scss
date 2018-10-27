@@ -1,5 +1,5 @@
 $primary-color: rgb(25, 158, 199);
-$second-color: #12a8f6;
+$second-color: #127391;
 $header-height: 150px;
 $li-color: #F5F5F5;
 $li-color-hover: #E6E6E6;
@@ -33,6 +33,7 @@ header {
         vertical-align:middle;
         margin: calc((#{$header-height} - 28px)/2) 0 calc((#{$header-height} - 28px)/2) calc((100%/12)*2);
         font-size: 28px;
+        font-weight: bold;
     }
 }
 
