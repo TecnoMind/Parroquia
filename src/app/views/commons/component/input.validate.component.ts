@@ -41,7 +41,7 @@ export class InputValidateComponent {
 
     // @ts-ignore
     private emitEvent(status:boolean, untouched:boolean) {
-        this.change.emit({status: !status  ,position: this.position });
+        this.change.emit({status: untouched?false:!status ,position: this.position });
         return status;
     }
 }
