@@ -8,11 +8,10 @@
                [name]="data"
                [id]="data"
                (input)="capitalize()"
-               (change)="validate(inp.invalid && (inp.dirty || inp.touched))"
                #inp="ngModel"/>
-        <div *ngIf="inp.invalid && (inp.dirty || inp.touched)"
+        <div *ngIf="emitEvent(inp.invalid && (inp.dirty || inp.touched), inp.untouched)"
              class="alert alert-danger">
-            <div *ngIf="inp.errors.required">
+            <div *ngIf="emitEvent(inp.errors.required, inp.untouched)">
                 El {{label}} es requerido
             </div>
         </div>
@@ -22,9 +21,8 @@
                [required]="isRequired"
                [name]="data"
                [id]="data"
-               (change)="validate(inp.invalid && (inp.dirty || inp.touched))"
                #inp="ngModel"/>
-        <div *ngIf="inp.invalid && (inp.dirty || inp.touched)"
+        <div *ngIf="emitEvent(inp.invalid && (inp.dirty || inp.touched), inp.untouched)"
              class="alert alert-danger">
             <div *ngIf="inp.errors.required">
                 El {{label}} es requerido

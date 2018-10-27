@@ -17,4 +17,6 @@ export class BautismoComponent extends SaveComponent implements OnInit {
         super(sacramentRepository, router, route);
         this.sacrament.sacrament = 1;
     }
+
+
 }
