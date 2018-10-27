@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 
 @Component({
     selector: 'input-validate',
@@ -15,6 +15,8 @@ export class InputValidateComponent {
     @Input() inputType: string;
     @Input() formValid: boolean;
     @Input() isValid: boolean;
+    @Input() position: number;
+    @Output() change = new EventEmitter();
 
     constructor() {
 
@@ -22,6 +24,7 @@ export class InputValidateComponent {
 
     // @ts-ignore
     public capitalize():string {
+        console.log(this.position);
         let val = this.model[this.data];
         if(val && this.capitalise && typeof (val) === 'string') {
             this.model[this.data] =  val.toLowerCase()
@@ -34,7 +37,11 @@ export class InputValidateComponent {
     // @ts-ignore
     private validate(valid: boolean) {
         this.isValid = valid;
-        console.log(this.isValid);
     }
 
+    // @ts-ignore
+    private emitEvent(status:boolean, untouched:boolean) {
+        this.change.emit({status: !status  ,position: this.position });
+        return status;
+    }
 }

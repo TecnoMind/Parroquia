@@ -20,25 +20,30 @@
                     <div *ngSwitchDefault>
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'name'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Nombre del bautizado'" [capitalise]="true" [isValid]="isValid">
+                                            [label]="'Nombre del bautizado'" [capitalise]="true" [isValid]="isValid"
+                                            (change)="validate($event)" [position]="0">
                             </input-validate>
 
                             <input-validate [model]="sacrament" [length]="35" [data]="'bornPlace'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Lugar de nacimiento'" [capitalise]="true">
+                                            [label]="'Lugar de nacimiento'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="1">
                             </input-validate>
                         </div>
 
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'fatherName'" [isRequired]="true"
-                                            [label]="'Padre del bautizado'" [capitalise]="true" [inputType]="'text'">
+                                            [label]="'Padre del bautizado'" [capitalise]="true" [inputType]="'text'"
+                                            (change)="validate($event)" [position]="2">
                             </input-validate>
                             <input-validate [model]="sacrament" [length]="35" [data]="'motherName'" [isRequired]="true"
-                                            [label]="'Madre del bautizado'" [capitalise]="true" [inputType]="'text'">
+                                            [label]="'Madre del bautizado'" [capitalise]="true" [inputType]="'text'"
+                                            (change)="validate($event)" [position]="3">
                             </input-validate>
                         </div>
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'date'" [isRequired]="true"
-                                            [label]="'Fecha del bautizo'" [capitalise]="false" [inputType]="'date'">
+                                            [label]="'Fecha del bautizo'" [capitalise]="false" [inputType]="'date'"
+                                            (change)="validate($event)" [position]="4">
                             </input-validate>
                         </div>
                     </div>
@@ -46,28 +51,34 @@
 
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'godFatherName'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Nombre del padrino'" [capitalise]="true">
+                                            [label]="'Nombre del padrino'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="5">
                             </input-validate>
                             <input-validate [model]="sacrament" [length]="35" [data]="'godMotherName'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Nombre de la madrina'" [capitalise]="true">
+                                            [label]="'Nombre de la madrina'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="6">
                             </input-validate>
                         </div>
 
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'paternalGrandFatherName'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Nombre del abuelo paterno'" [capitalise]="true">
+                                            [label]="'Nombre del abuelo paterno'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="7">
                             </input-validate>
                             <input-validate [model]="sacrament" [length]="35" [data]="'paternalGrandMotherName'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Nombre de la abuela paterna'" [capitalise]="true">
+                                            [label]="'Nombre de la abuela paterna'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="8">
                             </input-validate>
                         </div>
 
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'maternalGrandFatherName'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Nombre del abuelo materno'" [capitalise]="true">
+                                            [label]="'Nombre del abuelo materno'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="9">
                             </input-validate>
                             <input-validate [model]="sacrament" [length]="35" [data]="'maternalGrandMotherName'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Nombre de la abuela materna'" [capitalise]="true">
+                                            [label]="'Nombre de la abuela materna'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="10">
                             </input-validate>
                         </div>
 
@@ -75,14 +86,15 @@
                     <div *ngSwitchCase="'Celebrante'" class="select-tab">
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'priest'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Nombre del sacerdote'" [capitalise]="true">
+                                            [label]="'Nombre del sacerdote'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="11">
                             </input-validate>
                         </div>
                     </div>
                 </div>
             </form>
 
-            <button type="submit"  (click)="save(sacrament, sacrament.id)" [disabled]="isValid">
+            <button type="submit"  (click)="save(sacrament, sacrament.id)" [disabled]="isValidArray()">
                 Guardar
             </button>
             <button type="submit" value="Cancelar" routerLink="/buscador">Cancelar</button>

@@ -2,37 +2,42 @@ import {SacramentInfo} from "../model/sacramentInfo.model";
 import {SacramentRepository} from "../repository/sacrament.repository";
 import swall from 'sweetalert2'
 import {ActivatedRoute, Router} from "@angular/router";
-import { OnInit } from '@angular/core';
+import {OnInit} from '@angular/core';
 
-export class SaveComponent implements OnInit{
+export class SaveComponent implements OnInit {
     // @ts-ignore
     protected sacrament: SacramentInfo = new SacramentInfo();
 
     // @ts-ignore
-    private showForm : boolean = true;
+    private showForm: boolean = true;
 
     // @ts-ignore
     private tabs = ['Catecumeno', 'Testigos', 'Celebrante'];
 
     // @ts-ignore
-    private viewMode: string =  this.tabs[0];
+    private viewMode: string = this.tabs[0];
 
-    constructor(protected sacramentRepository: SacramentRepository, protected router: Router,protected route :ActivatedRoute) {
+    private validArray : Array<boolean> = [];
+
+    constructor(protected sacramentRepository: SacramentRepository, protected router: Router, protected route: ActivatedRoute) {
     }
 
-      // @ts-ignore
-    protected save(model: SacramentInfo, id:number) {
+    // @ts-ignore
+    protected save(model: SacramentInfo, id: number) {
 
         this.showForm = false;
+        // @ts-ignore
+
+
         swall({
             text: '¿Desea generar el acta?',
             showCancelButton: true,
             confirmButtonText: 'Aceptar',
             cancelButtonColor: '#d33',
-            cancelButtonText:'Cancelar'
+            cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.dismiss !== swall.DismissReason.cancel) {
-                (id)?this.updateSacrament(model):this.saveSacrament(model);
+                (id) ? this.updateSacrament(model) : this.saveSacrament(model);
             }
 
             setTimeout(() => {
@@ -55,7 +60,7 @@ export class SaveComponent implements OnInit{
                     setTimeout(() => {
                         this.router.navigateByUrl("buscador");
                     }, 100);
-                },reason => {
+                }, reason => {
                     swall({
                         title: 'Error',
                         type: 'error',
@@ -82,7 +87,7 @@ export class SaveComponent implements OnInit{
                     setTimeout(() => {
                         this.router.navigateByUrl("buscador");
                     }, 100);
-                },reason => {
+                }, reason => {
                     swall({
                         title: 'Error',
                         type: 'error',
@@ -96,16 +101,16 @@ export class SaveComponent implements OnInit{
             });
     }
 
-    
+
     ngOnInit(): void {
         this.route.params.subscribe(params => {
-            if(params.id) {
+            if (params.id) {
                 this.sacramentRepository.openDb(this.sacramentRepository.settings.dbPath)
                     .then(() => {
                     })
                     .then(() => {
-                        this.sacramentRepository.findOne(params.id).then(sacrament => {
-                           this.sacrament = sacrament;
+                        this.sacramentRepository.findOne(params.id).then(sacrament  =>  {
+                            this.sacrament = sacrament;
                         })
                     })
                     .catch((reason) => {
@@ -113,6 +118,17 @@ export class SaveComponent implements OnInit{
                         console.log('Error occurred while opening database: ', reason);
                     });
             }
-      });
-      }
+        });
+    }
+
+    // @ts-ignore
+    protected validate(event) {
+     //   console.log(event);
+        this.validArray[event.position] = event.status;
+    }
+
+    protected isValidArray() {
+     //   console.log(this.validArray.some(valid => !valid));
+        return this.validArray.some(valid => !valid);
+    }
 }
