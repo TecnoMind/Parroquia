@@ -113,5 +113,7 @@ export class SearchComponent implements OnInit {
             });
     }
 
-
+    public print(sacrament: string, id: number){
+        this.router.navigate(["/" + sacrament.toLowerCase().replace('ó','o') + "/print", id]);
+    }
 }

@@ -1,0 +1,37 @@
+#bautismo_print{
+    main{
+    color: black;
+    //display: grid;
+    //grid-template-columns: repeat(12, 1fr);
+    //grid-template-rows: repeat(12, 1fr);
+    height: 100%;
+    width: 100%;
+        div{
+            &.izquierda{
+                width: 30%;
+                text-align: left;
+                display: inline-block;
+                img{
+                    position: absolute;
+                    height: 350px;
+                    max-width: 250px;
+                    top: 30px;
+                }
+            }
+            &.derecha{
+                width: 69%;
+                text-align: center;
+                display: inline-block;
+                .space_bottom{
+                    margin-bottom: 50px;
+                }
+                .medium_space_bottom{
+                    margin-bottom: 15px;
+                }
+                .bolders{
+                    font-weight: bold;
+                }
+            }
+        }    
+    }
+}

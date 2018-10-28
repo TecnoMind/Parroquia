@@ -104,7 +104,7 @@
                 background: $li-color;
                 padding: 15px 0;
                 &.select {
-                    background: #acc0f6;
+                    background: $li-color-hover;
                 }
                 .icon{
                     width: 25px;

@@ -8,16 +8,19 @@ import {UserRepository} from "./views/commons/repository/user.repository";
 import {SettingsImpl} from "./db/repository/impl/settings.impl";
 import {LoginService} from "./views/login/service/login.service";
 import {BautismoComponent} from "./views/bautismo/component/bautismo.component";
+import {BautismoPrintComponent} from "./views/bautismo/component/bautismo.print.component";
 import {MenuComponent} from "./views/commons/component/menu.component";
 import {EventRepository} from "./views/commons/repository/event.repository";
 import {ConfirmacionComponent} from "./views/confirmacion/component/confirmacion.component";
+import {ConfirmacionPrintComponent} from "./views/confirmacion/component/confirmacion.print.component";
 import {MatrimonioComponent} from "./views/matrimonio/component/matrimonio.component";
 import {ComunionComponent} from "./views/comunion/component/comunion.component";
+import {ComunionPrintComponent} from "./views/comunion/component/comunion.print.component";
 import {SweetAlert2Module} from '@toverux/ngx-sweetalert2';
 import {InputValidateComponent} from "./views/commons/component/input.validate.component";
 import {SearchComponent} from "./views/buscador/component/search.component";
 import {SacramentRepository} from "./views/commons/repository/sacrament.repository";
-import { TooltipModule } from 'ng2-tooltip-directive';
+//import { TooltipModule } from 'ng2-tooltip-directive';
 
 @NgModule({
     imports: [
@@ -25,17 +28,20 @@ import { TooltipModule } from 'ng2-tooltip-directive';
         FormsModule,
         routing,
         SweetAlert2Module.forRoot(),
-        TooltipModule
+        //TooltipModule
     ],
     declarations: [
         AppComponent,
         LoginComponent,
         BautismoComponent,
+        BautismoPrintComponent,
         MenuComponent,
         SearchComponent,
         ConfirmacionComponent,
+        ConfirmacionPrintComponent,
         MatrimonioComponent,
         ComunionComponent,
+        ComunionPrintComponent,
         InputValidateComponent
     ],
     providers: [SettingsImpl, UserRepository, LoginService, EventRepository, SacramentRepository],

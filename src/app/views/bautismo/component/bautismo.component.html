@@ -20,10 +20,9 @@
                     <div *ngSwitchDefault>
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'name'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Nombre del bautizado'" [capitalise]="true" [isValid]="isValid"
-                                            (change)="validate($event)" [position]="0">
+                                            [label]="'Nombre del bautizado'" [capitalise]="true" (change)="validate($event)" 
+                                            [position]="0">
                             </input-validate>
-
                             <input-validate [model]="sacrament" [length]="35" [data]="'bornPlace'" [isRequired]="true" [inputType]="'text'"
                                             [label]="'Lugar de nacimiento'" [capitalise]="true" (change)="validate($event)"
                                             [position]="1">

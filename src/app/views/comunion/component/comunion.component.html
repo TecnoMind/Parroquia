@@ -8,7 +8,8 @@
             <h2>Crear nueva acta de comunión</h2>
 
             <div class="tabs">
-                <div class="tab" *ngFor="let tab of tabs" (click)="viewMode = tab" [ngClass]="{'select': viewMode === tab}">
+                <div class="tab" *ngFor="let tab of tabs" (click)="viewMode = tab" 
+                     [ngClass]="{'select': viewMode === tab}">
                     <a>{{tab}}</a>
                 </div>
             </div>
@@ -19,31 +20,38 @@
                     <div *ngSwitchDefault>
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'name'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Nombre del catecumeno'" [capitalise]="true">
+                                            [label]="'Nombre del catecumeno'" [capitalise]="true" (change)="validate($event)" 
+                                            [position]="0">
                             </input-validate>
                             <input-validate [model]="sacrament" [length]="50" [data]="'baptismChurch'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Parroquia de bautismo'" [capitalise]="true">
+                                            [label]="'Parroquia de bautismo'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="1">
                             </input-validate>
                         </div>
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="50" [data]="'baptismPlace'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Ciudad de bautismo'" [capitalise]="true">
+                                            [label]="'Ciudad de bautismo'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="2">
                             </input-validate>
                             <input-validate [model]="sacrament" [length]="35" [data]="'baptismDate'" [isRequired]="true" [inputType]="'date'"
-                                            [label]="'Fecha del bautismo'" [capitalise]="true">
+                                            [label]="'Fecha del bautismo'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="3">
                             </input-validate>                            
                         </div>
                         <div class="row">                            
                             <input-validate [model]="sacrament" [length]="35" [data]="'date'" [isRequired]="true"
-                                            [label]="'Fecha de la comunión'" [capitalise]="false" [inputType]="'date'">
+                                            [label]="'Fecha de la comunión'" [capitalise]="false" [inputType]="'date'" (change)="validate($event)"
+                                            [position]="4">
                             </input-validate>
                         </div>
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'fatherName'" [isRequired]="true"
-                                            [label]="'Padre del catecumeno'" [capitalise]="true" [inputType]="'text'">
+                                            [label]="'Padre del catecumeno'" [capitalise]="true" [inputType]="'text'" (change)="validate($event)"
+                                            [position]="5">
                             </input-validate>
                             <input-validate [model]="sacrament" [length]="35" [data]="'motherName'" [isRequired]="true"
-                                            [label]="'Madre del catecumeno'" [capitalise]="true" [inputType]="'text'">
+                                            [label]="'Madre del catecumeno'" [capitalise]="true" [inputType]="'text'" (change)="validate($event)"
+                                            [position]="6">
                             </input-validate>
                         </div>
                     </div>
@@ -51,10 +59,12 @@
                     <div *ngSwitchCase="'Testigos'" class="select-tab">
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'godFatherName'" [isRequired]="false" [inputType]="'text'"
-                                            [label]="'Nombre del padrino'" [capitalise]="true">
+                                            [label]="'Nombre del padrino'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="7">
                             </input-validate>
                             <input-validate [model]="sacrament" [length]="35" [data]="'godMotherName'" [isRequired]="false" [inputType]="'text'"
-                                            [label]="'Nombre de la madrina'" [capitalise]="true">
+                                            [label]="'Nombre de la madrina'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="8">
                             </input-validate>
                         </div>
                     </div>
@@ -62,14 +72,15 @@
                     <div *ngSwitchCase="'Celebrante'" class="select-tab">
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'priest'" [isRequired]="true" [inputType]="'text'"
-                                            [label]="'Nombre del sacerdote'" [capitalise]="true">
+                                            [label]="'Nombre del sacerdote'" [capitalise]="true" (change)="validate($event)"
+                                            [position]="9">
                             </input-validate>
                         </div>
                     </div>
                 </div>
             </form>
 
-            <button type="submit" (click)="save(sacrament, sacrament.id)">Guardar</button>
+            <button type="submit" (click)="save(sacrament, sacrament.id)" [disabled]="isValidArray()">Guardar</button>
             <button type="submit"  routerLink="/buscador">Cancelar</button>
         </div>
     </main>

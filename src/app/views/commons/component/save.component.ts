@@ -30,7 +30,7 @@ export class SaveComponent implements OnInit {
 
 
         swall({
-            text: '¿Desea generar el acta?',
+            text: '¿Deseas guardar el acta?',
             showCancelButton: true,
             confirmButtonText: 'Aceptar',
             cancelButtonColor: '#d33',
@@ -54,7 +54,7 @@ export class SaveComponent implements OnInit {
             .then(() => {
                 this.sacramentRepository.update(new SacramentInfo(model)).then(() => {
                     swall({
-                        title: 'Guardado Correctamente',
+                        title: 'Acta actualizada correctamente',
                         type: 'success',
                     });
                     setTimeout(() => {
@@ -81,7 +81,7 @@ export class SaveComponent implements OnInit {
             .then(() => {
                 this.sacramentRepository.save(model).then(() => {
                     swall({
-                        title: 'Guardado Correctamente',
+                        title: 'Acta guardada correctamente',
                         type: 'success',
                     });
                     setTimeout(() => {
@@ -89,7 +89,7 @@ export class SaveComponent implements OnInit {
                     }, 100);
                 }, reason => {
                     swall({
-                        title: 'Error',
+                        title: 'Porfavor, llene todos los campos del formulario',
                         type: 'error',
                     });
                     console.log(reason);
@@ -100,7 +100,6 @@ export class SaveComponent implements OnInit {
                 console.log('Error occurred while opening database: ', reason);
             });
     }
-
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
@@ -120,6 +119,7 @@ export class SaveComponent implements OnInit {
             }
         });
     }
+
 
     // @ts-ignore
     protected validate(event) {
