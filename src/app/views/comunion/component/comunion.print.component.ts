@@ -34,7 +34,11 @@ export class ComunionPrintComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void{
-        //window.print();
-        this.router.navigateByUrl("/buscador");
+        setTimeout(()=>{
+            window.print();
+            setTimeout(()=>{
+                this.router.navigateByUrl("/buscador");
+            },500);
+        },500);
     }
 }

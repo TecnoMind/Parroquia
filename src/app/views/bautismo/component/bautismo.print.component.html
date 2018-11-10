@@ -11,29 +11,29 @@
 Manuel Ávila Camacho No. 665, Col. Reforma
 C.P. 22810, Tel: (646) 206-41-21</pre>
       <h2 class="bolders medium_space_bottom">Boleta de Bautismo</h2>
-      <p class="space_bottom">El día: <u> 24 de Junio del 2018 </u></p>
+      <p class="space_bottom">El día: <u> {{sacrament?.date | customDate}} </u></p>
       <p class="medium_space_bottom">Fue BAUTIZADO (A):</p>
-      <p class="medium_space_bottom bolders"> <u>Shirley Malinche Mata Félix</u></p>
-      <p class="space_bottom">Que nació en: <span class="bolders"> <u>Ensenada, Baja California</u> </span> </p>
+      <p class="medium_space_bottom bolders"> <u> {{sacrament?.name}} </u></p>
+      <p class="space_bottom">Que nació en: <span class="bolders"> <u> {{sacrament?.bornPlace}}</u> </span> </p>
       
       <p class="medium_space_bottom">Hijo(a) de:</p>
-      <p class="bolders"> <u>Sebastián Mata Aguillon</u></p>
-      <p class="medium_space_bottom bolders"><u>Viridiana De Jesús Félix Martinez</u></p>
+      <p class="bolders"> <u> {{sacrament?.fatherName}} </u></p>
+      <p class="medium_space_bottom bolders"><u> {{sacrament?.motherName}}</u></p>
       
       <p class="medium_space_bottom">Abuelos paternos:</p>
-      <p class="bolders"><u>Sebastián Mata Aguillon</u></p>
-      <p class="medium_space_bottom bolders"><u>Viridiana De Jesús Félix Martinez</u></p>
+      <p class="bolders"><u> {{sacrament?.paternalGrandFatherName}}</u></p>
+      <p class="medium_space_bottom bolders"><u> {{sacrament?.paternalGrandMotherName}}</u></p>
 
       <p class="medium_space_bottom">Abuelos Maternos:</p>
-      <p class="bolders"><u>Sebastián Mata Aguillon</u></p>
-      <p class="medium_space_bottom bolders"><u>Viridiana De Jesús Félix Martinez</u></p>
+      <p class="bolders"><u> {{sacrament?.maternalGrandFatherName}} </u></p>
+      <p class="medium_space_bottom bolders"><u> {{sacrament?.maternalGrandMotherName}} </u></p>
 
       <p class="medium_space_bottom">Padrinos</p>
-      <p class="bolders"><u>Sebastián Mata Aguillon</u> </p>
-      <p class="medium_space_bottom bolders"><u>Viridiana De Jesús Félix Martinez</u></p>
+      <p class="bolders"><u> {{sacrament?.godFatherName}} </u> </p>
+      <p class="medium_space_bottom bolders"><u> {{sacrament?.godMotherName}} </u></p>
 
       <p class="medium_space_bottom">Fue bautizado (a) por:</p>
-      <p class="space_bottom bolders"><u>Pbro. Ramón Iván Álvarez Valenzuela</u></p>
+      <p class="space_bottom bolders"><u>Pbro. {{sacrament?.priest}} </u></p>
 
       <p class="space_bottom">Doy Fe: <span class="bolders"> Pbro. </span>___________________________________</p>
 

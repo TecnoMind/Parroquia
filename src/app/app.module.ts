@@ -21,6 +21,7 @@ import {InputValidateComponent} from "./views/commons/component/input.validate.c
 import {SearchComponent} from "./views/buscador/component/search.component";
 import {SacramentRepository} from "./views/commons/repository/sacrament.repository";
 //import { TooltipModule } from 'ng2-tooltip-directive';
+import { CustomDatePipe } from './views/commons/pipes/custom-date.pipe';
 
 @NgModule({
     imports: [
@@ -42,7 +43,8 @@ import {SacramentRepository} from "./views/commons/repository/sacrament.reposito
         MatrimonioComponent,
         ComunionComponent,
         ComunionPrintComponent,
-        InputValidateComponent
+        InputValidateComponent,
+        CustomDatePipe
     ],
     providers: [SettingsImpl, UserRepository, LoginService, EventRepository, SacramentRepository],
     bootstrap: [ AppComponent ]

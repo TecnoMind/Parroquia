@@ -47,8 +47,8 @@
                         <th>Catecumeno</th>
                         <th>Acciones</th>
                     </tr>
-                    <tr *ngFor="let sacrament of sacramentsLeftList">
-                        <td> {{sacrament.date}} </td>
+                    <tr *ngFor="let sacrament of sacramentAux">
+                        <td> {{sacrament.date | date: 'dd/MM/yyyy'}} </td>
                         <td> {{sacrament.event?.name}} </td>
                         <td> {{sacrament.name}} </td>
                         <td class="img"> 

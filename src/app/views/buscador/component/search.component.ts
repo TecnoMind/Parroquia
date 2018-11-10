@@ -5,7 +5,6 @@ import {SacramentRepository} from "../../commons/repository/sacrament.repository
 import {Router} from "@angular/router";
 import {EventRepository} from "../../commons/repository/event.repository";
 
-
 @Component({
     templateUrl: './search.component.html'
 })
@@ -15,11 +14,11 @@ export class SearchComponent implements OnInit {
     // @ts-ignore
     private eventModel: EventModel = new EventModel();
 
+    private sacramentAux : Array<SacramentInfo> = [];
+
     // @ts-ignore
-    private sacraments : Array<SacramentInfo> = [];
-    // @ts-ignore
-    private sacramentsLeftList : Array<SacramentInfo> = [];
-    private sacramentsRightList : Array<SacramentInfo> = [];
+    private sacramentsList : Array<SacramentInfo> = [];
+    //private sacramentsRightList : Array<SacramentInfo> = [];
 
     constructor(private sacramentInfoRepository: SacramentRepository, private router : Router,private sacramentRepository: EventRepository) {
 
@@ -31,10 +30,14 @@ export class SearchComponent implements OnInit {
             })
             .then(() => {
                 this.sacramentInfoRepository.findAll().then(sacraments => {
-                    this.sacraments = sacraments;
-                    this.getSpecificSacrament(this.sacraments);
-                    this.sacramentsLeftList =  this.leftSide(this.sacraments);
-                    this.sacramentsRightList = this.rightSide(this.sacraments);
+                    this.sacramentAux = sacraments.sort(function(obj1, obj2) {
+                        return new Date(obj1.date).getTime() - new Date(obj2.date).getTime();
+                    });
+                    //this.sacramentsList = this.sacramentAux;
+//                  console.log(this.sacramentsList);
+                    this.getSpecificSacrament(this.sacramentAux);
+                    this.sacramentsList = this.sacramentAux;
+                    //this.sacramentsRightList = this.rightSide(this.sacraments);
                 })
             })
             .catch((reason) => {
@@ -63,19 +66,20 @@ export class SearchComponent implements OnInit {
 
     ngOnInit(): void {
         this.getSacraments();
+
     }
 
     // @ts-ignore
     private filterSacraments() {
-        this.sacramentsLeftList = this.leftSide(this.sacraments);
-        this.sacramentsLeftList = this.sacramentsLeftList.filter(sacrament => ((sacrament.sacrament == 1 && this.eventModel.bautizm )
+        //this.sacramentsLeftList = this.leftSide(this.sacraments);
+        this.sacramentAux = this.sacramentsList.filter(sacrament => ((sacrament.sacrament == 1 && this.eventModel.bautizm )
         || (sacrament.sacrament == this.eventModel.confirmId && this.eventModel.confirm ) || (sacrament.sacrament == this.eventModel.marriageId && this.eventModel.marriage ) ||
             (sacrament.sacrament == this.eventModel.communionId && this.eventModel.communion )));
 
-        this.sacramentsRightList = this.rightSide(this.sacraments);
+        /*this.sacramentsRightList = this.rightSide(this.sacraments);
         this.sacramentsRightList = this.sacramentsRightList.filter(sacrament => ((sacrament.sacrament == 1 && this.eventModel.bautizm )
             || (sacrament.sacrament == this.eventModel.confirmId && this.eventModel.confirm ) || (sacrament.sacrament == this.eventModel.marriageId && this.eventModel.marriage ) ||
-            (sacrament.sacrament == this.eventModel.communionId && this.eventModel.communion )));
+            (sacrament.sacrament == this.eventModel.communionId && this.eventModel.communion )));*/
     }
 
     // @ts-ignore
@@ -88,13 +92,13 @@ export class SearchComponent implements OnInit {
         this.router.navigate(["/" + sacrament.toLowerCase().replace('ó','o'), id]);
     }
 
-    public rightSide(sacramentInfo: Array<SacramentInfo>): Array<SacramentInfo> {
+    /*public rightSide(sacramentInfo: Array<SacramentInfo>): Array<SacramentInfo> {
         return sacramentInfo.slice(0, this.sacraments.length/2);
-    }
+    }*/
 
-    public leftSide(sacramentInfo: Array<SacramentInfo>): Array<SacramentInfo> {
+    /*public leftSide(sacramentInfo: Array<SacramentInfo>): Array<SacramentInfo> {
         return sacramentInfo.slice( this.sacraments.length/2 , this.sacraments.length );
-    }
+    }*/
 
     public delete(id: number) {
         this.sacramentInfoRepository.openDb(this.sacramentInfoRepository.settings.dbPath)

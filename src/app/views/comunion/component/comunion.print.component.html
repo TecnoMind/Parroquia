@@ -1,37 +1,31 @@
-<head>
-    <meta charset="UTF-8">
-    <title>Comunion</title>
-    <!--<link rel="stylesheet" href="../../../../assets/sass/views/_comunionPdf.scss">-->
-</head>
-
-<body>
-    <div>
-        <header>
-            <h2>DIOCESIS DE ENSENADA</h2>
-            <h3>Parroquia Nuestra Señora del Perpetuo Socorro.</h3>
-            <pre>
+<div id="comunion_print">
+    <main>
+        <div class="center">
+            <h2 class="medium_space_bottom">DIOCESIS DE ENSENADA</h2>
+            <h3 class="bolders">Parroquia Nuestra Señora del Perpetuo Socorro.</h3>
+            <pre class="space_bottom" style="margin-bottom: 100px">
         Manuel Ávila Camacho No. 665, Col. Reforma
         C.P. 22810, Tel: (646) 206-41-21</pre>
-        </header>
-        
-        <h3>Boleta de Primera Comunión</h3>
-        <em>"Yo soy el pan vivo, que ha bajado del cielo. <br>
-            Si uno come de este pan, vivirá para siempre" (jn 6,41)</em>
-        <br><br><br>
-        <p>NOMBRE COMPLETO:</p>
-        <p> <u><strong>Shirley Malinche Mata Félix</strong></u></p>
-        <br>
-        <p>Quien fue bautizada en la parroquia: <u> <strong> Santos Martires de Cristo Rey </strong></u></p>
-        <p>En: <u><strong>Ensenada, Baja California.</strong></u> El <u><strong>15 de Abril del 2017</strong></u></p>
-        <br><br>
-        <p> <strong>Recibió por primera vez la eucaristíca en esta parroquia</strong></p>
-        <p>El <u><strong>15 de Abril del 2017</strong></u></p>
-        <p>Celebrante: <u><strong>Pbro. Ramón Iván Álvarez Valenzuela</strong></u></p>
-        <p>Sus padres: <u><strong>Simon Garcia Ramirez y Sonia Martinez Salas</strong></u></p>
-        <p>Padrino o Madrina: <u><strong>Margarita Gomez Pimentel</strong></u></p>
 
-        <p><strong>Libro: <u>01</u> Hoja: <u>156</u> Partida: <u>4756</u> </strong></p>
-        <br><br>
-        <p>Doy Fe: <strong>Pbro.</strong>___________________________________</p>
-    </div>
-</body>
+            <h3 class="bolders medium_space_bottom">Boleta de Primera Comunión</h3>
+            <p class="space_bottom">"Yo soy el pan vivo, que ha bajado del cielo. <br>
+                Si uno come de este pan, vivirá para siempre" (jn 6,41)</p>
+            
+            <p class="medium_space_bottom bolders">NOMBRE COMPLETO:</p>
+            <p class="space_bottom"> <span class="bolders"><u> {{sacrament?.name}} </u></span></p>
+
+            <p class="medium_space_bottom">Quien fue bautizado(a) en la parroquia: <span class="bolders"> <u> {{sacrament?.baptismChurch}} </u> </span> </p>
+            <p class="space_bottom"> En: <span class="bolders"> <u> {{sacrament?.baptismPlace}} </u> </span> ,el <span class="bolders"> <u> {{sacrament?.baptismDate | customDate}} </u> </span></p>
+
+            <p class="medium_space_bottom bolders"> Recibió por primera vez la eucaristía en esta parroquia</p>
+            <p class="space_bottom bolders"> El <u> {{sacrament?.date | customDate}} </u></p>
+            <p class="medium_space_bottom">Celebrante: <span class="bolders"> <u>Presbitero {{sacrament?.priest}} </u> </span> </p>
+            <p class="medium_space_bottom">Sus padres: <span class="bolders"> <u> {{sacrament?.fatherName}} y {{sacrament?.motherName}} </u> </span> </p>
+            <p class="medium_space_bottom">Padrino o Madrina: <span class="bolders"> <u> {{sacrament?.godFatherName}} y {{sacrament?.godMotherName}}</u> </span> </p>
+
+            <p class="space_bottom bolders" style="margin-bottom: 100px"> Libro: <u>01</u> Hoja: <u>156</u> Partida: <u>4756</u> </p>
+
+            <p>Doy Fe: Pbro.___________________________________</p>
+        </div>
+    </main>
+</div>

@@ -34,10 +34,11 @@ export class BautismoPrintComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void{
-        window.print();
         setTimeout(()=>{
-            this.router.navigateByUrl("/buscador");
+            window.print();
+            setTimeout(()=>{
+                this.router.navigateByUrl("/buscador");
+            },500);
         },500);
-
     }
 }
