@@ -13,7 +13,7 @@ import {SacramentInfo} from "../model/sacramentInfo.model";
 export class SacramentRepository extends Repository<SacramentInfo> {
 
     constructor(public settings: SettingsImpl) {
-        super(SacramentInfo.name,  settings);
+        super("sacramentInfo",  settings);
     }
 
 

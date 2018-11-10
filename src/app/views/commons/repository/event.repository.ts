@@ -13,7 +13,7 @@ import {SettingsImpl} from "../../../db/repository/impl/settings.impl";
 export class EventRepository extends Repository<Sacrament> {
 
     constructor(public settings: SettingsImpl) {
-        super(Sacrament.name.toLowerCase(), settings);
+        super("sacrament", settings);
     }
 
 }

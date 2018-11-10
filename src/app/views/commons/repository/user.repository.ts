@@ -13,7 +13,7 @@ import {SettingsImpl} from "../../../db/repository/impl/settings.impl";
 export class UserRepository extends Repository<User> {
 
     constructor(public settings: SettingsImpl) {
-        super(User.name.toLowerCase(),  settings);
+        super("user",  settings);
     }
 
 
