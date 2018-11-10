@@ -93,9 +93,7 @@
                 </div>
             </form>
 
-            <button type="submit"  (click)="save(sacrament, sacrament.id)" [disabled]="isValidArray()">
-                Guardar
-            </button>
+            <button type="submit"  (click)="save(sacrament, sacrament.id)">Guardar</button> <!--[disabled]="isValidArray()"-->
             <button type="submit" value="Cancelar" routerLink="/buscador">Cancelar</button>
         </div>
 

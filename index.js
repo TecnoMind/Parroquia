@@ -24,7 +24,7 @@ let mainWindow;
 
 let createWindow = () => {
 	// Create the browser window.
-	mainWindow = new BrowserWindow({show: false, icon: __dirname + 'icon.png'});
+	mainWindow = new BrowserWindow({show: false, icon: __dirname + 'icon_church.png'});
 
 	mainWindow.once('ready-to-show', () => {
 		mainWindow.show()
