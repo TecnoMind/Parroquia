@@ -31,7 +31,7 @@ export class SacramentInfo extends Model{
             this._id = model.id;
             this._sacrament = model.sacrament;
             this._name = model.name;
-            this._wife = model._wife;
+            this._wife = model.wife;
             this._bornPlace = model.bornPlace;
             this._date = model.date;
             this._fatherName = model.fatherName;

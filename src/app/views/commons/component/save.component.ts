@@ -48,6 +48,7 @@ export class SaveComponent implements OnInit {
     }
 
     protected updateSacrament(model: SacramentInfo) {
+        console.log(model);
         this.sacramentRepository.openDb(this.sacramentRepository.settings.dbPath)
             .then(() => {
             })
@@ -57,7 +58,6 @@ export class SaveComponent implements OnInit {
                         title: 'Acta actualizada correctamente',
                         type: 'success',
                     });
-                    console.log(this.sacramentRepository);
                     setTimeout(() => {
                         this.router.navigateByUrl("buscador");
                     }, 100);
@@ -76,7 +76,8 @@ export class SaveComponent implements OnInit {
     }
 
     private saveSacrament(model: SacramentInfo) {
-        this.sacramentRepository.openDb(this.sacramentRepository.settings.dbPath)
+        console.log(model);
+        this.sacramentRepository.openDb(this.sacramentRepository.settings.dbPath)        
             .then(() => {
             })
             .then(() => {
@@ -85,7 +86,6 @@ export class SaveComponent implements OnInit {
                         title: 'Acta guardada correctamente',
                         type: 'success',
                     });
-                    console.log(this.sacramentRepository);
                     setTimeout(() => {
                         this.router.navigateByUrl("buscador");
                     }, 100);

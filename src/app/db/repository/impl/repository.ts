@@ -83,7 +83,7 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
     }
 
     update(entity: T): Promise<void> {
-     //   console.log(entity);
+        console.log(entity);
         let fields = entity.toArray();
         let values = entity.toValues(fields);
         let sql = 'UPDATE ' + this.__table + ' SET ' + this.getClause(fields, '$',',')
