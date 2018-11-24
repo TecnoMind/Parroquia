@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `sacrament_info` (
     `maternalGrandFatherName`	CHAR(35),
     `priest`	CHAR(35) NOT NULL,
     `deleted` SMALLINT  NOT NULL DEFAULT 0,
+	`wife`    CHAR(35),
 	PRIMARY KEY(`id`)
 	);
 

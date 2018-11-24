@@ -70,6 +70,7 @@
 
                     <div *ngSwitchCase="'Celebrante'" class="select-tab">
                         <div class="row">
+                            <label for="input-validate" style="color:black; margin-top: 30px; transform: translateX(200px);">Pbro.</label>
                             <input-validate [model]="sacrament" [length]="35" [data]="'priest'" [isRequired]="true" [inputType]="'text'"
                                             [label]="'Nombre del sacerdote'" [capitalise]="true" (change)="validate($event)"
                                             [position]="9">

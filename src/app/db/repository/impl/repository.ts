@@ -73,7 +73,7 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
         let values = entity.toValues(fields);
         let sql = 'INSERT INTO ' + this.__table + ' ( ' + this.getFields(fields, '') + ' )'
           + ' VALUES( ' + this.getFields(fields, '$') + ' )';
-
+        console.log(sql);
         return this.change(sql, values).then((result) => {
              if (result.changes !== 1) {
                   throw new Error('Expected 1' + this.__table+ 'to be inserted. Was ${result.changes}');
@@ -88,7 +88,7 @@ export class Repository<T extends Model> extends DataAccessImpl implements ICrud
         let values = entity.toValues(fields);
         let sql = 'UPDATE ' + this.__table + ' SET ' + this.getClause(fields, '$',',')
             + 'WHERE id = $id';
-
+        console.log(sql);
         return this.change(sql, values).then((result) => {
             if (result.changes !== 1) {
                 throw new Error('Expected 1' + this.__table+ 'to be inserted. Was ${result.changes}');

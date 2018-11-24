@@ -7,6 +7,7 @@ export class SacramentInfo extends Model{
     private _id: number;
     private _sacrament: number;
     private _name: string;
+    private _wife: string;
     private _bornPlace: string;
     private _date: Date;
     private _fatherName: string;
@@ -30,6 +31,7 @@ export class SacramentInfo extends Model{
             this._id = model.id;
             this._sacrament = model.sacrament;
             this._name = model.name;
+            this._wife = model._wife;
             this._bornPlace = model.bornPlace;
             this._date = model.date;
             this._fatherName = model.fatherName;
@@ -59,6 +61,14 @@ export class SacramentInfo extends Model{
 
     set name(value: string) {
         this._name = value;
+    }
+
+    get wife(): string {
+        return this._wife;
+    }
+
+    set wife(value: string) {
+        this._wife = value;
     }
 
     get bornPlace(): string {

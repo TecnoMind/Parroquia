@@ -15,7 +15,7 @@
     }
 }*/
 
-#confirmacion_print{
+#matrimonio_print{
     main{
     color: black;
     //display: grid;
@@ -29,14 +29,17 @@
                 text-align: left;
                 display: inline-block;
                 img{
-                    position: absolute;
-                    height: 600px;
-                    max-width: 350px;
-                    top: 30px;
+                    //position: absolute;
+                    height: 150px;
+                    max-width: 150px;
+                    //top: 100px;
+                }
+                .italic{
+                    font-style: italic;
                 }
             }
             &.derecha{
-                width: 69%;
+                width: 65%;
                 text-align: center;
                 display: inline-block;
                 .space_bottom{
@@ -47,6 +50,9 @@
                 }
                 .bolders{
                     font-weight: bold;
+                }
+                .italic{
+                    font-style: italic;
                 }
             }
         }    

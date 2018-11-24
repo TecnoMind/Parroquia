@@ -21,7 +21,7 @@
                         <div class="row">
                             <input-validate [model]="sacrament" [length]="35" [data]="'name'" [isRequired]="true" [inputType]="'text'"
                                             [label]="'Nombre del bautizado'" [capitalise]="true" (change)="validate($event)" 
-                                            [position]="0">
+                                            [position]="0" autofocus>
                             </input-validate>
                             <input-validate [model]="sacrament" [length]="35" [data]="'bornPlace'" [isRequired]="true" [inputType]="'text'"
                                             [label]="'Lugar de nacimiento'" [capitalise]="true" (change)="validate($event)"
@@ -84,9 +84,10 @@
                     </div>
                     <div *ngSwitchCase="'Celebrante'" class="select-tab">
                         <div class="row">
+                            <label for="input-validate" style="color:black; margin-top: 30px; transform: translateX(200px);">Pbro.</label>
                             <input-validate [model]="sacrament" [length]="35" [data]="'priest'" [isRequired]="true" [inputType]="'text'"
                                             [label]="'Nombre del sacerdote'" [capitalise]="true" (change)="validate($event)"
-                                            [position]="11">
+                                            [position]="11" value="text" placeholder="txt">
                             </input-validate>
                         </div>
                     </div>

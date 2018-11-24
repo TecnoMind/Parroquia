@@ -57,6 +57,7 @@ export class SaveComponent implements OnInit {
                         title: 'Acta actualizada correctamente',
                         type: 'success',
                     });
+                    console.log(this.sacramentRepository);
                     setTimeout(() => {
                         this.router.navigateByUrl("buscador");
                     }, 100);
@@ -84,6 +85,7 @@ export class SaveComponent implements OnInit {
                         title: 'Acta guardada correctamente',
                         type: 'success',
                     });
+                    console.log(this.sacramentRepository);
                     setTimeout(() => {
                         this.router.navigateByUrl("buscador");
                     }, 100);

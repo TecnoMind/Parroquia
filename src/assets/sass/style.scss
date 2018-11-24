@@ -2,7 +2,7 @@ $primary-color: rgb(25, 158, 199);
 $second-color: #127391;
 $header-height: 150px;
 $li-color: #F5F5F5;
-$li-color-hover: #E6E6E6;
+$li-color-hover: rgb(194, 194, 194);
 
 @import "reset";
 @import "views/login";
@@ -10,6 +10,7 @@ $li-color-hover: #E6E6E6;
 @import "views/bautismoPdf";
 @import "views/comunionPdf";
 @import "views/confirmacionPdf";
+@import "views/matrimonioPDF";
 @import "views/menu";
 @import "views/search";
 

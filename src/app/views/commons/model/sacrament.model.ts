@@ -31,6 +31,4 @@ export class Sacrament extends Model{
     set name(value: string) {
         this._name = value;
     }
-
-
 }

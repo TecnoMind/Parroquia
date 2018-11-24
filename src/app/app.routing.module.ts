@@ -4,11 +4,12 @@ import {ModuleWithProviders} from "@angular/core";
 import {BautismoComponent} from "./views/bautismo/component/bautismo.component";
 import {BautismoPrintComponent} from "./views/bautismo/component/bautismo.print.component";
 import {MatrimonioComponent} from "./views/matrimonio/component/matrimonio.component";
+import {MatrimonioPrintComponent} from "./views/matrimonio/component/matrimonio.print.component";
 import {ConfirmacionComponent} from "./views/confirmacion/component/confirmacion.component";
 import {ConfirmacionPrintComponent} from "./views/confirmacion/component/confirmacion.print.component";
 import {SearchComponent} from "./views/buscador/component/search.component";
-import { ComunionComponent } from './views/comunion/component/comunion.component';
-import { ComunionPrintComponent } from './views/comunion/component/comunion.print.component';
+import {ComunionComponent} from './views/comunion/component/comunion.component';
+import {ComunionPrintComponent} from './views/comunion/component/comunion.print.component';
 
 const appRoutes: Routes = [
 
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
     { path: 'confirmacion/print/:id', component: ConfirmacionPrintComponent},
     { path: 'matrimonio', component: MatrimonioComponent},
     { path: 'matrimonio/:id', component: MatrimonioComponent},
+    { path: 'matrimonio/print/:id', component: MatrimonioPrintComponent},    
     { path: 'buscador', component: SearchComponent},
     { path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
